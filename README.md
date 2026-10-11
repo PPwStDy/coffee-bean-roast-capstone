@@ -30,7 +30,7 @@ az login
 az account set --subscription 6638a4ea-96da-4326-969a-2e40305cfc83
 uv run --frozen dvc pull data/coffee_bean_roast.dvc models/iteration4_swin.pth.dvc releases/*.dvc
 uv run --frozen python scripts/restore_release.py
-uv run --frozen python scripts/release_integrity.py
+uv run --frozen python -m scripts.release_integrity
 make serve
 ```
 

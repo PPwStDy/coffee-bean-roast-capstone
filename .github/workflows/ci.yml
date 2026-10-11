@@ -4,6 +4,16 @@ env:
 on:
   push:
     branches: [main, 'codex/**']
+    paths-ignore:
+      - 'reports/**/*.json'
+      - 'reports/**/*.md'
+      - 'reports/**/*.png'
+      - 'reports/**/*.txt'
+      - 'reports/**/*.log'
+      - 'reports/**/*.xml'
+      - 'deliverables/**'
+      - '*.md'
+      - '.azure/plan.md'
   pull_request:
   workflow_dispatch:
 permissions:

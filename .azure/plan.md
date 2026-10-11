@@ -25,15 +25,15 @@ Git/DVC → reproducible ImageNet training → validation-only export selection 
 
 ## Resource inventory and preflight
 
-The subscription and user have been verified with Azure CLI. No new paid resources have been created. Owner permission is confirmed. East Asia allows one Container Apps environment with zero currently used. Registered regional quota evidence, year-to-date spending, retail prices and dated ECB exchange rates are captured under reports/evidence. The private GitHub repository has been created. The forecast for seven days, three active hours at two replicas, and 0.1 GB/day logs is 253.76 THB including 25% margin; conservative remaining allowance is 635.98 THB.
+The subscription and user have been verified with Azure CLI. The dedicated capstone foundation has been deployed; application release is in progress. Owner permission is confirmed. East Asia allows one Container Apps environment with zero currently used. Registered regional quota evidence, year-to-date spending, retail prices and dated ECB exchange rates are captured under reports/evidence. The private GitHub repository has been created. The forecast for seven days, three active hours at two replicas, and 0.1 GB/day logs is 239.09 THB including 25% margin; conservative remaining allowance is 635.98 THB.
 
 ## Execution checklist
 
-- [ ] Isolated environment, locked dependencies, independent Git root.
-- [ ] API hardening, complete cloud contract, input / artifact / optical regression checks.
-- [ ] Dataset attribution, DVC remote, clean-checkout restoration.
-- [ ] ImageNet training, validation selection, single selected-release test evaluation, Azure ML registry.
-- [ ] Bicep validation, permission / quota / budget evidence.
+- [x] Isolated environment, locked dependencies, independent Git root.
+- [x] API hardening, complete cloud contract, input / artifact / optical regression checks.
+- [x] Dataset attribution, DVC remote, clean-checkout restoration.
+- [x] ImageNet training, validation selection, single selected-release test evaluation, Azure ML registry.
+- [x] Bicep validation, permission / quota / budget evidence.
 - [ ] Digest image deployment, OIDC, candidate promotion / rollback.
 - [ ] Deployed logs / workbook / delivered email alert.
 - [ ] 1,000 warm requests (concurrency 2), 20 cold starts, frozen SLOs.
@@ -42,7 +42,7 @@ The subscription and user have been verified with Azure CLI. No new paid resourc
 
 ## Validation and deployment proof
 
-Azure Validate completed on 2026-10-11 for the foundation. Bicep compiled main/app/budget, ARM subscription validation returned Succeeded, and What-if returned Succeeded with no deletions. Owner RBAC, service registration, one available East Asia environment, Storage quota and policy assignments were inspected. The local Linux baseline container passed readiness, four-class predictions, controlled malformed input, optical rejection and telemetry checks. API/data contract tests: 29 passed; cloud contract tests: 4 passed; model behavior tests: 3 passed. Evidence is under reports/evidence. The clean trained model and its application revision still need release validation before application deployment.
+Azure Validate completed on 2026-10-11 for the foundation. Bicep compiled main/app/budget, ARM subscription validation returned Succeeded, and What-if returned Succeeded with no deletions. Owner RBAC, service registration, one available East Asia environment, Storage quota and policy assignments were inspected. The local Linux baseline container passed readiness, four-class predictions, controlled malformed input, optical rejection and telemetry checks. API/data contract tests: 29 passed; cloud contract tests: 4 passed; model behavior tests: 3 passed. Evidence is under reports/evidence. The clean release is registered as Azure ML version 1 and passes 43 local checks. GitHub CI 38144417980 succeeded. The environment completed its conversion to WorkloadProfiles; application deployment is running.
 
 Azure Deploy will provision only the dedicated capstone group using infra/main.bicep. The shared ML workspace and existing resources are preserved.
 

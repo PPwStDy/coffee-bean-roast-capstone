@@ -39,15 +39,15 @@ budget = cost["budget"]
 
 
 def readable(text):
-    prefixes = "seed|batch|epoch|version|concurrency|accuracy|loss|took|on|and|all|after|before|at|with|an|is|leaving|removes|achieved|macro-F1|min|max"
+    prefixes = "seed|batch|epoch|version|concurrency|accuracy|loss|took|on|and|all|after|before|at|with|an|is|leaving|removes|achieved|macro-F1|min|max|are|return|plus|uses|float|RGB|unique|its|has|by|Python|LR|decay|of|were|pending|deployed|median|error|reject|remaining|historical|classified|in|the"
     text = re.sub(rf"\b({prefixes})(?=\d)", r"\1 ", text)
     text = re.sub(r"([,;:])(?=\d)", r"\1 ", text)
     text = re.sub(
-        r"(\d)(?=epochs|minutes|images|seconds|GiB|MiB|THB|USD|vCPU|MP|px|ms|requests|copies|trials)",
+        r"(\d)(?=epochs|minutes|images|seconds|GiB|MiB|THB|USD|vCPU|MP|px|ms|requests|copies|trials|megapixels)",
         r"\1 ",
         text,
     )
-    return text.replace("CC BY-SA4.0", "CC BY-SA 4.0").replace("Swin-T,", "Swin-T, ")
+    return text.replace("CC BY-SA4.0", "CC BY-SA 4.0").replace("al.2022", "al. (2022)").replace("Swin-T,", "Swin-T, ")
 
 
 proposal = [
@@ -118,7 +118,7 @@ styles.add(ParagraphStyle("CardBody", fontName="Helvetica", fontSize=10.5, leadi
 
 
 def p(text, style="BodyCustom"):
-    return Paragraph(escape(readable(text)), styles[style])
+    return Paragraph(escape(readable(text)).replace("\n", "<br/>"), styles[style])
 
 
 def table(rows, widths):
@@ -211,7 +211,7 @@ sections = [
         [
             "This report records the operational system built for Group Idea and distinguishes successful evidence from remaining work. The project owner approved changing the supplied defect proposal to roast classification. Instructor approval of the revised scope, the Session5 clinic, live presentation/Q&A and submission remain external events.",
             "The service classifies an entire coffee image into Dark, Green, Light or Medium using Iteration4 Swin-T. Green is unroasted. Results support educational visual inspection; they do not establish individual-bean defects, roast chemistry or SCA compliance.",
-            f"A clean20epoch run completed in{duration / 60:.2f}minutes on the8GiB M1. Its selected INT8 export correctly classified181/181 test images. All36 local tests and Linux container integration passed. The historical99.75% baseline is preserved with a contamination warning.",
+            f"A clean 20-epoch run completed in {duration / 60:.2f} minutes on the 8 GiB M1. Its selected INT8 export correctly classified 181/181 test images. All 43 local tests and Linux container integration passed. The historical 99.75% baseline is preserved with a contamination warning.",
             "The ten course components are versioned code/data, automated reproducible training, registered lineage, deployed inference, CI/CD that can fail, a dashboard, a working alert, cost/1000 predictions, a one-page model card and an engineered failure. Model accuracy itself carries no marks. The repository checklist is the source of current acceptance status.",
             "Evidence files include timestamps, resource IDs, Git/DVC revisions and raw provider responses. Configuration or a generated script is not counted as proof of successful live execution. Failed attempts are preserved alongside their fixes.",
         ],
@@ -287,7 +287,7 @@ for index, (title, paragraphs) in enumerate(sections):
     markdown.append("# " + title)
     for text in paragraphs:
         report.append(p(text))
-        markdown.append(text)
+        markdown.append(readable(text))
 pdf("comprehensive_report.pdf", report)
 (ROOT / "reports/comprehensive_report.md").write_text("\n\n".join(markdown) + "\n")
 print("Created revised proposal DOCX, one-page model card PDF and comprehensive report PDF")
