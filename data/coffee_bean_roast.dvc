@@ -1,0 +1,6 @@
+outs:
+- md5: d241ed318d2c1d8672d939938d3b71be.dir
+  size: 116370089
+  nfiles: 1195
+  hash: md5
+  path: coffee_bean_roast

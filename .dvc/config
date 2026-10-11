@@ -1,0 +1,5 @@
+[core]
+    analytics = False
+    site_cache_dir = .dvc/site-cache
+[cache]
+    dir = cache

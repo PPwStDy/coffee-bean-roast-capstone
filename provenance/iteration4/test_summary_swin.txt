@@ -1,0 +1,20 @@
+Coffee Bean Roast Level Classification - Iteration 4
+Date: 2026-10-05 10:17:26
+Model Architecture: PretrainedSwinT
+Best Val Loss: 0.2101
+Test Loss: 0.2086
+Test Accuracy: 99.75%
+Test Macro F1: 99.75%
+Test Micro F1: 99.75%
+
+Per-Class Classification Report:
+              precision    recall  f1-score   support
+
+        Dark     1.0000    0.9900    0.9950       100
+       Green     1.0000    1.0000    1.0000       100
+       Light     1.0000    1.0000    1.0000       100
+      Medium     0.9901    1.0000    0.9950       100
+
+    accuracy                         0.9975       400
+   macro avg     0.9975    0.9975    0.9975       400
+weighted avg     0.9975    0.9975    0.9975       400

@@ -1,0 +1,12 @@
+.git
+.dvc
+.venv
+data
+models
+provenance
+mlruns
+mlflow.db
+reports/presentation
+output
+__pycache__
+**/__pycache__

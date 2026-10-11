@@ -1,0 +1,10 @@
+apiVersion: 1
+providers:
+  - name: Coffee Roast API
+    orgId: 1
+    folder: Coffee Roast API
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards

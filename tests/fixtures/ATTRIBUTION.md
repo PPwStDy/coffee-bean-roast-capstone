@@ -1,0 +1,1 @@
+Four validation images from the CC BY-SA 4.0 coffee datasets. See ../../DATA_LICENSE.md for both sources, version 1, authors, citation and modifications. These are validation fixtures, never independent test evaluation.

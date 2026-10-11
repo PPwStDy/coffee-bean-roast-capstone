@@ -1,0 +1,35 @@
+{
+  "uid": "coffee-roast-api",
+  "title": "Coffee Roast API",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "5s",
+  "time": {"from": "now-15m", "to": "now"},
+  "panels": [
+    {
+      "id": 1,
+      "title": "Inference rate by predicted class",
+      "type": "timeseries",
+      "datasource": {"type": "prometheus", "uid": "Prometheus"},
+      "gridPos": {"h": 9, "w": 12, "x": 0, "y": 0},
+      "targets": [{"expr": "sum by (predicted_class) (rate(coffee_predictions_total[5m]))", "legendFormat": "{{predicted_class}}"}]
+    },
+    {
+      "id": 2,
+      "title": "Inference latency p95",
+      "type": "timeseries",
+      "datasource": {"type": "prometheus", "uid": "Prometheus"},
+      "gridPos": {"h": 9, "w": 12, "x": 12, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "s"}},
+      "targets": [{"expr": "histogram_quantile(0.95, sum by (le) (rate(coffee_inference_latency_seconds_bucket[5m])))", "legendFormat": "p95"}]
+    },
+    {
+      "id": 3,
+      "title": "Rejected glare or occlusion frames",
+      "type": "timeseries",
+      "datasource": {"type": "prometheus", "uid": "Prometheus"},
+      "gridPos": {"h": 9, "w": 24, "x": 0, "y": 9},
+      "targets": [{"expr": "sum by (rejection_reason) (increase(coffee_anomaly_frames_total[5m]))", "legendFormat": "{{rejection_reason}}"}]
+    }
+  ]
+}

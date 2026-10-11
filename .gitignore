@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+.venv/
+.venv-legacy/
+cloud.env
+*.env
+!.env.example
+!cloud.env.example
+.azure/local/
+releases/*/
+!releases/*.dvc
+tmp/
+output/
+.chart-data-*/
+reports/presentation/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# MLflow artifacts
+mlflow.db
+mlruns/
+
+# Generated model artifacts (tracked via DVC, not git)
+reports/model.pt
+reports/model.onnx
+reports/model_best.pth
+reports/training_summary.json
+reports/training_history.json
+reports/evidence/training.log
+reports/evidence/service.log
+reports/model.int8.onnx
+reports/export_candidates.json
+reports/cost_summary.json
+
+# Pytest
+.pytest_cache/
+
+# Data (managed by DVC or symlinked)
+data/train
+data/valid
+data/test
+data/coffee_bean_defects/
+.dvc/cache/
+.dvc/site-cache/
+.dvc/tmp/
+.dvc/config.local
+
+# Roast data and imported checkpoint are versioned with DVC
+data/coffee_bean_roast/
+models/*.pth
+reports/model_metadata.json
+reports/model.float.onnx

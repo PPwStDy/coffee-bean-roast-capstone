@@ -1,0 +1,5 @@
+outs:
+- md5: cb0479e5b8b08aee2aabada7c92d3804
+  size: 110387798
+  hash: md5
+  path: iteration4_swin.pth

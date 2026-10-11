@@ -1,0 +1,23 @@
+{
+  "architecture": "PretrainedSwinT",
+  "classes": [
+    "Dark",
+    "Green",
+    "Light",
+    "Medium"
+  ],
+  "model_version": "roast-iteration4-swin-v1",
+  "checkpoint_sha256": "40694fecc76cc965829d00eef3f4d91a1284ba14c60ff98d9003c861e7ae4fe8",
+  "checkpoint_file": "models/iteration4_swin.pth",
+  "original_source": "DL_FinalProject/Iteration4/model_best_vloss_swin.pth",
+  "original_reported_accuracy": 0.9975,
+  "original_reported_macro_f1": 0.9975,
+  "original_test_images_also_in_train": 400,
+  "evaluation_status": "contaminated_original_split",
+  "evaluation_warning": "The imported checkpoint saw the original training images. A new split does not make its evaluation independent. Retrain from ImageNet weights on the prepared training split or collect unseen evaluation images.",
+  "training_dataset_lineage": "Original source file inventory is in the prepared dataset manifest; this checkpoint was NOT trained on the new clean split.",
+  "license": "Unknown: confirm the original source and redistribution license",
+  "mlflow_run_id": "2aebc879936b4637b598b76d1db4a51b",
+  "registered_model_name": "coffee-bean-roast-classifier",
+  "registered_model_version": 2
+}
