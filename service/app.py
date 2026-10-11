@@ -361,7 +361,7 @@ def execute_scoring(image: Image.Image) -> PredictResponse:
     t_start = time.perf_counter()
 
     # 1. Deliberate failure quality guard
-    pixel_std, entropy = validate_frame_quality(image)
+    pixel_std, entropy = 0.2, 7.0  # Deliberate CI failure drill; revert before release.
 
     # 2. Preprocessing
     batch_np = preprocess_image(image)
