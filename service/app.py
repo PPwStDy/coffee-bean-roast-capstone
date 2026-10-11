@@ -114,6 +114,11 @@ def _load_inference_engine():
         raise ValueError("Serving artifact metadata does not match the roast model contract")
     if metadata.get("input_size") != IMAGE_SIZE or metadata.get("normalization") != "ImageNet":
         raise ValueError("Serving artifact preprocessing contract is incompatible")
+    expected_preprocessing = {"resize": "bilinear", "mean": IMAGENET_MEAN, "std": IMAGENET_STD}
+    if metadata.get("preprocessing") != expected_preprocessing:
+        raise ValueError("Serving artifact preprocessing details are missing or incompatible")
+    if not isinstance(metadata.get("model_version"), str) or not metadata["model_version"].strip():
+        raise ValueError("Serving artifact has no model version")
     if os.environ.get("MODEL_VERSION") and os.environ["MODEL_VERSION"] != metadata["model_version"]:
         raise ValueError("MODEL_VERSION differs from the exported model version")
     STATE["version"] = metadata["model_version"]
@@ -125,10 +130,12 @@ def _load_inference_engine():
             raise ValueError(f"Serving artifact hash mismatch: {path}")
 
     # Check for ONNX Runtime
+    if os.environ.get("INFERENCE_ENGINE", "onnx") == "onnx" and not os.path.exists(model_path):
+        raise FileNotFoundError("Selected ONNX artifact is missing")
     try:
         import onnxruntime as ort
 
-        if os.path.exists(model_path):
+        if os.path.exists(model_path) and os.environ.get("INFERENCE_ENGINE", "onnx") == "onnx":
             check_artifact(model_path, "onnx_sha256")
             options = ort.SessionOptions()
             options.intra_op_num_threads = int(os.environ.get("INFERENCE_THREADS", "1"))
@@ -136,10 +143,17 @@ def _load_inference_engine():
             session = ort.InferenceSession(model_path, sess_options=options, providers=["CPUExecutionProvider"])
             if session.get_outputs()[0].shape[-1] != len(CLASSES):
                 raise ValueError("ONNX output count does not match the four roast classes")
+            inputs = session.get_inputs()
+            if len(inputs) != 1 or inputs[0].type != "tensor(float)" or inputs[0].shape[1:] != [3, IMAGE_SIZE, IMAGE_SIZE]:
+                raise ValueError("ONNX input shape or dtype is incompatible")
+            check = session.run(None, {inputs[0].name: np.zeros((1, 3, IMAGE_SIZE, IMAGE_SIZE), dtype=np.float32)})[0]
+            if check.shape != (1, 4) or not np.isfinite(check).all():
+                raise ValueError("ONNX startup inference produced invalid outputs")
             log.info('"Loaded ONNX model: %s"', model_path)
             return session, "ONNXRuntime"
     except ImportError:
-        pass
+        if os.environ.get("INFERENCE_ENGINE", "onnx") == "onnx":
+            raise RuntimeError("Selected ONNX runtime is unavailable") from None
 
     # TorchScript fallback
     if os.path.exists(ts_path):

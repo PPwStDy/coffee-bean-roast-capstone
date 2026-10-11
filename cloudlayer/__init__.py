@@ -6,6 +6,14 @@ from cloudlayer.base import StorageAdapter
 from cloudlayer.local import LocalStorageAdapter
 
 
+def get_cloud_adapter():
+    from cloudlayer.config import settings
+    if settings().get("CLOUD_PROVIDER") != "azure":
+        raise ValueError("Full cloud capabilities require CLOUD_PROVIDER=azure")
+    from cloudlayer.adapter import AzureCloudAdapter
+    return AzureCloudAdapter()
+
+
 def get_storage_adapter() -> StorageAdapter:
     provider = os.environ.get("CLOUD_PROVIDER", "local").lower()
     if provider == "local":

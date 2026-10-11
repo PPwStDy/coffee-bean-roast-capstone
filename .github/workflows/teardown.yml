@@ -1,0 +1,38 @@
+name: Scoped teardown
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 1 * * *'
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  teardown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.10'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: uv sync --frozen
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Delete only owned resources when requested or retention expires
+        env:
+          PROJECT_ID: rg-itcs355-6688218-capstone
+          AZURE_ML_RESOURCE_GROUP: itcs355-6688218
+          AZURE_ML_WORKSPACE: itcs355-6688218
+          TEARDOWN_AFTER: ${{ vars.TEARDOWN_AFTER }}
+          MANUAL: ${{ github.event_name == 'workflow_dispatch' }}
+        run: uv run --frozen python -m cloudlayer.cleanup
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: teardown-evidence
+          path: reports/evidence/teardown.json

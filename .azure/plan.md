@@ -1,6 +1,6 @@
 # Coffee bean roast capstone Azure implementation
 
-Status: Approved — Executing
+Status: Validated — foundation; application release pending
 
 The user approved this plan on 2026-10-11. This file records execution; completion requires successful evidence.
 
@@ -25,7 +25,7 @@ Git/DVC → reproducible ImageNet training → validation-only export selection 
 
 ## Resource inventory and preflight
 
-The subscription and user have been verified with Azure CLI. No new paid resources have been created. Actual RBAC, regional quotas, spending and price checks must be captured before provisioning. GitHub CLI authentication is currently missing; repository creation and remote CI depend on it.
+The subscription and user have been verified with Azure CLI. No new paid resources have been created. Owner permission is confirmed. East Asia allows one Container Apps environment with zero currently used. Registered regional quota evidence, year-to-date spending, retail prices and dated ECB exchange rates are captured under reports/evidence. The private GitHub repository has been created. The forecast for seven days, three active hours at two replicas, and 0.1 GB/day logs is 253.76 THB including 25% margin; conservative remaining allowance is 635.98 THB.
 
 ## Execution checklist
 
@@ -42,7 +42,9 @@ The subscription and user have been verified with Azure CLI. No new paid resourc
 
 ## Validation and deployment proof
 
-Pending. Update status to Ready for Validation before invoking azure-validate; record successful validation before deployment through azure-deploy.
+Azure Validate completed on 2026-10-11 for the foundation. Bicep compiled main/app/budget, ARM subscription validation returned Succeeded, and What-if returned Succeeded with no deletions. Owner RBAC, service registration, one available East Asia environment, Storage quota and policy assignments were inspected. The local Linux baseline container passed readiness, four-class predictions, controlled malformed input, optical rejection and telemetry checks. API/data contract tests: 29 passed; cloud contract tests: 4 passed; model behavior tests: 3 passed. Evidence is under reports/evidence. The clean trained model and its application revision still need release validation before application deployment.
+
+Azure Deploy will provision only the dedicated capstone group using infra/main.bicep. The shared ML workspace and existing resources are preserved.
 
 ## External completion steps
 

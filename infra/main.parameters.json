@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastasia"
+    },
+    "alertEmail": {
+      "value": "peerawat.son@student.mahidol.ac.th"
+    },
+    "operatorObjectId": {
+      "value": "907e21d9-24eb-4337-b32d-8d3e4a427e7e"
+    }
+  }
+}

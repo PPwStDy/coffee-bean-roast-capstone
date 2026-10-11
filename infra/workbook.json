@@ -1,0 +1,70 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "# Coffee roast API operations\nStructured application logs, HTTP status/latency and camera rejection events."
+      },
+      "name": "intro"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "ContainerAppConsoleLogs_CL | extend e=parse_json(Log_s) | where tostring(e.event)==\"http_request\" | summarize Requests=count() by Status=tostring(e.status), bin(TimeGenerated, 1m)",
+        "size": 0,
+        "title": "Request volume and status",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "__WORKSPACE_ID__"
+        ],
+        "timeContext": {
+          "durationMs": 3600000
+        },
+        "visualization": "timechart"
+      },
+      "name": "Request volume and status"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "ContainerAppConsoleLogs_CL | extend e=parse_json(Log_s) | where tostring(e.event)==\"http_request\" and tostring(e.path)==\"/predict\" | summarize p50=percentile(todouble(e.latency_ms),50), p95=percentile(todouble(e.latency_ms),95), p99=percentile(todouble(e.latency_ms),99) by bin(TimeGenerated,1m)",
+        "size": 0,
+        "title": "HTTP latency p50/p95/p99",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "__WORKSPACE_ID__"
+        ],
+        "timeContext": {
+          "durationMs": 3600000
+        },
+        "visualization": "timechart"
+      },
+      "name": "HTTP latency p50/p95/p99"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "ContainerAppConsoleLogs_CL | extend e=parse_json(Log_s) | where tostring(e.event)==\"occlusion_guard_rejection\" | project TimeGenerated, ContainerAppName_s, PixelStd=todouble(e.pixel_std), Entropy=todouble(e.entropy)",
+        "size": 0,
+        "title": "Camera occlusion",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "crossComponentResources": [
+          "__WORKSPACE_ID__"
+        ],
+        "timeContext": {
+          "durationMs": 3600000
+        },
+        "visualization": "table"
+      },
+      "name": "Camera occlusion"
+    }
+  ],
+  "isLocked": false
+}

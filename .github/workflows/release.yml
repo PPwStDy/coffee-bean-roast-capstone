@@ -1,0 +1,57 @@
+name: Release
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: capstone-deployment
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.10'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: uv sync --frozen
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Restore selected release
+        env:
+          AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
+        run: |
+          uv run --frozen dvc pull releases/*.dvc
+          uv run --frozen python scripts/restore_release.py
+          uv run --frozen python scripts/release_integrity.py
+      - name: Budget preflight and digest-pinned candidate deployment
+        env:
+          CLOUD_PROVIDER: azure
+          PROJECT_ID: rg-itcs355-6688218-capstone
+          REGION: eastasia
+          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+          CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
+          CONTAINER_ENVIRONMENT_ID: ${{ vars.CONTAINER_ENVIRONMENT_ID }}
+          IDENTITY_REF: ${{ vars.IDENTITY_REF }}
+          AZURE_ML_RESOURCE_GROUP: itcs355-6688218
+          AZURE_ML_WORKSPACE: itcs355-6688218
+          ENDPOINT_NAME: coffee6688218-api
+        run: uv run --frozen python -m cloudlayer.deploy
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deployment-evidence
+          path: reports/evidence/

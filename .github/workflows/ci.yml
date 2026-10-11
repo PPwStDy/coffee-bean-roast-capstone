@@ -1,0 +1,63 @@
+name: CI
+on:
+  push:
+    branches: [main, 'codex/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.10'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Locked isolated environment
+        run: uv sync --frozen
+      - name: Lint and provider portability
+        run: |
+          uv run --frozen ruff check src service cloudlayer tests scripts loadtest
+          uv run --frozen python scripts/portability_audit.py
+      - name: Authenticate with OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{ github.event_name == 'pull_request' && vars.AZURE_READ_CLIENT_ID || vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Restore immutable data and selected release
+        env:
+          AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
+        run: |
+          uv run --frozen dvc pull data/coffee_bean_roast.dvc models/iteration4_swin.pth.dvc releases/*.dvc
+          uv run --frozen python scripts/restore_release.py
+      - name: Data, model, API, artifact and cloud contracts
+        run: uv run --frozen pytest tests -q --junitxml=reports/evidence/ci-tests.xml
+      - name: Export integrity and optical guard mutation
+        run: |
+          uv run --frozen python scripts/release_integrity.py
+          uv run --frozen python scripts/failure_drill.py
+      - name: Linux container integration
+        run: |
+          docker build --platform linux/amd64 -t coffee-roast:ci .
+          docker run -d --name capstone-ci -p 8080:8080 coffee-roast:ci
+          uv run --frozen python scripts/endpoint_checks.py --url http://127.0.0.1:8080 --output reports/evidence/ci-container.json
+          docker logs capstone-ci > reports/evidence/ci-container.log 2>&1
+      - name: Upload evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-evidence
+          path: reports/evidence/
+      - name: Stop CI container
+        if: always()
+        run: docker rm -f capstone-ci || true

@@ -1,0 +1,42 @@
+name: Full training
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  training:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.10'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: uv sync --frozen
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Reproduce training and export selection
+        env:
+          MODEL_VERSION: roast-swin-${{ github.run_id }}
+          AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
+        run: |
+          uv run --frozen dvc pull data/coffee_bean_roast.dvc
+          uv run --frozen python -m src.train --epochs 20 --batch-size 32 --seed 42
+          uv run --frozen python -m src.export_onnx --evaluate-test
+          uv run --frozen dvc add releases/*/
+          uv run --frozen dvc push releases/*.dvc
+      - name: Upload immutable release and lineage pointers
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-release
+          path: |
+            releases/
+            reports/training_summary.json
+            reports/training_history.json

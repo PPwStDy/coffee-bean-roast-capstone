@@ -62,7 +62,7 @@ def train_epoch(model: nn.Module, loader, criterion, optimizer, device, schedule
     correct = 0
     total = 0
 
-    for images, labels in loader:
+    for step, (images, labels) in enumerate(loader, 1):
         images, labels = images.to(device), labels.to(device)
         optimizer.zero_grad()
         outputs = model(images)
@@ -70,6 +70,8 @@ def train_epoch(model: nn.Module, loader, criterion, optimizer, device, schedule
         loss.backward()
         optimizer.step()
         scheduler.step()
+        if step % 10 == 0:
+            print(f"  batch {step}/{len(loader)} loss={loss.item():.4f}", flush=True)
 
         running_loss += loss.item() * images.size(0)
         _, preds = torch.max(outputs, 1)
@@ -124,7 +126,7 @@ def train(
     train_loader, val_loader, test_loader = get_dataloaders(DATA_DIR, batch_size=batch_size)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
-    print(f"Training on device: {device}")
+    print(f"Training on device: {device}; batch size={batch_size}", flush=True)
 
     model = build_model(num_classes=NUM_CLASSES, pretrained=True).to(device)
     criterion = nn.CrossEntropyLoss(label_smoothing=0.05)
