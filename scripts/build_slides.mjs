@@ -15,6 +15,8 @@ const model = await read('reports/model_metadata.json');
 const history = await read('reports/training_history.json');
 const cost = await read('reports/evidence/cost-summary.json');
 let warm; try { warm = await read('reports/evidence/deployed-warm.json'); } catch {}
+let cold; try { cold = await read('reports/evidence/deployed-cold.json'); } catch {}
+let slo; try { slo = await read('monitoring/slo.json'); } catch {}
 const deck = Presentation.create({slideSize: {width: 1280, height: 720}});
 const ink = '#20312B', muted = '#5A685F', accent = '#35604A';
 
@@ -71,14 +73,14 @@ text(s,'5 MiB decoded  ·  20 megapixels  ·  inference concurrency 2',64,575,11
 
 s=slide('We designed a camera failure',`5:00–6:00. Inject black and white frames; show422 before inference, rejection JSON, anomaly counter, local webhook and deployed workbook. Trigger Azure email ahead because its evaluation interval is five minutes. Actual recipient delivery must be evidenced separately from a configured action group. Show guard mutation causes failing regression and deployment prevention. Sources: https://learn.microsoft.com/azure/container-apps/log-monitoring; reports/evidence/local-alert-delivery.log; reports/evidence/optical-regression-drill.json.`);
 lines(s,['Covered / overexposed camera → HTTP 422 before inference','Structured rejection log + anomaly counter','Prometheus alert delivered to local webhook','Azure five-minute rule → email action group'],64,236,1152,29,88);
-text(s,'Regression: remove the optical guard → tests must fail → release blocked',64,601,1152,43,24,accent,true);
+text(s,'Guard removal failed GitHub CI; the release workflow was skipped',64,601,1152,43,24,accent,true);
 
 s=slide('Measured performance and the bill',`6:00–7:00. Show deployed warm and cold reports when complete. Explain1000 requests at concurrency2 and20 verifiedzero-replica cold trials. Freeze initialp95/p99 plus20% and enforce fixed targets later. Container bytes are separate. Cost/1000 uses actual wall duration and a conservative configured two-replica allocation bound; it is not an invoice. Registry/storage/monitoring remain chargeable during scale-to-zero. Primary rates and ECB exchange are captured under reports/evidence.`);
-lines(s,[warm ? `Warm p95 ${warm.p95_ms.toFixed(1)} ms / p99 ${warm.p99_ms.toFixed(1)} ms` : 'Warm benchmark: pending deployed measurements','20 verified cold starts; fixed targets = measured + 20%',`Remaining allowance: ${cost.budget.remaining_allowance_thb.toFixed(2)} THB`,`Seven-day forecast + margin: ${cost.budget.forecast_thb_including_25_percent_margin.toFixed(2)} THB`],64,231,1152,29,80);
+lines(s,[warm ? `Warm p95 ${warm.p95_ms.toFixed(1)} ms / p99 ${warm.p99_ms.toFixed(1)} ms` : 'Warm benchmark: pending deployed measurements',cold ? `20 cold trials: p95 ${(cold.p95_ms/1000).toFixed(2)} s / p99 ${(cold.p99_ms/1000).toFixed(2)} s` : 'Cold benchmark: pending 20 zero-replica trials',slo ? `Fixed warm targets ${slo.warm_p95_ms}/${slo.warm_p99_ms} ms; cold ${(slo.cold_p95_ms/1000).toFixed(2)}/${(slo.cold_p99_ms/1000).toFixed(2)} s` : 'Fixed targets: pending the complete initial benchmark',`Serving estimate: ≤${cost.serving_cost_per_1000.thb.toFixed(4)} THB / 1,000 predictions`],64,231,1152,29,80);
 text(s,'Costs reported separately: serving / storage / registry / monitoring / training',64,584,1152,51,24,accent,true);
 
 s=slide('Evidence, limitations and next steps',`7:00–8:00. Show the current requirement checklist and safe teardown receipt. All technical requirements need successful evidence. Instructor scope approval, architecture clinic, live presentation/Q&A and final submission remain external milestones. Proposed team responsibility split must be confirmed by actual contributions. Another week would focus on independent camera/source data, calibration and broader operating-condition checks. Reserve five minutes for questions.`);
-lines(s,['Complete evidence is recorded in the requirement checklist','Uncalibrated confidence; source / camera confounding','Uniform-frame guard does not reject every noncoffee image','Next week: independent images and confidence calibration','Academic approval, review, live Q&A and submission remain pending'],64,222,1152,27,80);
+lines(s,['Evidence and remaining steps are tracked in the checklist','Uncalibrated confidence; source / camera confounding','Uniform-frame guard does not reject every noncoffee image','Next week: independent images and confidence calibration','Academic approval, review, live Q&A and submission remain pending'],64,222,1152,27,80);
 
 const staging=path.join(root,'tmp/slides'); await fs.mkdir(staging,{recursive:true});
 for(const [index,item] of deck.slides.items.entries()) {

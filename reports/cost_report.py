@@ -56,7 +56,7 @@ def main():
     text += "| Component | Seven-day USD forecast |\n|---|---:|\n"
     for component, value in budget["forecast_usd_by_component"].items():
         text += f"| {component} | {value:.6f} |\n"
-    text += "\nRegistry and monitoring continue to charge while serving is scaled to zero. Budget notifications are alerts, not a spending shutdown. The deployment gate blocks an over-budget forecast, and scoped teardown removes persistent resources. Billing can lag, so the forecast includes margin.\n"
+    text += "\nRegistry and monitoring continue to charge while serving is scaled to zero. Budget notifications are alerts, not a spending shutdown. The deployment gate blocks an over-budget forecast, and scoped teardown removes persistent resources. Billing can lag, so the forecast includes margin. One-time DVC downloads and other network transfer are not itemized in this estimate. Local device and electricity costs are unmeasured. Temporary alert diagnosis rules are documented separately from the retained production rule.\n"
     Path("reports/cost_report.md").write_text(text)
     print(json.dumps(report, indent=2))
 

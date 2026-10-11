@@ -1,0 +1,15 @@
+{
+  "observed_at": "2026-10-11T17:13:03.583111+00:00",
+  "recipient": "peerawat.son@student.mahidol.ac.th",
+  "source": "Authenticated Outlook mailbox, native accessibility observation",
+  "subject": "Fired:Sev2 Azure Monitor Alert Camera sensor occlusion warning on coffee6688218-logs ( microsoft.operationalinsights/workspaces ) at 10/11/2026 4:52:07 PM",
+  "mailbox_received_local": "2026-10-11 23:54 Asia/Bangkok",
+  "alert_id": "6c91fe9d-1da1-95fd-f7b4-b6171472001c",
+  "rule": "coffee6688218-camera-occlusion-receiver-refresh",
+  "monitor_condition": "Fired",
+  "metric_value": 14,
+  "query_window_minutes": 30,
+  "qualification": "Delivery diagnosis replayed recorded real black/white faults in a 30-minute query window; production uses five minutes. Production receiver refreshed and subsequently repointed to the fresh verified group with successful provider status.",
+  "screenshot": "reports/evidence/azure-email-search.png",
+  "screenshot_note": "Filtered mailbox search results; complete opened-message details were observed through native accessibility. Screenshot capture lagged the live reading pane."
+}

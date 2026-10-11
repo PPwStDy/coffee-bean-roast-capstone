@@ -1,0 +1,7 @@
+{
+  "status": "unsupported",
+  "provider_error": "Conflict: Free subscription not supported",
+  "operation": "Test Action Group notifications",
+  "real_alert_history": "azure-alert-history.json",
+  "note": "Test feature rejection does not establish that real notifications are blocked."
+}

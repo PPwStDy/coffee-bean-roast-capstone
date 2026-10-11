@@ -1,0 +1,38 @@
+[
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Resources/deployments/capstone-api/operations/E03212B4A44CE2AD",
+    "operationId": "E03212B4A44CE2AD",
+    "properties": {
+      "duration": "PT2.8150254S",
+      "provisioningOperation": "Create",
+      "provisioningState": "Failed",
+      "request": null,
+      "response": null,
+      "serviceRequestId": null,
+      "statusCode": "BadRequest",
+      "statusMessage": {
+        "error": {
+          "additionalInfo": null,
+          "code": "ExpressEnvironmentFeatureNotSupported",
+          "details": null,
+          "message": "'Not Single Active Revisions Mode ' is not supported for container app 'coffee6688218-api' on express environments. Please remove 'properties.configuration.activeRevisionsMode' from the request. See https://aka.ms/aca/express for details.",
+          "target": null
+        },
+        "status": "Failed"
+      },
+      "targetResource": {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/containerApps/coffee6688218-api",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceName": "coffee6688218-api",
+        "resourceType": "Microsoft.App/containerApps",
+        "symbolicName": null
+      },
+      "timestamp": "2026-10-11T13:36:20.845642+00:00",
+      "trackingId": "7829cfa2-3bc9-4ebd-a797-37293057ad23"
+    },
+    "resourceGroup": "rg-itcs355-6688218-capstone"
+  }
+]

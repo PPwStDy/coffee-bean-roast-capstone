@@ -1,0 +1,51 @@
+{
+  "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion",
+  "location": "eastasia",
+  "name": "coffee6688218-camera-occlusion",
+  "properties": {
+    "actions": {
+      "actionGroups": [
+        "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/actionGroups/coffee6688218-email"
+      ]
+    },
+    "autoMitigate": true,
+    "createdWithApiVersion": "2023-12-01",
+    "criteria": {
+      "allOf": [
+        {
+          "failingPeriods": {
+            "minFailingPeriodsToAlert": 1,
+            "numberOfEvaluationPeriods": 1
+          },
+          "operator": "GreaterThan",
+          "query": "ContainerAppConsoleLogs_CL | where TimeGenerated > ago(5m) | where ContainerAppName_s == \"coffee6688218-api\" | extend e=parse_json(Log_s) | where tostring(e.event) == \"occlusion_guard_rejection\"",
+          "threshold": 0.0,
+          "timeAggregation": "Count"
+        }
+      ]
+    },
+    "displayName": "Camera sensor occlusion warning",
+    "enabled": true,
+    "evaluationFrequency": "PT5M",
+    "scopes": [
+      "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.OperationalInsights/workspaces/coffee6688218-logs"
+    ],
+    "severity": 2,
+    "skipQueryValidation": false,
+    "windowSize": "PT5M"
+  },
+  "systemData": {
+    "createdAt": "2026-10-11T13:02:50.9702799Z",
+    "createdBy": "peerawat.son@student.mahidol.ac.th",
+    "createdByType": "User",
+    "lastModifiedAt": "2026-10-11T16:16:32.9573024Z",
+    "lastModifiedBy": "peerawat.son@student.mahidol.ac.th",
+    "lastModifiedByType": "User"
+  },
+  "tags": {
+    "course": "itcs355",
+    "lab": "capstone",
+    "student": "6688218"
+  },
+  "type": "Microsoft.Insights/scheduledQueryRules"
+}

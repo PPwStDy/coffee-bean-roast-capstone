@@ -1,0 +1,319 @@
+{
+  "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/containerapps/coffee6688218-api",
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-identity": {
+        "clientId": "4e817ece-9575-41f3-973b-7d449dda9c86",
+        "principalId": "10347196-9617-44c1-afe8-8f6d064b1cf7"
+      }
+    }
+  },
+  "location": "East Asia",
+  "name": "coffee6688218-api",
+  "properties": {
+    "configuration": {
+      "activeRevisionsMode": "Multiple",
+      "dapr": null,
+      "identitySettings": [],
+      "ingress": {
+        "additionalPortMappings": null,
+        "allowInsecure": false,
+        "clientCertificateMode": null,
+        "corsPolicy": null,
+        "customDomains": null,
+        "exposedPort": 0,
+        "external": true,
+        "fqdn": "coffee6688218-api.greenwave-5725ddc9.eastasia.azurecontainerapps.io",
+        "ipSecurityRestrictions": null,
+        "stickySessions": null,
+        "targetPort": 8080,
+        "traffic": [
+          {
+            "revisionName": "coffee6688218-api--r1791736491",
+            "weight": 100
+          }
+        ],
+        "transport": "Auto"
+      },
+      "maxInactiveRevisions": null,
+      "registries": [
+        {
+          "identity": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-identity",
+          "passwordSecretRef": "",
+          "server": "coffee6688218enafhtyqhoyi6.azurecr.io",
+          "username": ""
+        }
+      ],
+      "runtime": null,
+      "secrets": null,
+      "service": null
+    },
+    "customDomainVerificationId": "3DCA2E3D4D95DA4708B498F4195057D86C82139D063927B09DBDDFB0DBD6FBF6",
+    "delegatedIdentities": [],
+    "environmentId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/managedEnvironments/coffee6688218-environment",
+    "eventStreamEndpoint": "https://eastasia.azurecontainerapps.dev/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/containerApps/coffee6688218-api/eventstream",
+    "latestReadyRevisionName": "coffee6688218-api--r1791736491",
+    "latestRevisionFqdn": "coffee6688218-api--r1791736491.greenwave-5725ddc9.eastasia.azurecontainerapps.io",
+    "latestRevisionName": "coffee6688218-api--r1791736491",
+    "managedEnvironmentId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/managedEnvironments/coffee6688218-environment",
+    "outboundIpAddresses": [
+      "20.239.116.82",
+      "20.239.117.15",
+      "20.239.117.29",
+      "20.239.117.113",
+      "20.247.40.35",
+      "20.6.177.176",
+      "20.255.43.216",
+      "20.239.233.12",
+      "20.247.40.168",
+      "20.255.113.126",
+      "20.255.212.172",
+      "20.255.186.215",
+      "20.6.160.45",
+      "20.239.244.204",
+      "4.144.40.7",
+      "20.239.246.61",
+      "20.255.104.137",
+      "20.239.245.49",
+      "20.6.155.117",
+      "4.191.79.216",
+      "4.192.74.154",
+      "4.192.74.189",
+      "4.192.73.235",
+      "20.239.245.239",
+      "20.255.185.135",
+      "4.144.36.9",
+      "4.144.37.120",
+      "4.144.59.105",
+      "20.6.155.178",
+      "4.192.75.21",
+      "20.255.191.146",
+      "4.144.32.45",
+      "20.239.120.19",
+      "4.144.32.51",
+      "20.255.45.243",
+      "20.255.211.30",
+      "4.144.66.197",
+      "20.6.176.90",
+      "4.144.32.52",
+      "20.239.223.60",
+      "20.6.176.61",
+      "20.255.133.45",
+      "104.208.123.163",
+      "4.144.26.254",
+      "20.239.222.41",
+      "20.239.223.11",
+      "57.158.76.54",
+      "20.255.133.137",
+      "4.144.6.135",
+      "20.6.176.66",
+      "4.144.6.161",
+      "57.158.76.161",
+      "4.144.67.16",
+      "104.208.120.193",
+      "4.144.67.42",
+      "20.239.36.63",
+      "4.144.66.192",
+      "20.255.191.46",
+      "20.255.133.68",
+      "20.255.45.234",
+      "20.255.191.151",
+      "20.239.120.8",
+      "4.144.6.141",
+      "20.255.132.101",
+      "20.255.133.19",
+      "57.158.76.73",
+      "104.208.123.162",
+      "20.255.124.73",
+      "20.255.211.88",
+      "4.144.27.8",
+      "20.255.211.106",
+      "4.144.27.0",
+      "4.144.66.180",
+      "4.144.26.226",
+      "4.144.27.2",
+      "20.247.45.188",
+      "4.144.32.46",
+      "20.239.2.90",
+      "20.6.163.244",
+      "4.144.66.198",
+      "20.24.118.146",
+      "20.24.118.114",
+      "20.239.96.151",
+      "20.24.118.177",
+      "4.191.76.61",
+      "4.191.76.1",
+      "4.144.44.222",
+      "4.144.45.4",
+      "20.6.149.223",
+      "20.6.179.93",
+      "20.255.130.69",
+      "20.2.50.68",
+      "4.144.38.77",
+      "20.255.120.249",
+      "20.255.130.110",
+      "20.255.130.116",
+      "20.2.50.109",
+      "20.255.216.151",
+      "4.192.75.28",
+      "4.144.42.55",
+      "20.255.112.178",
+      "20.255.42.70",
+      "20.255.104.232",
+      "20.255.130.200",
+      "20.255.216.201",
+      "20.239.233.121",
+      "4.144.37.131",
+      "20.255.104.166",
+      "20.255.120.242",
+      "4.191.79.31",
+      "4.144.65.25",
+      "20.239.34.50",
+      "20.255.129.20",
+      "20.247.44.227",
+      "4.144.6.29",
+      "20.255.129.158",
+      "20.255.129.64",
+      "20.247.45.23",
+      "20.255.129.126",
+      "20.255.127.146",
+      "20.239.218.100",
+      "57.158.74.238",
+      "57.158.74.113",
+      "20.247.45.68",
+      "20.239.115.201",
+      "57.158.74.242",
+      "4.144.5.124",
+      "57.158.74.236",
+      "4.144.26.29",
+      "57.158.75.2",
+      "20.239.25.89",
+      "20.239.217.30",
+      "20.255.43.217",
+      "20.255.127.64",
+      "20.24.127.184",
+      "20.255.136.169",
+      "20.239.243.99",
+      "20.6.160.208",
+      "20.6.161.137",
+      "20.24.127.144",
+      "20.239.218.22",
+      "20.239.243.86",
+      "20.239.243.89",
+      "4.144.2.94",
+      "20.239.115.196",
+      "20.247.44.234",
+      "20.239.243.63",
+      "4.144.6.14",
+      "20.247.44.23",
+      "20.6.161.183",
+      "20.255.44.0",
+      "20.247.43.254",
+      "20.239.33.210",
+      "20.255.43.195",
+      "4.144.25.230",
+      "20.247.45.103",
+      "4.144.65.144",
+      "20.255.128.15",
+      "20.247.45.54",
+      "20.255.42.193",
+      "4.144.57.165"
+    ],
+    "provisioningState": "Succeeded",
+    "runningStatus": "Running",
+    "template": {
+      "containers": [
+        {
+          "env": [
+            {
+              "name": "MODEL_VERSION",
+              "value": "roast-swin-retrained-v1"
+            },
+            {
+              "name": "INFERENCE_THREADS",
+              "value": "1"
+            },
+            {
+              "name": "MAX_INFERENCE_CONCURRENCY",
+              "value": "2"
+            }
+          ],
+          "image": "coffee6688218enafhtyqhoyi6.azurecr.io/coffee-roast@sha256:e4e88da462b2b753b0f4f8bfba2a4d6664ddc52ab0331222fbbb1cef1f42ad9f",
+          "name": "api",
+          "probes": [
+            {
+              "httpGet": {
+                "path": "/health",
+                "port": 8080
+              },
+              "periodSeconds": 30,
+              "timeoutSeconds": 5,
+              "type": "Liveness"
+            },
+            {
+              "httpGet": {
+                "path": "/ready",
+                "port": 8080
+              },
+              "periodSeconds": 10,
+              "timeoutSeconds": 5,
+              "type": "Readiness"
+            },
+            {
+              "failureThreshold": 60,
+              "httpGet": {
+                "path": "/ready",
+                "port": 8080
+              },
+              "periodSeconds": 5,
+              "timeoutSeconds": 5,
+              "type": "Startup"
+            }
+          ],
+          "resources": {
+            "cpu": 2,
+            "ephemeralStorage": "8Gi",
+            "memory": "4Gi"
+          }
+        }
+      ],
+      "initContainers": null,
+      "revisionSuffix": "r1791736491",
+      "scale": {
+        "cooldownPeriod": 30,
+        "maxReplicas": 2,
+        "minReplicas": 0,
+        "pollingInterval": 30,
+        "rules": [
+          {
+            "http": {
+              "metadata": {
+                "concurrentRequests": "2"
+              }
+            },
+            "name": "http"
+          }
+        ]
+      },
+      "serviceBinds": null,
+      "terminationGracePeriodSeconds": null,
+      "volumes": null
+    },
+    "workloadProfileName": "Consumption"
+  },
+  "systemData": {
+    "createdAt": "2026-10-11T16:02:32.3206617",
+    "createdBy": "b31bc319-5462-4360-a4ea-c20a1a9f6fbc",
+    "createdByType": "Application",
+    "lastModifiedAt": "2026-10-11T16:35:42.3283076",
+    "lastModifiedBy": "b31bc319-5462-4360-a4ea-c20a1a9f6fbc",
+    "lastModifiedByType": "Application"
+  },
+  "tags": {
+    "course": "itcs355",
+    "lab": "capstone",
+    "student": "6688218"
+  },
+  "type": "Microsoft.App/containerApps"
+}

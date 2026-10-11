@@ -6,6 +6,7 @@ import math
 import os
 import time
 from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
@@ -68,13 +69,19 @@ def benchmark(url, requests=1000, concurrency=2):
 def freeze(report, cold, container_bytes, path=Path("monitoring/slo.json")):
     if path.exists():
         raise FileExistsError("Initial targets already frozen; recalibration is forbidden")
-    if report["requests"] != 1000 or report["concurrency"] != 2 or len(cold["trials"]) != 20:
+    if (
+        report["requests"] != 1000
+        or report["successful_requests"] != 1000
+        or report["concurrency"] != 2
+        or len(cold["trials"]) != 20
+    ):
         raise ValueError(
             "Target freeze requires 1000 warm requests at concurrency two and 20 proven cold starts"
         )
     if not all(t["replicas_before_request"] == 0 and t["status"] == 200 for t in cold["trials"]):
         raise ValueError("Cold trials must establish zero replicas and successful responses")
     targets = {
+        "frozen_at_utc": datetime.now(timezone.utc).isoformat(),
         "warm_p95_ms": math.ceil(report["p95_ms"] * 1.2),
         "warm_p99_ms": math.ceil(report["p99_ms"] * 1.2),
         "cold_p95_ms": math.ceil(cold["p95_ms"] * 1.2),
@@ -83,8 +90,8 @@ def freeze(report, cold, container_bytes, path=Path("monitoring/slo.json")):
         "model_version": report["model_version"],
         "method": "initial measured percentile +20%, rounded upward; container size separate",
         "warm_client_origin": report.get("client_origin", "local-mac-bangkok"),
-        "warm_evidence": "reports/evidence/deployed-warm.json",
-        "cold_evidence": "reports/evidence/deployed-cold.json",
+        "warm_evidence": "reports/evidence/initial-warm.json",
+        "cold_evidence": "reports/evidence/initial-cold.json",
     }
     path.write_text(json.dumps(targets, indent=2) + "\n")
     return targets

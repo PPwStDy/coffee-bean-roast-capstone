@@ -1,0 +1,58 @@
+{
+  "retrieved_at": "2026-10-11T17:09:37.867371+00:00",
+  "query": {
+    "type": "ActualCost",
+    "timeframe": "MonthToDate",
+    "dataset": {
+      "granularity": "None",
+      "aggregation": {
+        "totalCost": {
+          "name": "Cost",
+          "function": "Sum"
+        }
+      },
+      "grouping": [
+        {
+          "type": "Dimension",
+          "name": "ServiceName"
+        }
+      ],
+      "filter": {
+        "dimensions": {
+          "name": "ResourceGroupName",
+          "operator": "In",
+          "values": [
+            "rg-itcs355-6688218-capstone"
+          ]
+        }
+      }
+    }
+  },
+  "result": {
+    "eTag": null,
+    "id": "subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.CostManagement/query/d914361a-3e21-4870-8afe-8541bca76bc1",
+    "location": null,
+    "name": "d914361a-3e21-4870-8afe-8541bca76bc1",
+    "properties": {
+      "columns": [
+        {
+          "name": "Cost",
+          "type": "Number"
+        },
+        {
+          "name": "ServiceName",
+          "type": "String"
+        },
+        {
+          "name": "Currency",
+          "type": "String"
+        }
+      ],
+      "nextLink": null,
+      "rows": []
+    },
+    "sku": null,
+    "type": "Microsoft.CostManagement/query"
+  },
+  "limitation": "Provider billing can lag; empty rows do not establish zero cost."
+}

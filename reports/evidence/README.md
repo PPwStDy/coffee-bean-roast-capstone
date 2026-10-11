@@ -15,7 +15,7 @@ Final release, remote CI, deployed benchmarks, delivered alert, costs and teardo
 
 - `clean-restoration.json` and `clean-release-restoration.json`: fresh checkout data and release restored from the shared Azure DVC remote.
 - `azure-ml-release.json`: clean release registered in the shared workspace as version 1.
-- `final-tests.xml`: 43 passing local checks, including seven regional Azure management tests.
+- `final-tests.xml`: 52 passing local checks, including regional Azure management, verified traffic changes and fixed-target contracts.
 - `local-alert-delivery.log`: Alertmanager delivered the actual firing occlusion alert to the local webhook.
 - `local-grafana.png`: local operational dashboard capture.
 - `image-digest.json`: private registry upload digest; actual deployed digest is recorded separately in candidate deployment evidence.

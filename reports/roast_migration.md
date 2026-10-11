@@ -1,5 +1,7 @@
 # Roast classification migration
 
+This is the historical inspection record. The current [requirement checklist](requirements_checklist.md) records later implementation and live evidence. Unmeasured 120 ms / 250 MB / 2 second objectives in this record were withdrawn in favor of the recorded deployed benchmark protocol.
+
 The user approved changing the capstone scope from defect grading to roast classification using Iteration4.
 
 ## Inspection

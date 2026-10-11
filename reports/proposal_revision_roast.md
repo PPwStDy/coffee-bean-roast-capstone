@@ -1,4 +1,4 @@
-# Draft revised ITCS355 capstone proposal
+# Revised ITCS355 capstone proposal
 
 **Title:** Automated Coffee Bean Roast Classification API  
 **Team:** Peerawat Somsurat and Yongyot — Team Idea  
@@ -12,7 +12,7 @@ Provide a synchronous API that classifies a coffee bean image into Dark, Green, 
 
 Use the supplied DL_FinalProject dataset and Iteration4 Swin-T architecture. The original dataset has 1,600 RGB images at 224 × 224, but all 400 original test images also occur in its training folder. Exact pixel deduplication produces 1,194 unique images. The prepared stratified split uses seed 42 and contains 835 training, 178 validation, and 181 test images.
 
-The imported Swin checkpoint is preserved as a historical baseline. Its recorded 99.75% accuracy is contaminated and is not an acceptance result. Fresh ImageNet training uses the prepared split; checkpoint selection uses validation loss and export selection uses validation macro-F1 and median latency. The selected release is evaluated on the test split once. Near-duplicate or shared-bean correlations remain a dataset limitation. Both verified version1 Kaggle sources use CC BY-SA4.0; see DATA_LICENSE.md for attribution, modifications and the Ontoum et al.2022 research citation.
+The imported Swin checkpoint is preserved as a historical baseline. Its recorded 99.75% accuracy is contaminated and is not an acceptance result. Fresh ImageNet training uses the prepared split; checkpoint selection uses validation loss and export selection uses validation macro-F1 and median latency. The selected release is evaluated on the test split once. Near-duplicate or shared-bean correlations remain a dataset limitation. Both verified version 1 Kaggle sources use CC BY-SA 4.0; see DATA_LICENSE.md for attribution, modifications and the Ontoum et al. (2022) research citation.
 
 ## Reproducibility and lineage
 
@@ -20,9 +20,9 @@ Version the dataset and checkpoint with DVC backed by private Azure Blob storage
 
 ## Serving and portability
 
-Serve the validation-selected ONNX using FastAPI in a non-root Docker container. Keep core inference and training independent of Azure behind the course CloudAdapter. Use the Azure for Students subscription in East Asia, a dedicated tagged capstone group, managed identity and GitHub OIDC. Container Apps starts at2vCPU/4GiB with minimum0 and maximum2 replicas. JPEG/PNG requests are limited to5MiB decoded and20megapixels; inference concurrency is bounded at2.
+Serve the validation-selected ONNX using FastAPI in a non-root Docker container. Keep core inference and training independent of Azure behind the course CloudAdapter. Use the Azure for Students subscription in East Asia, a dedicated tagged capstone group, managed identity and GitHub OIDC. Container Apps starts at 2 vCPU/4 GiB with minimum 0 and maximum 2 replicas. JPEG/PNG requests are limited to 5 MiB decoded and 20 megapixels; inference concurrency is bounded at 2.
 
-Replace the original unmeasured performance claims with a defined acceptance procedure:1,000 warm requests at concurrency2 and20 cold-start trials with zero replicas verified before each request. Freeze initial p95/p99 at the measured value plus20%, rounded upward. Later CI/deployment runs enforce the same targets. Record image size separately. Requests use the current immutable model version; model freshness follows an explicitly validated release rather than time-based retraining.
+Replace the original unmeasured performance claims with a defined acceptance procedure: 1,000 warm requests at concurrency 2 and 20 cold-start trials with zero replicas verified before each request. Freeze initial p95/p99 at the measured value plus 20%, rounded upward. Later CI/deployment runs enforce the same targets. Record image size separately. Requests use the current immutable model version; model freshness follows an explicitly validated release rather than time-based retraining.
 
 ## Failure demonstration and observability
 
@@ -38,6 +38,10 @@ Model accuracy will be reported honestly on the corrected evaluation protocol. H
 
 ## Budget and proposed team ownership
 
-The course allowance is800THB per student. Captured year-to-date subscription spending is charged conservatively against it. Budget notifications use50/80/100% of the remaining allowance; deployment is blocked when a seven-day forecast with25% margin exceeds that remainder. Registry and monitoring remain chargeable during serving scale-to-zero. Local training incurs no Azure compute charge; electricity and device costs are unmeasured.
+The course allowance is 800 THB per student. Captured year-to-date subscription spending is charged conservatively against it. Budget notifications use 50/80/100% of the remaining allowance; deployment is blocked when a seven-day forecast with 25% margin exceeds that remainder. Registry and monitoring remain chargeable during serving scale-to-zero. Local training incurs no Azure compute charge; electricity and device costs are unmeasured.
 
-Proposed responsibilities for team confirmation: Peerawat owns model/data lineage and deployment; Yongyot owns monitoring, incident demonstration and presentation. Record actual contributions before submission. Revised instructor approval, the Session5 architecture review, live presentation/Q&A and final repository submission remain pending.
+Proposed responsibilities for team confirmation: Peerawat owns model/data lineage and deployment; Yongyot owns monitoring, incident demonstration and presentation. Record actual contributions before submission. Revised instructor approval, the Session 5 architecture review, live presentation/Q&A and final repository submission remain pending.
+
+## Recorded initial acceptance targets
+
+Warm p95/p99 limits: **289/301 ms**, based on 1,000 successful requests at concurrency two from the GitHub release runner. Cold p95/p99 limits: **34.741/34.794 seconds**, based on 20 natural scale-to-zero trials. These are initial measured percentiles plus 20%, rounded upward in milliseconds; later releases cannot recalibrate them. Initial container size is 164,650,776 bytes, reported separately. Serving allocation estimate is at most 0.4713 THB per 1,000 under the documented maximum two-replica assumption. Full initial measurements and client boundary are preserved in reports/evidence/initial-*.json.

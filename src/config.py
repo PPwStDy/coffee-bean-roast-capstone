@@ -40,9 +40,8 @@ IMAGENET_STD = [0.229, 0.224, 0.225]
 MIN_PIXEL_STD_THRESHOLD = float(os.environ.get("MIN_PIXEL_STD_THRESHOLD", "0.05"))
 MIN_SHANNON_ENTROPY_THRESHOLD = float(os.environ.get("MIN_SHANNON_ENTROPY_THRESHOLD", "1.0"))
 
-# Service & SLO Targets
-LATENCY_BUDGET_MS = 120.0  # p95 SLO target: 120ms
-MODEL_VERSION = os.environ.get("MODEL_VERSION", "roast-iteration4-swin-v1")
+# Service version. Measured performance targets live in monitoring/slo.json.
+MODEL_VERSION = os.environ.get("MODEL_VERSION", "roast-swin-retrained-v1")
 ARCHITECTURE = "PretrainedSwinT"
 MODEL_METADATA_PATH = Path(os.environ.get("MODEL_METADATA_PATH", REPORTS_DIR / "model_metadata.json"))
 IMPORTED_CHECKPOINT_PATH = ROOT_DIR / "models" / "iteration4_swin.pth"

@@ -68,3 +68,19 @@ def test_fixed_release_gate_checks_origin_and_percentiles(tmp_path, monkeypatch)
         enforce({**warm, "p95_ms": targets["warm_p95_ms"] + 1})
     with pytest.raises(AssertionError, match="p99"):
         enforce({**warm, "p99_ms": targets["warm_p99_ms"] + 1})
+
+
+def test_completed_cold_evidence_cannot_be_reused(tmp_path, monkeypatch):
+    from cloudlayer import cold_starts
+
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(cold_starts, "settings", lambda: {"ENDPOINT_NAME": "test", "PROJECT_ID": "test"})
+    Path("tests/fixtures").mkdir(parents=True)
+    Path("tests/fixtures/Dark.png").write_bytes(b"unused-before-cloud-call")
+    Path("reports/evidence").mkdir(parents=True)
+    Path("reports/model_metadata.json").write_text(json.dumps({"model_version": "test-v1"}))
+    Path("reports/evidence/cold-start-progress.json").write_text(
+        json.dumps([dict(model_version="test-v1", replicas_before_request=0, status=200)] * 20)
+    )
+    with pytest.raises(ValueError, match="Completed evidence"):
+        cold_starts.measure("https://unused.example", resume=True)

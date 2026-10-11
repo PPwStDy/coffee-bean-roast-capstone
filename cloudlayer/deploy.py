@@ -36,6 +36,23 @@ calculate()
 commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
 local_tag = "coffee-roast:" + commit[:12]
 subprocess.run(["docker", "build", "--platform", "linux/amd64", "-t", local_tag, "."], check=True)
+image = json.loads(subprocess.check_output(["docker", "image", "inspect", local_tag], text=True))[0]
+Path("reports/evidence/container-image.json").write_text(
+    json.dumps(
+        {
+            "Id": image["Id"],
+            "Size": image["Size"],
+            "Architecture": image["Architecture"],
+            "Os": image["Os"],
+            "source_commit": commit,
+        },
+        indent=2,
+    )
+    + "\n"
+)
 adapter = AzureCloudAdapter(config)
 digest = adapter.push_image(local_tag)
+Path("reports/evidence/image-digest.json").write_text(
+    json.dumps({"digest": digest, "source_commit": commit}, indent=2) + "\n"
+)
 print(adapter.deploy(digest, config["ENDPOINT_NAME"], "2cpu-4Gi"))

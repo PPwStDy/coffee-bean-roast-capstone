@@ -1,0 +1,21 @@
+{
+  "time": "2026-10-11T16:10:26.426716+00:00",
+  "digest": "coffee6688218enafhtyqhoyi6.azurecr.io/coffee-roast@sha256:620ab06835d3bcb3dd030e88cdddfd41d5a574064dfdac793ad2e44ee33b8534",
+  "candidate": "coffee6688218-api--r1791734986",
+  "previous_traffic": [
+    {
+      "revisionName": "coffee6688218-api--r1791734536",
+      "weight": 100
+    }
+  ],
+  "candidate_url": "https://coffee6688218-api--r1791734986.greenwave-5725ddc9.eastasia.azurecontainerapps.io",
+  "promoted": false,
+  "error": "Controlled rollback drill: injected candidate validation failure",
+  "rollback_verified": [
+    {
+      "revisionName": "coffee6688218-api--r1791734536",
+      "weight": 100
+    }
+  ],
+  "rejected_candidate_inactive": true
+}

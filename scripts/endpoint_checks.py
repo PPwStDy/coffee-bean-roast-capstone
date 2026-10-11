@@ -43,16 +43,14 @@ def check(url, version=None):
             results.append({"fixture": label, "status": response.status_code, "result": result})
         response = client.post("/predict/base64", json={"image_base64": base64.b64encode(image).decode()})
         assert response.status_code == 200
-        for color in [0, 255]:
+        for name, color in [("black", (0, 0, 0)), ("white", (255, 255, 255))]:
             stream = io.BytesIO()
             Image.new("RGB", (224, 224), color).save(stream, "PNG")
             response = client.post(
                 "/predict", content=stream.getvalue(), headers={"content-type": "image/png"}
             )
             assert response.status_code == 422, response.text
-            results.append(
-                {"fault": "black" if color == 0 else "white", "status": 422, "response": response.json()}
-            )
+            results.append({"fault": name, "status": 422, "response": response.json()})
         assert (
             client.post("/predict", content=b"bad", headers={"content-type": "image/png"}).status_code == 400
         )

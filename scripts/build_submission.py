@@ -2,6 +2,8 @@
 
 import json
 import re
+from datetime import datetime, timezone
+from xml.etree import ElementTree
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -36,14 +38,40 @@ teardown = read("reports/evidence/teardown.json")
 version = metadata["model_version"]
 duration = metadata["training_duration_seconds"]
 budget = cost["budget"]
+tests_path = ROOT / "reports/evidence/final-tests.xml"
+test_count = (
+    int(ElementTree.parse(tests_path).find("testsuite").attrib["tests"]) if tests_path.exists() else 0
+)
+delivery = read("reports/evidence/azure-email-delivery.json")
+recorded_date = datetime.now(timezone.utc).strftime("%d %B %Y")
+if slo:
+    slo_text = (
+        f"Fixed warm p95/p99: {slo['warm_p95_ms']}/{slo['warm_p99_ms']} ms; "
+        f"cold p95/p99: {slo['cold_p95_ms']}/{slo['cold_p99_ms']} ms. "
+        f"Warm client: {slo['warm_client_origin']}. Image size is reported separately: "
+        f"{slo['container_size_bytes']:,} bytes. Future releases enforce these values."
+    )
+else:
+    slo_text = "Pending the complete initial benchmark. Freeze measured p95/p99 plus 20%, rounded upward; later releases enforce fixed values."
+serving = cost.get("serving_cost_per_1000")
+serving_text = (
+    (
+        f"At most USD {serving['usd']:.6f} / {serving['thb']:.4f} THB per 1,000 predictions, "
+        f"using {serving['duration_seconds']:.2f} measured seconds, 2 vCPU / 4 GiB per replica "
+        "and at most two replicas active throughout. This is a conservative allocation bound, "
+        "not an invoice; exact replica-seconds and free-grant deductions are unmeasured."
+    )
+    if serving
+    else "Pending deployed duration."
+)
 
 
 def readable(text):
-    prefixes = "seed|batch|epoch|version|concurrency|accuracy|loss|took|on|and|all|after|before|at|with|an|is|leaving|removes|achieved|macro-F1|min|max|are|return|plus|uses|float|RGB|unique|its|has|by|Python|LR|decay|of|were|pending|deployed|median|error|reject|remaining|historical|classified|in|the|removing|yields|restored|arXiv|than|most|was|shrank|to|smoothing|pct_start|per|Session|accept|payload|count"
+    prefixes = "seed|batch|epoch|version|concurrency|accuracy|loss|took|on|and|all|after|before|at|with|an|is|leaving|removes|achieved|macro-F1|min|max|are|return|plus|uses|float|RGB|unique|its|has|by|Python|LR|decay|of|were|pending|deployed|median|error|reject|remaining|historical|classified|in|the|removing|yields|restored|arXiv|than|most|was|shrank|to|smoothing|pct_start|per|Session|accept|payload|count|bytes|format|controlled|promotes|including|IDs|original"
     text = re.sub(rf"\b({prefixes})(?=\d)", r"\1 ", text, flags=re.IGNORECASE)
     text = re.sub(r"([,;:])(?=\d)", r"\1 ", text)
     text = re.sub(
-        r"(\d)(?=epochs|minutes|images|seconds|GiB|MiB|THB|USD|vCPU|MP|px|ms|requests|copies|trials|megapixels)",
+        r"(\d)(?=epochs|minutes|images|seconds|second|GiB|MiB|THB|USD|vCPU|MP|px|ms|requests|copies|trials|megapixels)",
         r"\1 ",
         text,
     )
@@ -51,6 +79,9 @@ def readable(text):
         text.replace("CC BY-SA4.0", "CC BY-SA 4.0")
         .replace("al.2022", "al. (2022)")
         .replace("Swin-T,", "Swin-T, ")
+        .replace("preserves/predict", "preserves /predict")
+        .replace("and/metrics", "and /metrics")
+        .replace("A30", "A 30")
     )
 
 
@@ -69,7 +100,7 @@ proposal = [
     ),
     (
         "Serving and performance",
-        "FastAPI serves a digest-pinned ONNX image in Azure Container Apps East Asia at2vCPU/4GiB, min0/max2 replicas and concurrency2. JPEG/PNG limits are5MiB decoded and20megapixels. Freeze measured warm/cold p95/p99 plus20% after1000 requests at concurrency2 and20 verified cold trials; report image size separately.",
+        "FastAPI serves a digest-pinned ONNX image in Azure Container Apps East Asia at2vCPU/4GiB, min0/max2 replicas and concurrency2. JPEG/PNG limits are5MiB decoded and20megapixels. " + slo_text,
     ),
     (
         "Failure and reliability",
@@ -99,7 +130,7 @@ doc.styles["Heading 1"].paragraph_format.space_before = Pt(5)
 doc.styles["Heading 1"].paragraph_format.space_after = Pt(2)
 doc.add_paragraph("Coffee Bean Roast Classification API", "Title")
 doc.add_paragraph(
-    "Revised ITCS355 capstone proposal\nGroup Idea · 6688218 Peerawat · 6688230 Yongyot · 11 October 2026"
+    f"Revised ITCS355 capstone proposal\nGroup Idea · 6688218 Peerawat · 6688230 Yongyot · {recorded_date}"
 )
 for heading, text in proposal:
     doc.add_paragraph(heading, "Heading 1")
@@ -147,7 +178,7 @@ def table(rows, widths):
 def footer(canvas, document):
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(colors.HexColor("#52605A"))
-    canvas.drawString(48, 26, "ITCS355 · Group Idea · Evidence recorded 11 October 2026")
+    canvas.drawString(48, 26, f"ITCS355 · Group Idea · Evidence recorded {recorded_date}")
     canvas.drawRightString(564, 26, str(document.page))
 
 
@@ -215,7 +246,7 @@ sections = [
         [
             "This report records the operational system built for Group Idea and distinguishes successful evidence from remaining work. The project owner approved changing the supplied defect proposal to roast classification. Instructor approval of the revised scope, the Session5 clinic, live presentation/Q&A and submission remain external events.",
             "The service classifies an entire coffee image into Dark, Green, Light or Medium using Iteration4 Swin-T. Green is unroasted. Results support educational visual inspection; they do not establish individual-bean defects, roast chemistry or SCA compliance.",
-            f"A clean 20-epoch run completed in {duration / 60:.2f} minutes on the 8 GiB M1. Its selected INT8 export correctly classified 181/181 test images. All 43 local tests and Linux container integration passed. The historical 99.75% baseline is preserved with a contamination warning.",
+            f"A clean 20-epoch run completed in {duration / 60:.2f} minutes on the 8 GiB M1. Its selected INT8 export correctly classified 181/181 test images. All {test_count} local tests and Linux container integration passed. The historical 99.75% baseline is preserved with a contamination warning.",
             "The ten course components are versioned code/data, automated reproducible training, registered lineage, deployed inference, CI/CD that can fail, a dashboard, a working alert, cost/1000 predictions, a one-page model card and an engineered failure. Model accuracy itself carries no marks. The repository checklist is the source of current acceptance status.",
             "Evidence files include timestamps, resource IDs, Git/DVC revisions and raw provider responses. Configuration or a generated script is not counted as proof of successful live execution. Failed attempts are preserved alongside their fixes.",
         ],
@@ -255,8 +286,13 @@ sections = [
             "The approved Azure for Students subscription is in East Asia. Only rg-itcs355-6688218-capstone is owned by this capstone, with course=itcs355, student=6688218 and lab=capstone tags. Infrastructure uses Bicep validation and What-if after checking permissions, region policy, quota, provider registration and budget. The existing shared Azure ML workspace is retained.",
             "Private Blob storage provides DVC; Basic ACR stores images; a runtime managed identity pulls artifacts; GitHub OIDC provides short-lived deployment credentials. Read-only PR credentials are separate from main deployment credentials. Immutable GitHub owner/repository IDs are included in federation trust; a prior name-only trust failed and was corrected using the actual issuer/audience/subject.",
             "Container Apps uses2vCPU/4GiB, HTTP concurrency2, min0/max2, managed identity and a Linux image digest. A30second configured cooldown is recorded in Bicep; actual zero-replica checks determine cold-trial eligibility. No polling of the HTTP endpoint occurs between cold trials. Storage, registry and monitoring costs persist when serving reaches zero.",
-            "Local Prometheus, Grafana and Alertmanager expose class counts, latency and camera anomaly counters. Structured JSON application logs reach Azure Log Analytics. The deployed workbook shows request status volume, server p50/p95/p99 and optical rejection events. An empty-workspace alert query required a five-minute schedule; failed provisioning attempts were retained.",
-            "The engineered failure is collapsed dynamic range: black and white frames return422 before model invocation. Logs and metrics name occlusion_guard_rejection. Azure Monitor's five-minute rule sends an email through the signed-in student's action group. A fired rule or successful provider action is distinct from an actual delivered mailbox receipt; delivery evidence remains pending until verified.",
+            "Local Prometheus, Grafana and Alertmanager expose class counts, latency and camera anomaly counters. Structured JSON application logs reach Azure Log Analytics. The deployed workbook shows request status volume, server p50/p95/p99 and optical rejection events. Foundation provisioning skips query validation before the log table exists; after ingestion, the actual five-minute production query was validated successfully. Failed provisioning and notification attempts were retained.",
+            "The engineered failure is collapsed dynamic range: black and white frames return 422 before model invocation. Logs and metrics name occlusion_guard_rejection. The student's email receiver was verified in Azure. "
+            + (
+                "A real camera warning reached the student's mailbox; the alert record and delivery screenshot preserve the rule, resource and timestamp. A fresh evaluation instance of the same optical rejection query tested delivery after verification."
+                if delivery
+                else "Actual camera-warning mailbox delivery is pending; a fired rule alone is insufficient."
+            ),
         ],
     ),
     (
@@ -264,19 +300,19 @@ sections = [
         [
             f"Warm benchmark: {('1000 requests, concurrency2, p95 ' + str(round(warm['p95_ms'], 2)) + 'ms, p99 ' + str(round(warm['p99_ms'], 2)) + 'ms; wall time ' + str(round(warm['duration_seconds'], 2)) + 's.') if warm else 'pending deployed1000-request concurrency2 evidence.'}",
             f"Cold benchmark: {('20 trials with verified zero replicas, p95 ' + str(round(cold['p95_ms'], 2)) + 'ms, p99 ' + str(round(cold['p99_ms'], 2)) + 'ms.') if cold else 'pending20 zero-replica trials.'}",
-            f"Frozen targets: {json.dumps(slo) if slo else 'pending the complete initial benchmark. Targets are measured p95/p99 plus20%, rounded upward. Later releases enforce the fixed values rather than recalibrating.'}",
+            "Frozen targets: " + slo_text,
             f"Conservative remaining course allowance:{budget['remaining_allowance_thb']:.2f}THB after prior subscription spending. Seven-day forecast:{budget['forecast_thb_including_25_percent_margin']:.2f}THB including25% margin. Primary East Asia retail rates and dated ECB USD/THB exchange evidence are captured. Free grants are excluded; these are estimates, not final invoices.",
-            f"Serving cost per1000: {json.dumps(cost['serving_cost_per_1000']) if cost['serving_cost_per_1000'] else 'pending deployed duration. The calculator uses2vCPU/4GiB times measured wall duration at the configured maximum two replicas as a conservative upper bound, plus requests. Exact billed replica-seconds and free-grant deductions are separate.'}",
-            "Storage, registry, log ingestion/alerts and training are reported separately in cost_report.md. Local MPS training incurs zero Azure compute charge; device and electricity costs are unmeasured. Budget notifications at50/80/100% of an18USD remaining-allowance budget are alerts, not a shutdown. A forecast gate blocks over-budget deployments. Scoped teardown and scheduled seven-day retention remove chargeable owned resources.",
+            "Serving cost per 1,000: " + serving_text,
+            "Storage, registry, log ingestion/alerts and training are reported separately in cost_report.md. Local MPS training incurs zero Azure compute charge; device and electricity costs are unmeasured. One-time DVC downloads and other network transfer are not itemized in the allocation estimate; billing evidence may lag. Budget notifications at50/80/100% of an18USD remaining-allowance budget are alerts, not a shutdown. A forecast gate blocks over-budget deployments. Scoped teardown and scheduled seven-day retention remove chargeable owned resources.",
         ],
     ),
     (
         "Acceptance evidence and academic completion",
         [
-            f"Remote CI evidence: {ci.get('url') if ci else 'pending'}; result: {ci.get('conclusion') if ci else 'pending'}. Model registry: {registry.get('id') if registry else 'pending'}. Deployment promotion: {deployment.get('promoted') if deployment else 'pending'}. Teardown verified: {teardown.get('group_absent') if teardown else 'pending'}.",
+            f"Remote CI: {ci.get('url') if ci else 'pending'}; result: {ci.get('conclusion') if ci else 'pending'}. Azure ML registered coffee-bean-roast-classifier version 1. Deployed candidate promoted: {deployment.get('promoted') if deployment else 'pending'}. Teardown verified: {teardown.get('group_absent') if teardown else 'pending'}.",
             "The detailed requirement-to-evidence checklist records every acceptance scenario separately. It includes actual CI links, lineage, endpoint results, export parity, image size, warm/cold reports, dashboard captures, delivered email, cost and teardown. Historical container tests and generated templates cannot stand in for final deployed evidence.",
             "Teardown requires exact capstone group ownership and checks all resource tags. It verifies group absence and preservation of the existing shared workspace. The subscription owner separately removes only the exact capstone budget and two recorded external role assignments. Shared registry history and unrelated laboratory resources are preserved.",
-            "Proposed responsibility split: Peerawat owns data/model lineage and deployment; Yongyot owns monitoring, failure demonstration and presentation. Actual contributions need team confirmation. The presentation script allocates one minute each to problem, data, architecture, live prediction, failure, regression, cost and limitations. Live timing, unexpected input and five-minute Q&A are external demonstration requirements.",
+            "Proposed responsibility split: Peerawat owns data/model lineage and deployment; Yongyot owns monitoring, failure demonstration and presentation. Actual contributions need team confirmation. The presentation script allocates one minute each to problem, data, training, architecture, live prediction, failure and regression, performance and cost, and limitations. Live timing, unexpected input and five-minute Q&A are external demonstration requirements.",
             "Instructor approval of the changed scope, Session5 architecture review, live presentation/Q&A and final repository submission remain pending. Do not mark the project fully complete until all applicable technical evidence exists and academic events are recorded. A further week should focus on independently captured images, camera/source separation, confidence calibration and broader operating-condition checks.",
             "Sources: Kaggle gpiosenka/coffee-bean-dataset-resized-224-x-224 and sot2542/coffee-bean-dataset-v1; creativecommons.org/licenses/by-sa/4.0/; arxiv.org/abs/2206.01841; learn.microsoft.com/azure/container-apps/scale-app; learn.microsoft.com/azure/container-apps/log-monitoring; prices.azure.com/api/retail/prices; ECB daily exchange rates. Course requirements: local public_teaching_mlaiops/course/project/project-brief.md and the course specification.",
         ],

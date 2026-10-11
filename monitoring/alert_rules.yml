@@ -9,13 +9,4 @@ groups:
           tier: hardware_telemetry
         annotations:
           summary: "Camera sensor optical occlusion or specular glare detected"
-          description: "Conveyor inspection camera is reporting collapsed dynamic range (pixel std dev < 0.05). Check lens for chaff buildup or glare."
-
-      - alert: LatencySLOBreachWarning
-        expr: histogram_quantile(0.95, sum(rate(coffee_inference_latency_seconds_bucket[1m])) by (le)) > 0.12
-        for: 30s
-        labels:
-          severity: critical
-        annotations:
-          summary: "Inference latency exceeded 120ms p95 SLO"
-          description: "Current p95 inference latency is {{ $value }}s, breaching the agreed 120ms sorting bench SLO."
+          description: "Inspection camera is reporting collapsed dynamic range or low entropy. Check lens for chaff buildup or glare."

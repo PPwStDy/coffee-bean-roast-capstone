@@ -1,0 +1,34 @@
+{
+  "id": "/subscriptions/6638A4EA-96DA-4326-969A-2E40305CFC83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/actionGroups/coffee6688218-email-verified",
+  "kind": null,
+  "location": "Global",
+  "name": "coffee6688218-email-verified",
+  "properties": {
+    "armRoleReceivers": [],
+    "automationRunbookReceivers": [],
+    "azureAppPushReceivers": [],
+    "azureFunctionReceivers": [],
+    "emailReceivers": [
+      {
+        "emailAddress": "peerawat.son@student.mahidol.ac.th",
+        "name": "student",
+        "status": "Enabled",
+        "useCommonAlertSchema": true
+      }
+    ],
+    "enabled": true,
+    "eventHubReceivers": [],
+    "groupShortName": "roast-alert",
+    "itsmReceivers": [],
+    "logicAppReceivers": [],
+    "smsReceivers": [],
+    "voiceReceivers": [],
+    "webhookReceivers": []
+  },
+  "tags": {
+    "course": "itcs355",
+    "lab": "capstone",
+    "student": "6688218"
+  },
+  "type": "Microsoft.Insights/ActionGroups"
+}

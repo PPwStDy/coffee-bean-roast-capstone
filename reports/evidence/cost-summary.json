@@ -34,16 +34,16 @@
       "log_alert_frequency_minutes": 5,
       "training": "local MPS; no cloud training charges",
       "free_grants": "excluded conservatively",
-      "egress": "same-region; add cross-region transfer if used"
+      "egress": "Serving resources share East Asia. One-time DVC downloads and other transfer are unitemized; verify lagged billing before retaining resources."
     },
     "billing_budget_usd_rounded_down": 18,
     "passed": true
   },
   "serving_cost_per_1000": {
-    "usd": 0.010970265490000018,
-    "thb": 0.36783576255689865,
+    "usd": 0.014055693622,
+    "thb": 0.47129094427362833,
     "measured_requests": 1000,
-    "duration_seconds": 88.08554575000016,
+    "duration_seconds": 113.79744685,
     "vCPU_per_replica": 2,
     "GiB_per_replica": 4,
     "maximum_replicas": 2,

@@ -13,21 +13,21 @@ from cloudlayer.cli import az
 from cloudlayer.config import settings
 
 
-def measure(url, trials=20):
+def measure(url, trials=20, resume=False):
     config = settings()
     app = config["ENDPOINT_NAME"]
     group = config["PROJECT_ID"]
     image = Path("tests/fixtures/Dark.png").read_bytes()
     progress = Path("reports/evidence/cold-start-progress.json")
-    results = json.loads(progress.read_text()) if progress.exists() else []
+    results = json.loads(progress.read_text()) if resume and progress.exists() else []
     expected_version = json.loads(Path("reports/model_metadata.json").read_text())["model_version"]
     if any(
         t["model_version"] != expected_version or t["replicas_before_request"] != 0 or t["status"] != 200
         for t in results
     ):
         raise ValueError("Saved cold evidence is incompatible with this release")
-    if len(results) > trials:
-        raise ValueError("Saved evidence exceeds the requested trial count")
+    if resume and len(results) >= trials:
+        raise ValueError("Completed evidence cannot be reused as a new benchmark; run without --resume")
     for index in range(len(results), trials):
         # This waits for natural HTTP cooldown; management-plane queries do not wake serving replicas.
         wait_started = time.monotonic()
@@ -97,8 +97,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", required=True)
     parser.add_argument("--enforce", action="store_true")
+    parser.add_argument("--resume", action="store_true", help="Resume an interrupted, incomplete run")
     args = parser.parse_args()
-    report = measure(args.url)
+    report = measure(args.url, resume=args.resume)
     Path("reports/evidence/deployed-cold.json").write_text(json.dumps(report, indent=2) + "\n")
     if args.enforce:
         targets = json.loads(Path("monitoring/slo.json").read_text())

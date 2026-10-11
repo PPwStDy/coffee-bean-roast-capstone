@@ -1,0 +1,13 @@
+{
+  "frozen_at_utc": "2026-10-11T17:16:39.053912+00:00",
+  "warm_p95_ms": 289,
+  "warm_p99_ms": 301,
+  "cold_p95_ms": 34741,
+  "cold_p99_ms": 34794,
+  "container_size_bytes": 164650776,
+  "model_version": "roast-swin-retrained-v1",
+  "method": "initial measured percentile +20%, rounded upward; container size separate",
+  "warm_client_origin": "github-actions-ubuntu",
+  "warm_evidence": "reports/evidence/initial-warm.json",
+  "cold_evidence": "reports/evidence/initial-cold.json"
+}

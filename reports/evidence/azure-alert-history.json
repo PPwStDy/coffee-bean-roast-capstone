@@ -1,0 +1,28 @@
+{
+  "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs/providers/Microsoft.AlertsManagement/alerts/79b5a216-47a8-46fc-b74d-9c4efad6001c/history/default",
+  "name": "Camera sensor occlusion warning",
+  "properties": {
+    "alertId": "79b5a216-47a8-46fc-b74d-9c4efad6001c",
+    "modifications": [
+      {
+        "comments": "",
+        "description": "Action group coffee6688218-email executed (Configured on alert rule)",
+        "modificationEvent": "ActionsTriggered",
+        "modifiedAt": "2026-10-11T16:33:52.9217633Z",
+        "modifiedBy": "System",
+        "newValue": "",
+        "oldValue": ""
+      },
+      {
+        "comments": "",
+        "description": "Alert fired",
+        "modificationEvent": "AlertCreated",
+        "modifiedAt": "2026-10-11T16:33:51.5015977Z",
+        "modifiedBy": "System",
+        "newValue": "",
+        "oldValue": ""
+      }
+    ]
+  },
+  "type": "Microsoft.AlertsManagement/alerts"
+}

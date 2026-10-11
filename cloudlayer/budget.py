@@ -77,7 +77,7 @@ def calculate(days=7, active_hours=3, training_usd=0):
             "log_alert_frequency_minutes": 5,
             "training": "local MPS; no cloud training charges",
             "free_grants": "excluded conservatively",
-            "egress": "same-region; add cross-region transfer if used",
+            "egress": "Serving resources share East Asia. One-time DVC downloads and other transfer are unitemized; verify lagged billing before retaining resources.",
         },
         "billing_budget_usd_rounded_down": math.floor(remaining / fx),
         "passed": forecast <= remaining,

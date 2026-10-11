@@ -1,0 +1,113 @@
+{
+  "value": [
+    {
+      "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs/providers/Microsoft.AlertsManagement/alerts/c193821c-fbdd-d364-2f65-3075b073001c",
+      "name": "Camera sensor occlusion warning",
+      "properties": {
+        "essentials": {
+          "actionStatus": {
+            "isSuppressed": false
+          },
+          "alertRule": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion",
+          "alertState": "New",
+          "lastModifiedDateTime": "2026-10-11T16:55:11.0871456Z",
+          "lastModifiedUserName": "System",
+          "monitorCondition": "Resolved",
+          "monitorConditionResolvedDateTime": "2026-10-11T16:55:11.1214851Z",
+          "monitorService": "Log Alerts V2",
+          "severity": "Sev2",
+          "signalType": "Log",
+          "sourceCreatedId": "7c5b08d0-d4d4-6252-be24-8fb6844be447",
+          "startDateTime": "2026-10-11T16:19:09.3582795Z",
+          "targetResource": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs",
+          "targetResourceGroup": "rg-itcs355-6688218-capstone",
+          "targetResourceName": "coffee6688218-logs",
+          "targetResourceType": "microsoft.operationalinsights/workspaces"
+        }
+      },
+      "type": "microsoft.alertsmanagement/alerts"
+    },
+    {
+      "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs/providers/Microsoft.AlertsManagement/alerts/79b5a216-47a8-46fc-b74d-9c4efad6001c",
+      "name": "Camera sensor occlusion warning",
+      "properties": {
+        "essentials": {
+          "actionStatus": {
+            "isSuppressed": false
+          },
+          "alertRule": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-delivery",
+          "alertState": "New",
+          "description": "Camera fault delivery drill after student email verification; same production optical rejection query.",
+          "lastModifiedDateTime": "2026-10-11T16:54:49.8487675Z",
+          "lastModifiedUserName": "System",
+          "monitorCondition": "Resolved",
+          "monitorConditionResolvedDateTime": "2026-10-11T16:54:49.9097609Z",
+          "monitorService": "Log Alerts V2",
+          "severity": "Sev2",
+          "signalType": "Log",
+          "sourceCreatedId": "100940bb-d7e0-6c13-a2d3-65de4900a440",
+          "startDateTime": "2026-10-11T16:33:51.5015977Z",
+          "targetResource": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs",
+          "targetResourceGroup": "rg-itcs355-6688218-capstone",
+          "targetResourceName": "coffee6688218-logs",
+          "targetResourceType": "microsoft.operationalinsights/workspaces"
+        }
+      },
+      "type": "microsoft.alertsmanagement/alerts"
+    },
+    {
+      "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs/providers/Microsoft.AlertsManagement/alerts/97345502-ce25-99b6-61bc-3b359a84001c",
+      "name": "Camera sensor occlusion warning",
+      "properties": {
+        "essentials": {
+          "actionStatus": {
+            "isSuppressed": false
+          },
+          "alertRule": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-fresh-group",
+          "alertState": "New",
+          "description": "Notification diagnosis: real recorded camera fault events; fresh verified recipient group.",
+          "lastModifiedDateTime": "2026-10-11T16:53:52.7396726Z",
+          "lastModifiedUserName": "System",
+          "monitorCondition": "Fired",
+          "monitorService": "Log Alerts V2",
+          "severity": "Sev2",
+          "signalType": "Log",
+          "sourceCreatedId": "143c383d-2be0-1223-7e86-8dd5e34a1911",
+          "startDateTime": "2026-10-11T16:53:52.7396726Z",
+          "targetResource": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs",
+          "targetResourceGroup": "rg-itcs355-6688218-capstone",
+          "targetResourceName": "coffee6688218-logs",
+          "targetResourceType": "microsoft.operationalinsights/workspaces"
+        }
+      },
+      "type": "microsoft.alertsmanagement/alerts"
+    },
+    {
+      "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs/providers/Microsoft.AlertsManagement/alerts/6c91fe9d-1da1-95fd-f7b4-b6171472001c",
+      "name": "Camera sensor occlusion warning",
+      "properties": {
+        "essentials": {
+          "actionStatus": {
+            "isSuppressed": false
+          },
+          "alertRule": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-receiver-refresh",
+          "alertState": "New",
+          "description": "Verify delivery after action group receiver refresh; evaluates the recorded real camera-occlusion drill.",
+          "lastModifiedDateTime": "2026-10-11T16:52:07.9645204Z",
+          "lastModifiedUserName": "System",
+          "monitorCondition": "Fired",
+          "monitorService": "Log Alerts V2",
+          "severity": "Sev2",
+          "signalType": "Log",
+          "sourceCreatedId": "8b5302b8-7b1c-50e6-0119-113806301bbd",
+          "startDateTime": "2026-10-11T16:52:07.9645204Z",
+          "targetResource": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs",
+          "targetResourceGroup": "rg-itcs355-6688218-capstone",
+          "targetResourceName": "coffee6688218-logs",
+          "targetResourceType": "microsoft.operationalinsights/workspaces"
+        }
+      },
+      "type": "microsoft.alertsmanagement/alerts"
+    }
+  ]
+}

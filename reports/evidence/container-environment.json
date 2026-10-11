@@ -1,0 +1,73 @@
+{
+  "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/managedEnvironments/coffee6688218-environment",
+  "location": "East Asia",
+  "name": "coffee6688218-environment",
+  "properties": {
+    "appInsightsConfiguration": null,
+    "appLogsConfiguration": {
+      "destination": "log-analytics",
+      "logAnalyticsConfiguration": {
+        "customerId": "522a8366-2b07-4b38-8b1a-7fdb3f402c2b",
+        "sharedKey": null
+      }
+    },
+    "customDomainConfiguration": {
+      "certificateKeyVaultProperties": null,
+      "certificatePassword": null,
+      "certificateValue": null,
+      "customDomainVerificationId": "3DCA2E3D4D95DA4708B498F4195057D86C82139D063927B09DBDDFB0DBD6FBF6",
+      "dnsSuffix": null,
+      "expirationDate": null,
+      "subjectName": null,
+      "thumbprint": null
+    },
+    "daprAIConnectionString": null,
+    "daprAIInstrumentationKey": null,
+    "daprConfiguration": {
+      "version": null
+    },
+    "defaultDomain": "greenwave-5725ddc9.eastasia.azurecontainerapps.io",
+    "eventStreamEndpoint": "https://eastasia.azurecontainerapps.dev/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/managedEnvironments/coffee6688218-environment/eventstream",
+    "infrastructureResourceGroup": null,
+    "ingressConfiguration": null,
+    "kedaConfiguration": {
+      "version": null
+    },
+    "openTelemetryConfiguration": null,
+    "peerAuthentication": {
+      "mtls": {
+        "enabled": false
+      }
+    },
+    "peerTrafficConfiguration": {
+      "encryption": {
+        "enabled": false
+      }
+    },
+    "provisioningState": "Succeeded",
+    "publicNetworkAccess": "Enabled",
+    "vnetConfiguration": null,
+    "workloadProfiles": [
+      {
+        "enableFips": false,
+        "name": "Consumption",
+        "workloadProfileType": "Consumption"
+      }
+    ],
+    "zoneRedundant": false
+  },
+  "systemData": {
+    "createdAt": "2026-10-11T12:53:45.9625102",
+    "createdBy": "peerawat.son@student.mahidol.ac.th",
+    "createdByType": "User",
+    "lastModifiedAt": "2026-10-11T13:02:51.6577956",
+    "lastModifiedBy": "peerawat.son@student.mahidol.ac.th",
+    "lastModifiedByType": "User"
+  },
+  "tags": {
+    "course": "itcs355",
+    "lab": "capstone",
+    "student": "6688218"
+  },
+  "type": "Microsoft.App/managedEnvironments"
+}

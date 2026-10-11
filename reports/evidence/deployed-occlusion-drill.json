@@ -1,0 +1,170 @@
+[
+  {
+    "time": "2026-10-11T16:08:48.618950+00:00",
+    "status": 422,
+    "color": "black",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:09:18.832883+00:00",
+    "status": 422,
+    "color": "white",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:09:49.077356+00:00",
+    "status": 422,
+    "color": "black",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:10:19.451322+00:00",
+    "status": 422,
+    "color": "white",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:10:49.720420+00:00",
+    "status": 422,
+    "color": "black",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:11:19.933821+00:00",
+    "status": 422,
+    "color": "white",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:11:50.180430+00:00",
+    "status": 422,
+    "color": "black",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:12:20.472341+00:00",
+    "status": 422,
+    "color": "white",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:12:50.681003+00:00",
+    "status": 422,
+    "color": "black",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:13:20.913986+00:00",
+    "status": 422,
+    "color": "white",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:13:51.174678+00:00",
+    "status": 422,
+    "color": "black",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  },
+  {
+    "time": "2026-10-11T16:14:21.375762+00:00",
+    "status": 422,
+    "color": "white",
+    "response": {
+      "detail": {
+        "error": "Optical Occlusion / Specular Glare Detected",
+        "pixel_std": 0.0,
+        "threshold": 0.05,
+        "shannon_entropy": -0.0,
+        "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+      }
+    }
+  }
+]

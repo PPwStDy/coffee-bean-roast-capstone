@@ -113,7 +113,7 @@ resource environment 'Microsoft.App/managedEnvironments@2026-07-01' = {
   }
 }
 resource action 'Microsoft.Insights/actionGroups@2023-01-01' = {
-  name: '${prefix}-email'
+  name: '${prefix}-email-verified'
   location: 'global'
   tags: tags
   properties: {

@@ -1,0 +1,128 @@
+{
+  "time": "2026-10-11T16:35:32.406561+00:00",
+  "digest": "coffee6688218enafhtyqhoyi6.azurecr.io/coffee-roast@sha256:e4e88da462b2b753b0f4f8bfba2a4d6664ddc52ab0331222fbbb1cef1f42ad9f",
+  "candidate": "coffee6688218-api--r1791736491",
+  "previous_traffic": [
+    {
+      "revisionName": "coffee6688218-api--r1791735364",
+      "weight": 100
+    }
+  ],
+  "candidate_url": "https://coffee6688218-api--r1791736491.greenwave-5725ddc9.eastasia.azurecontainerapps.io",
+  "checks": {
+    "url": "https://coffee6688218-api--r1791736491.greenwave-5725ddc9.eastasia.azurecontainerapps.io",
+    "model_version": "roast-swin-retrained-v1",
+    "checks": [
+      {
+        "fixture": "Dark",
+        "status": 200,
+        "result": {
+          "predicted_class": "Dark",
+          "predicted_class_id": 0,
+          "confidence": 0.9629,
+          "probabilities": {
+            "Dark": 0.9629,
+            "Green": 0.0133,
+            "Light": 0.0139,
+            "Medium": 0.0099
+          },
+          "pixel_std": 0.3291,
+          "shannon_entropy": 6.7341,
+          "latency_ms": 71.19,
+          "model_version": "roast-swin-retrained-v1"
+        }
+      },
+      {
+        "fixture": "Green",
+        "status": 200,
+        "result": {
+          "predicted_class": "Green",
+          "predicted_class_id": 1,
+          "confidence": 0.9648,
+          "probabilities": {
+            "Dark": 0.0114,
+            "Green": 0.9648,
+            "Light": 0.0124,
+            "Medium": 0.0114
+          },
+          "pixel_std": 0.1747,
+          "shannon_entropy": 6.7793,
+          "latency_ms": 71.11,
+          "model_version": "roast-swin-retrained-v1"
+        }
+      },
+      {
+        "fixture": "Light",
+        "status": 200,
+        "result": {
+          "predicted_class": "Light",
+          "predicted_class_id": 2,
+          "confidence": 0.9748,
+          "probabilities": {
+            "Dark": 0.0096,
+            "Green": 0.0078,
+            "Light": 0.9748,
+            "Medium": 0.0079
+          },
+          "pixel_std": 0.3018,
+          "shannon_entropy": 7.2873,
+          "latency_ms": 66.34,
+          "model_version": "roast-swin-retrained-v1"
+        }
+      },
+      {
+        "fixture": "Medium",
+        "status": 200,
+        "result": {
+          "predicted_class": "Medium",
+          "predicted_class_id": 3,
+          "confidence": 0.9545,
+          "probabilities": {
+            "Dark": 0.0089,
+            "Green": 0.0197,
+            "Light": 0.0169,
+            "Medium": 0.9545
+          },
+          "pixel_std": 0.2966,
+          "shannon_entropy": 6.0291,
+          "latency_ms": 68.23,
+          "model_version": "roast-swin-retrained-v1"
+        }
+      },
+      {
+        "fault": "black",
+        "status": 422,
+        "response": {
+          "detail": {
+            "error": "Optical Occlusion / Specular Glare Detected",
+            "pixel_std": 0.0,
+            "threshold": 0.05,
+            "shannon_entropy": -0.0,
+            "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+          }
+        }
+      },
+      {
+        "fault": "white",
+        "status": 422,
+        "response": {
+          "detail": {
+            "error": "Optical Occlusion / Specular Glare Detected",
+            "pixel_std": 0.4714,
+            "threshold": 0.05,
+            "shannon_entropy": -0.0,
+            "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  "promoted_traffic": [
+    {
+      "revisionName": "coffee6688218-api--r1791736491",
+      "weight": 100
+    }
+  ],
+  "promoted": true
+}

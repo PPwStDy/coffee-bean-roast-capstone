@@ -1,6 +1,6 @@
 # Coffee bean roast capstone Azure implementation
 
-Status: Validated — foundation; application release pending
+Status: Deployed and validated; final cold-start and mailbox-delivery evidence in progress
 
 The user approved this plan on 2026-10-11. This file records execution; completion requires successful evidence.
 
@@ -34,17 +34,19 @@ The subscription and user have been verified with Azure CLI. The dedicated capst
 - [x] Dataset attribution, DVC remote, clean-checkout restoration.
 - [x] ImageNet training, validation selection, single selected-release test evaluation, Azure ML registry.
 - [x] Bicep validation, permission / quota / budget evidence.
-- [ ] Digest image deployment, OIDC, candidate promotion / rollback.
-- [ ] Deployed logs / workbook / delivered email alert.
-- [ ] 1,000 warm requests (concurrency 2), 20 cold starts, frozen SLOs.
+- [x] Digest image deployment, OIDC, candidate promotion / verified rollback.
+- [x] Deployed structured logs and populated Azure workbook captures.
+- [x] Email receiver verified; camera rule fired and notification action executed.
+- [x] Fired camera-warning email observed in authenticated Outlook; diagnostic query window labeled.
+- [x] 1,000 warm requests (concurrency 2), 20 natural cold starts, frozen SLOs.
 - [ ] Failure drill, CI failure evidence, costs, scoped teardown verification.
 - [ ] Revised proposal, model card, report, slides, demo script, evidence checklist.
 
 ## Validation and deployment proof
 
-Azure Validate completed on 2026-10-11 for the foundation. Bicep compiled main/app/budget, ARM subscription validation returned Succeeded, and What-if returned Succeeded with no deletions. Owner RBAC, service registration, one available East Asia environment, Storage quota and policy assignments were inspected. The local Linux baseline container passed readiness, four-class predictions, controlled malformed input, optical rejection and telemetry checks. API/data contract tests: 29 passed; cloud contract tests: 4 passed; model behavior tests: 3 passed. Evidence is under reports/evidence. The clean release is registered as Azure ML version 1 and passes 43 local checks. GitHub CI 38144417980 succeeded. The environment completed its conversion to WorkloadProfiles; application deployment is running.
+Azure Validate completed on 2026-10-11 for the foundation. Bicep compiled main/app/budget, ARM subscription validation returned Succeeded, and What-if returned Succeeded with no deletions. Owner RBAC, service registration, one available East Asia environment, Storage quota and policy assignments were inspected. The local Linux baseline container passed readiness, four-class predictions, controlled malformed input, optical rejection and telemetry checks. API/data contract tests: 29 passed; cloud contract tests: 4 passed; model behavior tests: 3 passed. Evidence is under reports/evidence. The clean release is registered as Azure ML version 1 and passes 52 local checks. GitHub CI 38155673260 succeeded before the final source changes. The environment uses WorkloadProfiles; revision r1791736491 was promoted. Initial performance targets are frozen; final CI and release must enforce them.
 
-Azure Deploy will provision only the dedicated capstone group using infra/main.bicep. The shared ML workspace and existing resources are preserved.
+Azure Deploy provisioned only the dedicated capstone group using infra/main.bicep. The shared ML workspace and existing resources are preserved.
 
 ## External completion steps
 

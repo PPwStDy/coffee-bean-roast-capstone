@@ -26,7 +26,7 @@ def image_bytes(color=0, size=(224, 224), format="PNG"):
     return stream.getvalue()
 
 
-@pytest.mark.parametrize("color", [0, 255])
+@pytest.mark.parametrize("color", [(0, 0, 0), (255, 255, 255), (255, 0, 0)])
 def test_optical_guard_precedes_inference(client, monkeypatch, color):
     def forbidden(_):
         pytest.fail("Optically rejected frame reached the model")

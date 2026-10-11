@@ -1,0 +1,40 @@
+{
+  "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs/providers/Microsoft.AlertsManagement/alerts/97345502-ce25-99b6-61bc-3b359a84001c/history/default",
+  "name": "Camera sensor occlusion warning",
+  "properties": {
+    "alertId": "97345502-ce25-99b6-61bc-3b359a84001c",
+    "modifications": [
+      {
+        "comments": "",
+        "description": "Action group coffee6688218-email-verified executed (Configured on alert rule)",
+        "details": {
+          "actionGroup": {
+            "actionGroupId": "/subscriptions/6638A4EA-96DA-4326-969A-2E40305CFC83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/actionGroups/coffee6688218-email-verified",
+            "ruleId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-fresh-group",
+            "ruleType": "AlertRule"
+          },
+          "notificationResult": {
+            "status": "Inline",
+            "statusURL": "https://management.azure.com/subscriptions/6638A4EA-96DA-4326-969A-2E40305CFC83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/actionGroups/coffee6688218-email-verified/notificationStatus/6001030372497514/?isArchived=true&api-version=2021-09-01"
+          },
+          "type": "ActionTriggered"
+        },
+        "modificationEvent": "ActionsTriggered",
+        "modifiedAt": "2026-10-11T16:53:53.2346505Z",
+        "modifiedBy": "System",
+        "newValue": "",
+        "oldValue": ""
+      },
+      {
+        "comments": "",
+        "description": "Alert fired",
+        "modificationEvent": "AlertCreated",
+        "modifiedAt": "2026-10-11T16:53:52.7396726Z",
+        "modifiedBy": "System",
+        "newValue": "",
+        "oldValue": ""
+      }
+    ]
+  },
+  "type": "Microsoft.AlertsManagement/alerts"
+}

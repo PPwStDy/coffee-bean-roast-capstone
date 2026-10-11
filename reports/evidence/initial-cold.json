@@ -1,0 +1,310 @@
+{
+  "url": "https://coffee6688218-api.greenwave-5725ddc9.eastasia.azurecontainerapps.io",
+  "method": "natural HTTP scale-to-zero; zero replicas verified by management-plane API",
+  "trials": [
+    {
+      "trial": 1,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:37:45.456539+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 48.88303774900851,
+      "status": 200,
+      "latency_ms": 27402.783958998043,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 2,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:40:15.145531+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 122.2879817919893,
+      "status": 200,
+      "latency_ms": 23413.48933300469,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 3,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:41:57.351518+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 78.79058558298857,
+      "status": 200,
+      "latency_ms": 26616.75041700073,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 4,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:43:45.486274+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 81.52104166700155,
+      "status": 200,
+      "latency_ms": 28947.52920800238,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 5,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:46:17.017570+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 122.5859041250078,
+      "status": 200,
+      "latency_ms": 28163.094292001915,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 6,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:48:43.261526+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 118.08357095901738,
+      "status": 200,
+      "latency_ms": 22576.3501659967,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 7,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:50:23.096525+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 77.25810350000393,
+      "status": 200,
+      "latency_ms": 18160.062957991613,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 8,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:52:01.874201+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 80.61958620800579,
+      "status": 200,
+      "latency_ms": 19798.596332999296,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 9,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:53:46.039029+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 84.36429979201057,
+      "status": 200,
+      "latency_ms": 26302.079749992117,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 10,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:55:36.622406+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 84.2809541660099,
+      "status": 200,
+      "latency_ms": 21190.48066699179,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 11,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:57:19.382141+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 81.570469667,
+      "status": 200,
+      "latency_ms": 29005.365958000766,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 12,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T16:59:45.434131+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 117.04630991700105,
+      "status": 200,
+      "latency_ms": 23508.344417001354,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 13,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T17:01:30.835151+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 81.89295029098867,
+      "status": 200,
+      "latency_ms": 28664.070167011232,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 14,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T17:03:23.284864+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 83.78514808199543,
+      "status": 200,
+      "latency_ms": 26721.751834003953,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 15,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T17:05:48.613720+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 118.60704262599756,
+      "status": 200,
+      "latency_ms": 27083.718458001385,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 16,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T17:08:12.410672+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 116.71088133398734,
+      "status": 200,
+      "latency_ms": 23845.62658300274,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 17,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T17:09:57.604461+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 81.34856108399981,
+      "status": 200,
+      "latency_ms": 24120.362500005285,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 18,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T17:12:16.483874+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 114.76097704200947,
+      "status": 200,
+      "latency_ms": 26006.500666990178,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 19,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T17:14:06.677500+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 84.18672825099202,
+      "status": 200,
+      "latency_ms": 26188.999916004832,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "trial": 20,
+      "replicas_before_request": 0,
+      "zero_verified_at": "2026-10-11T17:15:54.011298+00:00",
+      "active_revisions": [
+        "coffee6688218-api--r1791734536",
+        "coffee6688218-api--r1791735364",
+        "coffee6688218-api--r1791736491"
+      ],
+      "management_replica_response": [],
+      "wait_for_zero_seconds": 81.14403820899315,
+      "status": 200,
+      "latency_ms": 24390.26308301254,
+      "model_version": "roast-swin-retrained-v1"
+    }
+  ],
+  "p95_ms": 28950.4210455023,
+  "p99_ms": 28994.376975501073,
+  "deployed_digest": "coffee6688218enafhtyqhoyi6.azurecr.io/coffee-roast@sha256:e4e88da462b2b753b0f4f8bfba2a4d6664ddc52ab0331222fbbb1cef1f42ad9f",
+  "source_commit": "201d5480cf9280c121986dba6ae6faa964b210fa"
+}
