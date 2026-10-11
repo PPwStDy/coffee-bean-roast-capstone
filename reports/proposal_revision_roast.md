@@ -12,17 +12,17 @@ Provide a synchronous API that classifies a coffee bean image into Dark, Green, 
 
 Use the supplied DL_FinalProject dataset and Iteration4 Swin-T architecture. The original dataset has 1,600 RGB images at 224 × 224, but all 400 original test images also occur in its training folder. Exact pixel deduplication produces 1,194 unique images. The prepared stratified split uses seed 42 and contains 835 training, 178 validation, and 181 test images.
 
-The imported Swin checkpoint is used for the serving prototype. Its recorded 99.75% accuracy is contaminated and is not an acceptance result. A model initialized from ImageNet weights will be trained on the prepared train split and selected on validation loss before evaluating the held-out test split. Near-duplicate or shared-bean correlations remain a dataset limitation. Confirm the dataset source and redistribution license before publishing images.
+The imported Swin checkpoint is preserved as a historical baseline. Its recorded 99.75% accuracy is contaminated and is not an acceptance result. Fresh ImageNet training uses the prepared split; checkpoint selection uses validation loss and export selection uses validation macro-F1 and median latency. The selected release is evaluated on the test split once. Near-duplicate or shared-bean correlations remain a dataset limitation. Both verified version1 Kaggle sources use CC BY-SA4.0; see DATA_LICENSE.md for attribution, modifications and the Ontoum et al.2022 research citation.
 
 ## Reproducibility and lineage
 
-Version the dataset and checkpoint with DVC; use a shared S3 or GCS remote. Record the split manifest, data hash, code revision, seed, architecture, parameters, runtime versions, evaluation metrics, and model artifacts in MLflow. Register the model and tie serving artifacts to the checkpoint with metadata and SHA-256 hashes.
+Version the dataset and checkpoint with DVC backed by private Azure Blob storage. Record the split manifest, data hash, actual Git revision, seed, architecture, parameters, dependency lock, evaluation metrics and artifacts in MLflow. Register the immutable release bundle in the existing Azure ML workspace and tie serving artifacts to its checkpoint with mandatory metadata and SHA-256 hashes.
 
 ## Serving and portability
 
-Serve quantized ONNX using FastAPI in a non-root Docker container. Keep inference and training code independent of the cloud provider. Select one provider for actual deployment and document environment configuration, tagged resources, budget alerts, teardown, and actual cost evidence.
+Serve the validation-selected ONNX using FastAPI in a non-root Docker container. Keep core inference and training independent of Azure behind the course CloudAdapter. Use the Azure for Students subscription in East Asia, a dedicated tagged capstone group, managed identity and GitHub OIDC. Container Apps starts at2vCPU/4GiB with minimum0 and maximum2 replicas. JPEG/PNG requests are limited to5MiB decoded and20megapixels; inference concurrency is bounded at2.
 
-Retain the original operational objectives of p95 ≤ 120 ms and p99 ≤ 250 ms. The initial local CPU export benchmark measured p95 about 185 ms, so optimization or an agreed revision is required. Container size under 250 MB and cold start under 2 seconds are provisional goals that must be measured for Swin-T.
+Replace the original unmeasured performance claims with a defined acceptance procedure:1,000 warm requests at concurrency2 and20 cold-start trials with zero replicas verified before each request. Freeze initial p95/p99 at the measured value plus20%, rounded upward. Later CI/deployment runs enforce the same targets. Record image size separately. Requests use the current immutable model version; model freshness follows an explicitly validated release rather than time-based retraining.
 
 ## Failure demonstration and observability
 
@@ -35,3 +35,9 @@ Provide a dashboard for prediction counts by roast class, inference latency, and
 Submit runnable code, a clean-checkout setup guide, DVC restoration instructions, the reproducible training pipeline, registered model lineage, deployed inference evidence, CI/CD evidence, dashboard and delivered-alert evidence, cost per 1,000 predictions, a one-page model card, failure injection evidence and regression checks, presentation materials, and teardown evidence.
 
 Model accuracy will be reported honestly on the corrected evaluation protocol. Historical MobileNet cost estimates cannot substantiate Swin deployment costs; use measured active duration, memory, provider rates, and billing records.
+
+## Budget and proposed team ownership
+
+The course allowance is800THB per student. Captured year-to-date subscription spending is charged conservatively against it. Budget notifications use50/80/100% of the remaining allowance; deployment is blocked when a seven-day forecast with25% margin exceeds that remainder. Registry and monitoring remain chargeable during serving scale-to-zero. Local training incurs no Azure compute charge; electricity and device costs are unmeasured.
+
+Proposed responsibilities for team confirmation: Peerawat owns model/data lineage and deployment; Yongyot owns monitoring, incident demonstration and presentation. Record actual contributions before submission. Revised instructor approval, the Session5 architecture review, live presentation/Q&A and final repository submission remain pending.

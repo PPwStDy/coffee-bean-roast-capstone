@@ -1,88 +1,96 @@
-# ITCS355 Capstone: Coffee Bean Roast Classification API
+# Coffee Bean Roast Classification API — ITCS355
 
-The capstone now uses **Iteration4 Swin-T** and predicts **Dark, Green, Light, Medium**, in that exact class order. Input is an RGB coffee bean image resized to 224 × 224 with ImageNet normalization. The API retains the optical glare/occlusion guard, Prometheus metrics, and local monitoring stack.
+Group Idea: **6688218 Peerawat** and **6688230 Yongyot**. Private repository: [PPwStDy/coffee-bean-roast-capstone](https://github.com/PPwStDy/coffee-bean-roast-capstone).
 
-This is a change from the submitted defect-grading proposal. A [revised proposal draft](reports/proposal_revision_roast.md) is included; obtain the instructor's approval for the roast-classification scope. The original proposal and previously generated presentation/report files describe the earlier scope.
+An image-level classifier using the **Iteration4 Swin-T architecture** with the fixed class order **Dark, Green, Light, Medium**. Green means unroasted. The API returns four probabilities and rejects covered-camera or overexposed uniform frames before inference.
 
-## Dataset audit
+The revised roast scope requires instructor approval. See the [requirement checklist](reports/requirements_checklist.md) for actual completion evidence and pending academic milestones.
 
-The supplied dataset has 1,600 readable RGB PNGs: 1,200 train and 400 test, balanced across four classes. **Every one of the 400 test images is an exact pixel duplicate of an image in the original training folder.** There are only 1,194 unique images, with no conflicting labels.
+## Data and model
 
-The saved 99.75% accuracy and macro F1 are historical results from that overlapping split. They cannot establish performance on unseen images. Splitting the images again does not remove contamination from the already trained checkpoint.
+The supplied 1,600 images contain 406 exact duplicate copies. All 400 images in the original test directory duplicate images in the original training directory. The imported Iteration4 checkpoint and its 99.75% result are preserved as a historical baseline; that result does not establish unseen-image performance.
 
-The prepared DVC dataset removes 406 duplicate copies and uses seeded, stratified 70/15/15 splits:
+The corrected seed42 stratified splits contain **835 train / 178 validation / 181 test** images. The manifest records original sources, file and pixel hashes, duplicate groups and assignments. Contracts reject unreadable images, changed hashes, incorrect labels and exact duplicates across all splits.
 
-| Split | Images |
-|---|---:|
-| Train | 835 |
-| Validation | 178 |
-| Test | 181 |
+Data sources are the version1 Kaggle datasets by Gerry (gpiosenka) and Sakdipat Ontoum (sot2542), under **CC BY-SA 4.0**. Attribution, modifications and the requested Coffee Roast Intelligence citation are in [DATA_LICENSE.md](DATA_LICENSE.md). This license statement concerns dataset images; it does not claim that the weights inherit the same license.
 
-The seed, all original filenames, content hashes, duplicate groups, and new split assignments are in `data/coffee_bean_roast/manifest.json`. An audit copy is in `reports/dataset_audit.json`. The loader rejects duplicate pixels within or across splits.
+The automated training procedure starts Swin-T from ImageNet weights, keeps Iteration4 augmentation and optimizer choices, records its actual source commit and locked dependency hash, and chooses the lowest validation-loss checkpoint. Batch8 reduces memory pressure on the 8GiB M1. Float and dynamic INT8 exports are compared using the complete validation split; the fastest median candidate with no more than a one percentage-point macro-F1 drop and passing parity is selected. Only that release is evaluated on the test split, once. See the immutable release bundle and [model card](reports/model_card.md) for measured results.
 
-**The new dataset's source and license are unconfirmed.** The old Roboflow CC BY 4.0 attribution does not apply to this dataset. Confirm its license before redistribution.
+## Clean checkout
 
-## Restore and use the imported model
-
-The local checkpoint is `models/iteration4_swin.pth`; its DVC pointer is checked in alongside the prepared dataset pointer. Original Iteration4 training code and its saved evaluation summary are retained under `provenance/iteration4/`.
+Prerequisites: Git, Python3.12, uv0.12.10, Azure CLI and Docker for container operations. Training on MPS is optional; CPU is supported and slower. Authentication is separate from the repository; never commit `cloud.env` or credentials.
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.in
-# Configure your shared DVC remote and credentials, then:
-make dvc-pull
-python -m src.import_iteration4 --register
-make export
+git clone https://github.com/PPwStDy/coffee-bean-roast-capstone.git
+cd coffee-bean-roast-capstone
+uv sync --frozen
+cp cloud.env.example cloud.env
+# Fill the deployment configuration and sign into the authorized Azure subscription.
+az login
+az account set --subscription 6638a4ea-96da-4326-969a-2e40305cfc83
+uv run --frozen dvc pull data/coffee_bean_roast.dvc models/iteration4_swin.pth.dvc releases/*.dvc
+uv run --frozen python scripts/restore_release.py
+uv run --frozen python scripts/release_integrity.py
 make serve
 ```
 
-No shared DVC remote has been configured or pushed by this local migration. CI needs `DVC_REMOTE_URL` and matching credentials. For S3, provide `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`; for GCS, provide `GCP_SERVICE_ACCOUNT_JSON`. Push both the dataset and model pointers to the chosen remote before running CI.
+The checked-in DVC remote is private Azure Blob storage. Access requires Storage Blob Data Reader (restoration) or Contributor (upload) on the capstone storage account. After teardown the remote must be provisioned and repopulated before these commands work; keep the local DVC cache and release bundle. Evidence records distinguish restoration while the remote existed from its eventual deletion.
 
-To import from your own source paths:
+To reproduce training, check out the recorded training commit and its dependency lock, restore the recorded dataset revision, and run:
 
 ```bash
-python -m src.prepare_roast_data --source /path/to/DL_FinalProject/dataset
-python -m src.import_iteration4 --source-dir /path/to/DL_FinalProject/Iteration4
-dvc add data/coffee_bean_roast models/iteration4_swin.pth
-python -m src.import_iteration4 --register
-make export
+uv sync --frozen
+uv run --frozen python -m src.train --epochs 20 --batch-size 8 --seed 42
+uv run --frozen python -m src.export_onnx --evaluate-test
 ```
 
-Preparation refuses to overwrite an existing dataset. Use the existing DVC data or specify a new `--destination`. The original deep-learning project is not modified.
+Use a new model version for each independently trained release. Export refuses to repeat a test evaluation for an existing release. Seeds support reproducibility; identical MPS floating-point results are not guaranteed. Training is a separate workflow; PR validation restores the selected release and does not retrain.
 
-## Retrain for an independent evaluation
+## API contract
+
+Interactive documentation: [localhost:8080/docs](http://localhost:8080/docs).
+
+| Route | Request / purpose |
+|---|---|
+| `POST /predict` | Raw JPEG/PNG bytes or multipart field `file` |
+| `POST /predict/base64` | JSON `{"image_base64":"..."}` with strict base64 |
+| `GET /health` | Process liveness |
+| `GET /ready` | Loaded model and all compatibility checks;503 when invalid |
+| `GET /metrics` | Prometheus request, error, latency, prediction and anomaly metrics |
+
+Decoded images are limited to5MiB and20megapixels. Unsupported formats return415; oversized images413; unreadable images400; malformed schema422; optical rejection422; unavailable model or exhausted bounded inference capacity503. All four probabilities must be finite, class IDs0–3 must match the fixed order, and `X-Model-Version` must match the body. Inference runs in worker threads behind concurrency2 rather than blocking the asynchronous request loop. Readiness requires matching architecture, classes, preprocessing, model version and artifact SHA-256.
 
 ```bash
-make train EPOCHS=20
+curl --data-binary @tests/fixtures/Medium.png -H 'Content-Type: image/png' http://localhost:8080/predict
 ```
 
-This starts Swin-T from ImageNet weights, uses the corrected splits, color-preserving Iteration4 augmentation, label smoothing, AdamW, and OneCycleLR. It **does not initialize from the contaminated imported checkpoint**. It logs the seed, library versions, DVC hash, metrics, checkpoint, and registered model to MLflow.
-
-Retraining has not been run during this migration. The prepared holdout is independent of this future training run, subject to unmeasured near-duplicate or shared-source correlations.
-
-## Serving and monitoring
+## Validation, deployment and monitoring
 
 ```bash
+make lint
+make portability-audit
+make test
+make cloud-check
+make budget-check
+make release-check
+make failure-drill
 make monitor-up
 make trigger-alert
-docker compose logs -f webhook-sink
 make monitor-down
 ```
 
-API: [http://localhost:8080/docs](http://localhost:8080/docs). Grafana: [http://localhost:3000](http://localhost:3000). Prometheus: [http://localhost:9090](http://localhost:9090).
+The [Azure plan](.azure/plan.md) and Bicep provision a dedicated East Asia group tagged `course=itcs355`, `student=6688218`, `lab=capstone`. The application uses a digest-pinned Linux image, managed identity,2vCPU/4GiB, HTTP scaling with min0/max2 and GitHub OIDC. CI checks lint, provider portability, data, model behavior, API handling, release integrity, optical guard regression and container integration. A successful main validation triggers candidate deployment, endpoint checks, frozen performance gates when available, traffic promotion or rollback.
 
-- `POST /predict`: raw image bytes.
-- `POST /predict/base64`: JSON with an `image_base64` field.
-- `GET /health`, `GET /ready`, `GET /metrics`: operational endpoints.
-- Near-uniform frames return 422 and increment `coffee_anomaly_frames_total`.
+Local Prometheus/Grafana/Alertmanager are retained. Azure Log Analytics and a workbook use escaped JSON application logs. A five-minute camera-occlusion rule routes to the signed-in student's email action group. Configuration alone does not prove email delivery; the checklist requires a receipt.
 
-The runtime verifies artifact hashes, architecture, preprocessing, and class order against `reports/model_metadata.json`; stale defect artifacts cannot be served with roast labels. Docker serves quantized ONNX on CPU; TorchScript is available locally when PyTorch is installed.
+Initial targets require1,000 warm requests at concurrency2 and20 cold-start trials with zero replicas verified before each request. Targets are measured p95/p99 plus20%, rounded upward, then stored in `monitoring/slo.json`. Later releases enforce these fixed targets. Container bytes are recorded separately. Historical120/250ms and2-second claims are withdrawn until measured evidence supports replacements.
 
-## Measured export and remaining requirements
+## Costs and cleanup
 
-The initial local export produced a 29.6 MiB ONNX model. TorchScript parity and ONNX probability/class parity passed on nine inputs; maximum probability difference was 0.0087. The CPU benchmark measured p50 93 ms and p95 185 ms using one thread on this machine. **The p95 ≤ 120 ms target was not met.** These are export measurements, not a deployed-service benchmark.
+[Cost report](reports/cost_report.md) separates serving, storage, registry, monitoring and training. The deployment gate uses actual prior subscription spending, dated East Asia prices and a dated USD/THB exchange rate against the remaining800THB course allowance. Free grants are excluded conservatively. Budget notifications are configured at50/80/100%; notifications are not a hard spending cap.
 
-`make test` and `make loadtest` remain the regression and latency gates; they were not run during this migration. Docker size, cold start, cloud deployment, scale-to-zero, actual costs, and alert delivery still require measurement. CI restores and registers the imported model; training is a separate command. The workflow currently provides validation, not cloud deployment.
+`make cloud-teardown` verifies ownership before deleting only capstone resources and verifies preservation of the shared Azure ML workspace. The scheduled teardown enforces the configured seven-day retention. Owner cleanup of the exact capstone subscription budget and external role assignments is recorded separately; no shared workspace or unrelated lab resource is deleted.
 
-See [model card](reports/model_card.md), [migration notes](reports/roast_migration.md), and [cost assumptions](reports/cost_report.md). Historical defect slides and reports must be revised before submission.
+## Submission
+
+The comprehensive report, revised proposal, one-page model card, slides and eight-minute demonstration script are maintained with evidence. The instructor's scope approval, architecture review, live presentation/Q&A and final submission remain pending until they actually happen. Model accuracy carries no capstone marks; reproducible operations and honest evidence are the focus.

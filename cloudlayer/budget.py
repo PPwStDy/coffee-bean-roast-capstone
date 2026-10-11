@@ -51,7 +51,7 @@ def calculate(days=7, active_hours=3, training_usd=0):
         "registry_day": rate("Container Registry", "Basic Registry Unit"),
         "storage_gb_month": rate("Storage", "Hot LRS Data Stored", "General Block Blob v2", "Hot LRS"),
         "log_ingestion_gb": rate("Log Analytics", "Analytics Logs Data Ingestion"),
-        "log_alert_month": rate("Azure Monitor", "Alerts System Log Monitored at 1 Minute Frequency"),
+        "log_alert_month": rate("Azure Monitor", "Alerts System Log Monitored at 5 Minute Frequency"),
     }
     costs = {
         "serving": active_hours * 3600 * 2 * (2 * rates["cpu_second"] + 4 * rates["gib_second"]) + 0.01,
@@ -74,6 +74,7 @@ def calculate(days=7, active_hours=3, training_usd=0):
             "active_hours_max_two_replicas": active_hours,
             "log_cap_gb_day": 0.1,
             "blob_gb": 2,
+            "log_alert_frequency_minutes": 5,
             "training": "local MPS; no cloud training charges",
             "free_grants": "excluded conservatively",
             "egress": "same-region; add cross-region transfer if used",

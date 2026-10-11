@@ -3,7 +3,8 @@ param location string = 'eastasia'
 param prefix string = 'coffee6688218'
 param alertEmail string
 param operatorObjectId string
-param githubRepository string = 'PPwStDy/coffee-bean-roast-capstone'
+// Immutable owner/repository IDs are required for repositories created after 2026-07-15.
+param githubRepository string = 'PPwStDy@129304443/coffee-bean-roast-capstone@1414323298'
 var tags = { course: 'itcs355', student: '6688218', lab: 'capstone' }
 
 resource storage 'Microsoft.Storage/storageAccounts@2023-05-01' = {
