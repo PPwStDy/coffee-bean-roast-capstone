@@ -2,6 +2,7 @@
 
 Enforces the ITCS355 Three-Layer Portability Contract.
 """
+
 from __future__ import annotations
 
 import re

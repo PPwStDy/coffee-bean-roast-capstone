@@ -1,4 +1,5 @@
 """Layer 2 configuration. Never print credentials or silently invent cloud resources."""
+
 import os
 from pathlib import Path
 from dotenv import dotenv_values

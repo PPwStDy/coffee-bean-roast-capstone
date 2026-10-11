@@ -2,6 +2,8 @@
 
 PYTHON ?= $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 EPOCHS ?= 20
+BATCH_SIZE ?= 8
+URL ?= http://127.0.0.1:8080
 PORT ?= 8080
 
 help:
@@ -26,11 +28,11 @@ data:
 	$(PYTHON) -c "from src.data import setup_data_directory; setup_data_directory()"
 
 dvc-pull:
-	dvc pull data/coffee_bean_roast.dvc models/iteration4_swin.pth.dvc
+	$(PYTHON) -m dvc pull data/coffee_bean_roast.dvc models/iteration4_swin.pth.dvc
 
 train:
-	$(PYTHON) -m src.train $(EPOCHS)
-	$(PYTHON) -m src.export_onnx
+	$(PYTHON) -m src.train --epochs $(EPOCHS) --batch-size $(BATCH_SIZE) --seed 42
+	$(PYTHON) -m src.export_onnx --evaluate-test
 
 export:
 	$(PYTHON) -m src.export_onnx
@@ -42,7 +44,7 @@ test:
 	PYTHONPATH=. $(PYTHON) -m pytest -v tests/
 
 loadtest:
-	PYTHONPATH=. $(PYTHON) loadtest/bench.py
+	PYTHONPATH=. $(PYTHON) -m loadtest.bench --url $(URL) --enforce
 
 cost:
 	$(PYTHON) reports/cost_report.py
@@ -72,3 +74,33 @@ trigger-alert:
 
 clean:
 	rm -rf .pytest_cache __pycache__ src/__pycache__ service/__pycache__ tests/__pycache__
+
+cloud-check:
+	$(PYTHON) -m cloudlayer.config
+
+budget-check:
+	$(PYTHON) -m cloudlayer.budget
+
+lint:
+	.venv/bin/ruff check src service cloudlayer tests scripts loadtest
+
+dvc-remote:
+	$(PYTHON) -m scripts.dvc_remote
+
+release-check:
+	$(PYTHON) -m scripts.release_integrity
+
+failure-drill:
+	$(PYTHON) -m scripts.failure_drill
+
+cloud-deploy: cloud-check budget-check release-check
+	$(PYTHON) -m cloudlayer.deploy
+
+cloud-teardown:
+	$(PYTHON) -m cloudlayer.teardown
+
+cold-starts:
+	$(PYTHON) -m cloudlayer.cold_starts --url $(URL)
+
+freeze-slo:
+	$(PYTHON) -m scripts.freeze_slo

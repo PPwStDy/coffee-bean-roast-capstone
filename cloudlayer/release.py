@@ -1,4 +1,5 @@
 """Deploy zero-traffic candidate, validate it, then promote or restore previous traffic."""
+
 import json
 import time
 from pathlib import Path
@@ -12,8 +13,12 @@ def deploy_candidate(config, digest, endpoint):
     calculate()
     group = config["PROJECT_ID"]
     metadata = json.loads(Path("reports/model_metadata.json").read_text())
-    if metadata.get("evaluation_status") != "retrained_on_deduplicated_splits" or not metadata.get("test_evaluation"):
-        raise ValueError("Production release requires clean retraining and completed selected-export test evaluation")
+    if metadata.get("evaluation_status") != "retrained_on_deduplicated_splits" or not metadata.get(
+        "test_evaluation"
+    ):
+        raise ValueError(
+            "Production release requires clean retraining and completed selected-export test evaluation"
+        )
     apps = az("containerapp", "list", "--resource-group", group)
     current = next((app for app in apps if app["name"] == endpoint), None)
     previous = current["properties"]["configuration"]["ingress"].get("traffic", []) if current else []
@@ -21,35 +26,105 @@ def deploy_candidate(config, digest, endpoint):
     if current and not previous_revision:
         previous_revision = current["properties"]["latestReadyRevisionName"]
     suffix = "r" + str(int(time.time()))
-    parameters = [f"imageDigest={digest}", f"environmentId={config['CONTAINER_ENVIRONMENT_ID']}",
-                  f"identityId={config['IDENTITY_REF']}", f"registry={config['CONTAINER_REGISTRY']}",
-                  f"modelVersion={metadata['model_version']}", f"appName={endpoint}",
-                  f"revisionSuffix={suffix}", f"previousRevision={previous_revision}"]
-    az("deployment", "group", "validate", "--resource-group", group, "--template-file", "infra/app.bicep", "--parameters", *parameters)
-    result = az("deployment", "group", "create", "--name", "capstone-api", "--resource-group", group,
-                "--template-file", "infra/app.bicep", "--parameters", *parameters)
+    parameters = [
+        f"imageDigest={digest}",
+        f"environmentId={config['CONTAINER_ENVIRONMENT_ID']}",
+        f"identityId={config['IDENTITY_REF']}",
+        f"registry={config['CONTAINER_REGISTRY']}",
+        f"modelVersion={metadata['model_version']}",
+        f"appName={endpoint}",
+        f"revisionSuffix={suffix}",
+        f"previousRevision={previous_revision}",
+    ]
+    az(
+        "deployment",
+        "group",
+        "validate",
+        "--resource-group",
+        group,
+        "--template-file",
+        "infra/app.bicep",
+        "--parameters",
+        *parameters,
+    )
+    result = az(
+        "deployment",
+        "group",
+        "create",
+        "--name",
+        "capstone-api",
+        "--resource-group",
+        group,
+        "--template-file",
+        "infra/app.bicep",
+        "--parameters",
+        *parameters,
+    )
     outputs = result["properties"]["outputs"]
     revision = outputs["revision"]["value"]
-    candidate = az("containerapp", "revision", "show", "--name", endpoint, "--resource-group", group, "--revision", revision)
+    candidate = az(
+        "containerapp",
+        "revision",
+        "show",
+        "--name",
+        endpoint,
+        "--resource-group",
+        group,
+        "--revision",
+        revision,
+    )
     url = "https://" + candidate["properties"]["fqdn"]
     evidence = {"digest": digest, "candidate": revision, "previous_traffic": previous, "candidate_url": url}
     try:
         evidence["checks"] = check(url, metadata["model_version"])
         if Path("monitoring/slo.json").exists():
             from loadtest.bench import benchmark, enforce
+
             report = benchmark(url, 1000, 2)
             enforce(report)
             evidence["benchmark"] = report
-        az("containerapp", "ingress", "traffic", "set", "--name", endpoint, "--resource-group", group,
-           "--revision-weight", f"{revision}=100")
+        az(
+            "containerapp",
+            "ingress",
+            "traffic",
+            "set",
+            "--name",
+            endpoint,
+            "--resource-group",
+            group,
+            "--revision-weight",
+            f"{revision}=100",
+        )
         evidence["promoted"] = True
     except Exception as exc:
         evidence.update(promoted=False, error=str(exc))
         if previous_revision:
-            az("containerapp", "ingress", "traffic", "set", "--name", endpoint, "--resource-group", group,
-               "--revision-weight", *[f"{t.get('revisionName', previous_revision)}={t['weight']}" for t in previous])
-            evidence["rollback_verified"] = az("containerapp", "show", "--name", endpoint, "--resource-group", group)["properties"]["configuration"]["ingress"]["traffic"]
-        az("containerapp", "revision", "deactivate", "--name", endpoint, "--resource-group", group, "--revision", revision)
+            az(
+                "containerapp",
+                "ingress",
+                "traffic",
+                "set",
+                "--name",
+                endpoint,
+                "--resource-group",
+                group,
+                "--revision-weight",
+                *[f"{t.get('revisionName', previous_revision)}={t['weight']}" for t in previous],
+            )
+            evidence["rollback_verified"] = az(
+                "containerapp", "show", "--name", endpoint, "--resource-group", group
+            )["properties"]["configuration"]["ingress"]["traffic"]
+        az(
+            "containerapp",
+            "revision",
+            "deactivate",
+            "--name",
+            endpoint,
+            "--resource-group",
+            group,
+            "--revision",
+            revision,
+        )
         raise
     finally:
         Path("reports/evidence/candidate-deployment.json").write_text(json.dumps(evidence, indent=2) + "\n")

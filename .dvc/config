@@ -1,5 +1,10 @@
 [core]
     analytics = False
     site_cache_dir = .dvc/site-cache
+    remote = shared
 [cache]
     dir = cache
+['remote "shared"']
+    url = azure://capstone/dvc
+    account_name = cf6688218enafhtyqhoyi6
+    allow_anonymous_login = false

@@ -7,6 +7,7 @@ implementing our deliberate failure mode defense.
 Run locally:
     uvicorn service.app:app --port 8080 --host 0.0.0.0
 """
+
 from __future__ import annotations
 
 import base64
@@ -50,6 +51,7 @@ from src.config import (
     TORCHSCRIPT_MODEL_PATH,
 )
 
+
 class JSONFormatter(logging.Formatter):
     def format(self, record):
         try:
@@ -75,8 +77,12 @@ if not 1 <= MAX_CONCURRENCY <= 8:
     raise ValueError("MAX_INFERENCE_CONCURRENCY must be between 1 and 8")
 HTTP_REQUESTS = Counter("coffee_http_requests_total", "HTTP responses", ["route", "status"])
 HTTP_ERRORS = Counter("coffee_http_errors_total", "HTTP errors", ["route", "status"])
-HTTP_LATENCY = Histogram("coffee_http_latency_seconds", "End-to-end request duration", ["route"],
-                         buckets=[.01, .05, .1, .2, .5, 1, 2, 5, 10])
+HTTP_LATENCY = Histogram(
+    "coffee_http_latency_seconds",
+    "End-to-end request duration",
+    ["route"],
+    buckets=[0.01, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10],
+)
 
 # Prometheus Metrics
 INFERENCE_LATENCY = Histogram(
@@ -140,13 +146,21 @@ def _load_inference_engine():
             options = ort.SessionOptions()
             options.intra_op_num_threads = int(os.environ.get("INFERENCE_THREADS", "1"))
             options.inter_op_num_threads = 1
-            session = ort.InferenceSession(model_path, sess_options=options, providers=["CPUExecutionProvider"])
+            session = ort.InferenceSession(
+                model_path, sess_options=options, providers=["CPUExecutionProvider"]
+            )
             if session.get_outputs()[0].shape[-1] != len(CLASSES):
                 raise ValueError("ONNX output count does not match the four roast classes")
             inputs = session.get_inputs()
-            if len(inputs) != 1 or inputs[0].type != "tensor(float)" or inputs[0].shape[1:] != [3, IMAGE_SIZE, IMAGE_SIZE]:
+            if (
+                len(inputs) != 1
+                or inputs[0].type != "tensor(float)"
+                or inputs[0].shape[1:] != [3, IMAGE_SIZE, IMAGE_SIZE]
+            ):
                 raise ValueError("ONNX input shape or dtype is incompatible")
-            check = session.run(None, {inputs[0].name: np.zeros((1, 3, IMAGE_SIZE, IMAGE_SIZE), dtype=np.float32)})[0]
+            check = session.run(
+                None, {inputs[0].name: np.zeros((1, 3, IMAGE_SIZE, IMAGE_SIZE), dtype=np.float32)}
+            )[0]
             if check.shape != (1, 4) or not np.isfinite(check).all():
                 raise ValueError("ONNX startup inference produced invalid outputs")
             log.info('"Loaded ONNX model: %s"', model_path)
@@ -168,9 +182,7 @@ def _load_inference_engine():
         log.info('"Loaded TorchScript model: %s"', ts_path)
         return model, "TorchScript"
 
-    raise FileNotFoundError(
-        f"No ONNX or TorchScript model artifact found at {model_path!r} or {ts_path!r}"
-    )
+    raise FileNotFoundError(f"No ONNX or TorchScript model artifact found at {model_path!r} or {ts_path!r}")
 
 
 @asynccontextmanager
@@ -213,14 +225,27 @@ async def add_telemetry_headers(request: Request, call_next):
     response.headers["x-request-id"] = request_id
     response.headers["x-model-version"] = str(STATE["version"])
 
-    route = request.url.path if request.url.path in {"/predict", "/predict/base64", "/ready", "/health", "/metrics"} else "other"
+    route = (
+        request.url.path
+        if request.url.path in {"/predict", "/predict/base64", "/ready", "/health", "/metrics"}
+        else "other"
+    )
     HTTP_REQUESTS.labels(route, str(response.status_code)).inc()
     HTTP_LATENCY.labels(route).observe(latency_ms / 1000)
     if response.status_code >= 400:
         HTTP_ERRORS.labels(route, str(response.status_code)).inc()
-    log.info(json.dumps({"event": "http_request", "request_id": request_id, "path": route,
-                         "status": response.status_code, "latency_ms": round(latency_ms, 2),
-                         "model_version": STATE["version"]}))
+    log.info(
+        json.dumps(
+            {
+                "event": "http_request",
+                "request_id": request_id,
+                "path": route,
+                "status": response.status_code,
+                "latency_ms": round(latency_ms, 2),
+                "model_version": STATE["version"],
+            }
+        )
+    )
     return response
 
 
@@ -418,21 +443,42 @@ async def score_bytes(request: Request, contents: bytes) -> PredictResponse:
         slots.release()
 
 
-ERRORS = {400: {"description": "Malformed or unreadable image"}, 413: {"description": "5 MiB or 20 megapixel limit exceeded"},
-          415: {"description": "Unsupported image type"}, 422: {"description": "Optical rejection or invalid request fields"},
-          503: {"description": "Model unavailable or inference capacity busy"}}
+ERRORS = {
+    400: {"description": "Malformed or unreadable image"},
+    413: {"description": "5 MiB or 20 megapixel limit exceeded"},
+    415: {"description": "Unsupported image type"},
+    422: {"description": "Optical rejection or invalid request fields"},
+    503: {"description": "Model unavailable or inference capacity busy"},
+}
 
 
-@app.post("/predict", response_model=PredictResponse, responses=ERRORS, openapi_extra={
-    "requestBody": {"required": True, "content": {
-        "image/jpeg": {"schema": {"type": "string", "format": "binary"}},
-        "image/png": {"schema": {"type": "string", "format": "binary"}},
-        "multipart/form-data": {"schema": {"type": "object", "required": ["file"], "properties": {
-            "file": {"type": "string", "format": "binary"}}}}}}})
+@app.post(
+    "/predict",
+    response_model=PredictResponse,
+    responses=ERRORS,
+    openapi_extra={
+        "requestBody": {
+            "required": True,
+            "content": {
+                "image/jpeg": {"schema": {"type": "string", "format": "binary"}},
+                "image/png": {"schema": {"type": "string", "format": "binary"}},
+                "multipart/form-data": {
+                    "schema": {
+                        "type": "object",
+                        "required": ["file"],
+                        "properties": {"file": {"type": "string", "format": "binary"}},
+                    }
+                },
+            },
+        }
+    },
+)
 async def predict(request: Request) -> PredictResponse:
     """JPEG/PNG bytes or multipart `file`; maximum 5 MiB and 20 megapixels."""
     content_type = request.headers.get("content-type", "").split(";")[0].lower()
-    contents = await bounded_body(request, MAX_PAYLOAD + 65536 if content_type == "multipart/form-data" else MAX_PAYLOAD)
+    contents = await bounded_body(
+        request, MAX_PAYLOAD + 65536 if content_type == "multipart/form-data" else MAX_PAYLOAD
+    )
     if content_type == "multipart/form-data":
         request._body = contents
         try:
@@ -450,12 +496,21 @@ async def predict(request: Request) -> PredictResponse:
     return await score_bytes(request, contents)
 
 
-@app.post("/predict/base64", response_model=PredictResponse, responses=ERRORS, openapi_extra={
-    "requestBody": {"required": True, "content": {"application/json": {
-        "schema": PredictBase64Request.model_json_schema()}}}})
+@app.post(
+    "/predict/base64",
+    response_model=PredictResponse,
+    responses=ERRORS,
+    openapi_extra={
+        "requestBody": {
+            "required": True,
+            "content": {"application/json": {"schema": PredictBase64Request.model_json_schema()}},
+        }
+    },
+)
 async def predict_base64(request: Request) -> PredictResponse:
     """Strict base64 JPEG/PNG in JSON; maximum decoded image size 5 MiB."""
     from pydantic import ValidationError
+
     body = await bounded_body(request, 4 * ((MAX_PAYLOAD + 2) // 3) + 1024)
     try:
         payload = PredictBase64Request.model_validate_json(body)

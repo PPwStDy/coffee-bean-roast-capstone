@@ -1,4 +1,5 @@
 """Configuration for coffee bean roast classification using Iteration4 Swin-T."""
+
 from __future__ import annotations
 
 import os
@@ -7,7 +8,7 @@ from pathlib import Path
 # Paths
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = Path(os.environ.get("DATA_DIR", ROOT_DIR / "data" / "coffee_bean_roast"))
-REPORTS_DIR = ROOT_DIR / "reports"
+REPORTS_DIR = Path(os.environ.get("REPORTS_DIR", ROOT_DIR / "reports"))
 MODELS_DIR = ROOT_DIR / "reports"
 MODEL_PATH = Path(os.environ.get("MODEL_PATH", REPORTS_DIR / "model.onnx"))
 TORCHSCRIPT_MODEL_PATH = Path(os.environ.get("TORCHSCRIPT_MODEL_PATH", REPORTS_DIR / "model.pt"))

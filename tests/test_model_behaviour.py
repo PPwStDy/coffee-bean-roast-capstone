@@ -3,6 +3,7 @@
 Validates that model outputs satisfy physical and mathematical invariants,
 independent of aggregate accuracy metrics.
 """
+
 from __future__ import annotations
 
 import numpy as np

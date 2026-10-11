@@ -1,4 +1,5 @@
 """Roast dataset contracts and Iteration4's color-preserving preprocessing."""
+
 from __future__ import annotations
 
 import hashlib
@@ -24,20 +25,28 @@ def pixel_hash(path: Path) -> str:
 
 
 def get_train_transforms():
-    return T.Compose([
-        T.RandomResizedCrop(IMAGE_SIZE, scale=(0.85, 1.0), antialias=True),
-        T.RandomHorizontalFlip(0.5), T.RandomVerticalFlip(0.5), T.RandomRotation(180),
-        T.ToImage(), T.ToDtype(torch.float32, scale=True),
-        T.Normalize(IMAGENET_MEAN, IMAGENET_STD),
-    ])
+    return T.Compose(
+        [
+            T.RandomResizedCrop(IMAGE_SIZE, scale=(0.85, 1.0), antialias=True),
+            T.RandomHorizontalFlip(0.5),
+            T.RandomVerticalFlip(0.5),
+            T.RandomRotation(180),
+            T.ToImage(),
+            T.ToDtype(torch.float32, scale=True),
+            T.Normalize(IMAGENET_MEAN, IMAGENET_STD),
+        ]
+    )
 
 
 def get_eval_transforms():
-    return T.Compose([
-        T.Resize((IMAGE_SIZE, IMAGE_SIZE), antialias=True),
-        T.ToImage(), T.ToDtype(torch.float32, scale=True),
-        T.Normalize(IMAGENET_MEAN, IMAGENET_STD),
-    ])
+    return T.Compose(
+        [
+            T.Resize((IMAGE_SIZE, IMAGE_SIZE), antialias=True),
+            T.ToImage(),
+            T.ToDtype(torch.float32, scale=True),
+            T.Normalize(IMAGENET_MEAN, IMAGENET_STD),
+        ]
+    )
 
 
 def validate_dataset(data_dir: Path = DATA_DIR) -> dict[str, int]:
@@ -48,7 +57,11 @@ def validate_dataset(data_dir: Path = DATA_DIR) -> dict[str, int]:
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else None
     records = {}
     if manifest:
-        if manifest["classes"] != CLASSES or manifest["prepared_counts"] != {"train": 835, "valid": 178, "test": 181}:
+        if manifest["classes"] != CLASSES or manifest["prepared_counts"] != {
+            "train": 835,
+            "valid": 178,
+            "test": 181,
+        }:
             raise ValueError("Manifest class order or frozen split counts changed")
         for record in manifest["source_records"]:
             records.setdefault(record["prepared_path"], []).append(record)
@@ -83,14 +96,21 @@ def validate_dataset(data_dir: Path = DATA_DIR) -> dict[str, int]:
 def setup_data_directory(dest_dir: Path = DATA_DIR) -> None:
     if SOURCE_DATASET_PATH.resolve() != Path(dest_dir).resolve():
         from src.prepare_roast_data import prepare_dataset
+
         prepare_dataset(SOURCE_DATASET_PATH, Path(dest_dir))
     validate_dataset(Path(dest_dir))
 
 
 def get_dataloaders(data_dir: Path = DATA_DIR, batch_size=32, num_workers=0):
     validate_dataset(data_dir)
-    datasets = [ImageFolder(Path(data_dir) / split, transform=(
-        get_train_transforms() if split == "train" else get_eval_transforms()
-    )) for split in ("train", "valid", "test")]
-    return tuple(DataLoader(dataset, batch_size=batch_size, shuffle=(i == 0),
-                            num_workers=num_workers) for i, dataset in enumerate(datasets))
+    datasets = [
+        ImageFolder(
+            Path(data_dir) / split,
+            transform=(get_train_transforms() if split == "train" else get_eval_transforms()),
+        )
+        for split in ("train", "valid", "test")
+    ]
+    return tuple(
+        DataLoader(dataset, batch_size=batch_size, shuffle=(i == 0), num_workers=num_workers)
+        for i, dataset in enumerate(datasets)
+    )

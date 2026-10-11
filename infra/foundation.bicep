@@ -129,7 +129,7 @@ resource alert 'Microsoft.Insights/scheduledQueryRules@2023-12-01' = {
     severity: 2
     enabled: true
     scopes: [logs.id]
-    evaluationFrequency: 'PT1M'
+    evaluationFrequency: 'PT5M'
     windowSize: 'PT5M'
     autoMitigate: true
     skipQueryValidation: true

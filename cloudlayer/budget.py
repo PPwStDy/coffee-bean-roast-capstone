@@ -1,4 +1,5 @@
 """Budget gate uses captured billing, regional retail prices, and dated exchange rates."""
+
 import json
 import math
 from pathlib import Path
@@ -29,9 +30,16 @@ def calculate(days=7, active_hours=3, training_usd=0):
     prices = load("azure-retail-prices.json")["items"]
 
     def rate(service, meter, product=None, sku=None, tier=None):
-        found = [p for p in prices if p["serviceName"] == service and p["meterName"] == meter
-                 and (not product or p["productName"] == product) and (not sku or p["skuName"] == sku)
-                 and (tier is None or p["tierMinimumUnits"] == tier) and p["retailPrice"] > 0]
+        found = [
+            p
+            for p in prices
+            if p["serviceName"] == service
+            and p["meterName"] == meter
+            and (not product or p["productName"] == product)
+            and (not sku or p["skuName"] == sku)
+            and (tier is None or p["tierMinimumUnits"] == tier)
+            and p["retailPrice"] > 0
+        ]
         if not found:
             raise ValueError(f"No verified regional price for {service}/{meter}")
         return max(p["retailPrice"] for p in found)
@@ -46,24 +54,38 @@ def calculate(days=7, active_hours=3, training_usd=0):
         "log_alert_month": rate("Azure Monitor", "Alerts System Log Monitored at 1 Minute Frequency"),
     }
     costs = {
-        "serving": active_hours * 3600 * 2 * (2 * rates["cpu_second"] + 4 * rates["gib_second"]) + .01,
-        "storage": 2 * days / 30 * rates["storage_gb_month"] + .05,
+        "serving": active_hours * 3600 * 2 * (2 * rates["cpu_second"] + 4 * rates["gib_second"]) + 0.01,
+        "storage": 2 * days / 30 * rates["storage_gb_month"] + 0.05,
         "registry": days * rates["registry_day"],
-        "monitoring": days * .1 * rates["log_ingestion_gb"] + days / 30 * rates["log_alert_month"],
+        "monitoring": days * 0.1 * rates["log_ingestion_gb"] + days / 30 * rates["log_alert_month"],
         "training": training_usd,
     }
     forecast = sum(costs.values()) * fx * 1.25
-    result = {"allowance_thb": 800, "conservative_prior_subscription_spend_thb": spent,
-              "remaining_allowance_thb": remaining, "exchange": exchange, "rates_usd": rates,
-              "forecast_usd_by_component": costs, "forecast_thb_including_25_percent_margin": forecast,
-              "assumptions": {"retention_days": days, "active_hours_max_two_replicas": active_hours,
-                              "log_cap_gb_day": .1, "blob_gb": 2, "training": "local MPS; no cloud training charges",
-                              "free_grants": "excluded conservatively", "egress": "same-region; add cross-region transfer if used"},
-              "billing_budget_usd_rounded_down": math.floor(remaining / fx),
-              "passed": forecast <= remaining}
+    result = {
+        "allowance_thb": 800,
+        "conservative_prior_subscription_spend_thb": spent,
+        "remaining_allowance_thb": remaining,
+        "exchange": exchange,
+        "rates_usd": rates,
+        "forecast_usd_by_component": costs,
+        "forecast_thb_including_25_percent_margin": forecast,
+        "assumptions": {
+            "retention_days": days,
+            "active_hours_max_two_replicas": active_hours,
+            "log_cap_gb_day": 0.1,
+            "blob_gb": 2,
+            "training": "local MPS; no cloud training charges",
+            "free_grants": "excluded conservatively",
+            "egress": "same-region; add cross-region transfer if used",
+        },
+        "billing_budget_usd_rounded_down": math.floor(remaining / fx),
+        "passed": forecast <= remaining,
+    }
     (EVIDENCE / "budget-forecast.json").write_text(json.dumps(result, indent=2) + "\n")
     if not result["passed"]:
-        raise RuntimeError(f"Deployment blocked: {forecast:.2f} THB forecast exceeds {remaining:.2f} THB remaining")
+        raise RuntimeError(
+            f"Deployment blocked: {forecast:.2f} THB forecast exceeds {remaining:.2f} THB remaining"
+        )
     return result
 
 

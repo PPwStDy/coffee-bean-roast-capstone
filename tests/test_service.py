@@ -4,6 +4,7 @@ Verifies HTTP contracts, telemetry headers, and the closed-loop deliberate failu
 asserting that degenerate glare/occlusion frames are intercepted and rejected with HTTP 422
 before softmax hallucination can corrupt downstream sorting telemetry.
 """
+
 from __future__ import annotations
 
 import io
@@ -69,6 +70,7 @@ def test_predict_valid_textured_bean_image(client):
 
 
 # --- DELIBERATE FAILURE TESTS (RUBRIC CRITERION R4) ---
+
 
 def test_deliberate_failure_specular_glare_rejected(client):
     """Engineered Fault Injection: Specular optical glare (pure white frame).

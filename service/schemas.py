@@ -1,4 +1,5 @@
 """Pydantic schemas for the Coffee Bean Roast Classification inference API."""
+
 from __future__ import annotations
 
 from pydantic import BaseModel, Field
@@ -31,7 +32,9 @@ class PredictResponse(BaseModel):
 
 class HealthResponse(BaseModel):
     status: str = Field("alive", json_schema_extra={"example": "alive"})
-    service: str = Field("coffee-bean-roast-classification", json_schema_extra={"example": "coffee-bean-roast-classification"})
+    service: str = Field(
+        "coffee-bean-roast-classification", json_schema_extra={"example": "coffee-bean-roast-classification"}
+    )
 
 
 class ReadyResponse(BaseModel):

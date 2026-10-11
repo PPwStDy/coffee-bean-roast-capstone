@@ -1,4 +1,5 @@
 """Data contracts for the prepared coffee roast dataset."""
+
 from __future__ import annotations
 
 import json

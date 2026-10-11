@@ -1,4 +1,5 @@
 """Configure the shared DVC remote using the environment contract and identity authentication."""
+
 import subprocess
 from urllib.parse import urlsplit
 

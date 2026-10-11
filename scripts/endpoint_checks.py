@@ -1,4 +1,5 @@
 """Acceptance checks shared by container integration and candidate promotion."""
+
 import argparse
 import base64
 import io
@@ -36,7 +37,7 @@ def check(url, version=None):
             result = response.json()
             assert list(result["probabilities"]) == CLASSES
             assert all(0 <= value <= 1 for value in result["probabilities"].values())
-            assert abs(sum(result["probabilities"].values()) - 1) < .001
+            assert abs(sum(result["probabilities"].values()) - 1) < 0.001
             assert CLASSES[result["predicted_class_id"]] == result["predicted_class"]
             assert response.headers["x-model-version"] == result["model_version"] == loaded_version
             results.append({"fixture": label, "status": response.status_code, "result": result})
@@ -45,10 +46,16 @@ def check(url, version=None):
         for color in [0, 255]:
             stream = io.BytesIO()
             Image.new("RGB", (224, 224), color).save(stream, "PNG")
-            response = client.post("/predict", content=stream.getvalue(), headers={"content-type": "image/png"})
+            response = client.post(
+                "/predict", content=stream.getvalue(), headers={"content-type": "image/png"}
+            )
             assert response.status_code == 422, response.text
-            results.append({"fault": "black" if color == 0 else "white", "status": 422, "response": response.json()})
-        assert client.post("/predict", content=b"bad", headers={"content-type": "image/png"}).status_code == 400
+            results.append(
+                {"fault": "black" if color == 0 else "white", "status": 422, "response": response.json()}
+            )
+        assert (
+            client.post("/predict", content=b"bad", headers={"content-type": "image/png"}).status_code == 400
+        )
         assert client.post("/predict/base64", json={"image_base64": "%%%"}).status_code == 400
         metrics = client.get("/metrics")
         assert metrics.status_code == 200

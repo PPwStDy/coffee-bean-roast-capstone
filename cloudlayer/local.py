@@ -1,4 +1,5 @@
 """Local filesystem storage adapter implementation."""
+
 from __future__ import annotations
 
 import shutil

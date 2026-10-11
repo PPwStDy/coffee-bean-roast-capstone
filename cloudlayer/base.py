@@ -1,4 +1,5 @@
 """Base abstraction for cloud storage layer (Three-Layer Portability Contract)."""
+
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
@@ -54,4 +55,3 @@ class CloudAdapter(ABC):
 
     @abstractmethod
     def teardown(self, tags: dict) -> list[str]: ...
-

@@ -1,4 +1,5 @@
 """Iteration4's Swin-T wrapper, preserving the checkpoint's state-dictionary keys."""
+
 from __future__ import annotations
 
 import torch.nn as nn
@@ -23,8 +24,10 @@ class PretrainedSwinT(nn.Module):
         head = list(self.swin.head.parameters())
         head_ids = {id(p) for p in head}
         backbone = [p for p in self.parameters() if p.requires_grad and id(p) not in head_ids]
-        return [{"params": backbone, "lr": backbone_lr, "weight_decay": weight_decay},
-                {"params": head, "lr": head_lr, "weight_decay": weight_decay}]
+        return [
+            {"params": backbone, "lr": backbone_lr, "weight_decay": weight_decay},
+            {"params": head, "lr": head_lr, "weight_decay": weight_decay},
+        ]
 
 
 def build_model(num_classes=NUM_CLASSES, pretrained=False):

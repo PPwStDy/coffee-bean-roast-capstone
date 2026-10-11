@@ -1,4 +1,5 @@
 """Automated, reproducible training pipeline with MLflow tracking and lineage."""
+
 from __future__ import annotations
 
 import hashlib
@@ -47,13 +48,16 @@ def set_seed(seed: int = 42) -> None:
 
 def get_dataset_revision() -> str:
     """Return the DVC directory hash used for this training run."""
-    pointer = DATA_DIR.with_suffix(".dvc")
+    pointer = ROOT_DIR / "data/coffee_bean_roast.dvc"
     if not pointer.exists():
         raise FileNotFoundError(f"Missing DVC dataset pointer: {pointer}")
     match = re.search(r"^\s*-\s+md5:\s*(\S+)", pointer.read_text(encoding="utf-8"), re.MULTILINE)
     if not match:
         raise ValueError(f"Could not read dataset revision from {pointer}")
-    return match.group(1)
+    revision = match.group(1)
+    if os.environ.get("DATASET_REVISION", revision) != revision:
+        raise ValueError("Managed job dataset revision differs from packaged DVC pointer")
+    return revision
 
 
 def train_epoch(model: nn.Module, loader, criterion, optimizer, device, scheduler) -> tuple[float, float]:
@@ -81,7 +85,9 @@ def train_epoch(model: nn.Module, loader, criterion, optimizer, device, schedule
     return running_loss / total, correct / total
 
 
-def evaluate(model: nn.Module, loader, criterion, device) -> tuple[float, float, float, np.ndarray, np.ndarray]:
+def evaluate(
+    model: nn.Module, loader, criterion, device
+) -> tuple[float, float, float, np.ndarray, np.ndarray]:
     model.eval()
     running_loss = 0.0
     correct = 0
@@ -113,9 +119,24 @@ def train(
     lr: float = 5e-5,
     seed: int = 42,
 ) -> dict:
-    code_revision = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT_DIR, text=True).strip()
-    if subprocess.check_output(["git", "status", "--porcelain", "--untracked-files=no"], cwd=ROOT_DIR, text=True).strip():
-        raise RuntimeError("Commit source changes before training so model lineage identifies actual code")
+    packaged = ROOT_DIR / "provenance/source_revision.json"
+    if packaged.exists():
+        source = json.loads(packaged.read_text())
+        code_revision = source["git_commit"]
+        if os.environ.get("GITHUB_SHA", code_revision) != code_revision:
+            raise ValueError("Managed job Git revision differs from packaged source")
+        for name, expected in source["sha256"].items():
+            path = (ROOT_DIR / name).resolve()
+            if not path.is_relative_to(ROOT_DIR) or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+                raise ValueError(f"Packaged source hash mismatch: {name}")
+    else:
+        code_revision = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT_DIR, text=True).strip()
+        if subprocess.check_output(
+            ["git", "status", "--porcelain", "--untracked-files=no"], cwd=ROOT_DIR, text=True
+        ).strip():
+            raise RuntimeError(
+                "Commit source changes before training so model lineage identifies actual code"
+            )
     started = time.perf_counter()
     set_seed(seed)
     torch.set_num_threads(2)
@@ -125,14 +146,21 @@ def train(
 
     train_loader, val_loader, test_loader = get_dataloaders(DATA_DIR, batch_size=batch_size)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
+    device = torch.device(
+        "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+    )
     print(f"Training on device: {device}; batch size={batch_size}", flush=True)
 
     model = build_model(num_classes=NUM_CLASSES, pretrained=True).to(device)
     criterion = nn.CrossEntropyLoss(label_smoothing=0.05)
     optimizer = AdamW(model.get_param_groups(backbone_lr=lr, head_lr=1e-3))
-    scheduler = OneCycleLR(optimizer, max_lr=[lr * 4, 1e-3 * 2.5],
-                           steps_per_epoch=len(train_loader), epochs=epochs, pct_start=0.2)
+    scheduler = OneCycleLR(
+        optimizer,
+        max_lr=[lr * 4, 1e-3 * 2.5],
+        steps_per_epoch=len(train_loader),
+        epochs=epochs,
+        pct_start=0.2,
+    )
 
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     mlflow.set_experiment(MLFLOW_EXPERIMENT_NAME)
@@ -142,26 +170,28 @@ def train(
     best_weights_path = REPORTS_DIR / "model_best.pth"
 
     with mlflow.start_run(run_name=f"run_{model_version}"):
-        mlflow.log_params({
-            "model_version": model_version,
-            "architecture": ARCHITECTURE,
-            "epochs": epochs,
-            "batch_size": batch_size,
-            "backbone_learning_rate": lr,
-            "head_learning_rate": 1e-3,
-            "label_smoothing": 0.05,
-            "scheduler": "OneCycleLR",
-            "initialization": "ImageNet; imported checkpoint not used",
-            "optimizer": "AdamW",
-            "seed": seed,
-            "num_classes": NUM_CLASSES,
-            "classes": CLASSES,
-            "dataset_dvc_hash": dataset_revision,
-            "code_revision": code_revision,
-            "torch_version": torch.__version__,
-            "torchvision_version": torchvision.__version__,
-            "numpy_version": np.__version__,
-        })
+        mlflow.log_params(
+            {
+                "model_version": model_version,
+                "architecture": ARCHITECTURE,
+                "epochs": epochs,
+                "batch_size": batch_size,
+                "backbone_learning_rate": lr,
+                "head_learning_rate": 1e-3,
+                "label_smoothing": 0.05,
+                "scheduler": "OneCycleLR",
+                "initialization": "ImageNet; imported checkpoint not used",
+                "optimizer": "AdamW",
+                "seed": seed,
+                "num_classes": NUM_CLASSES,
+                "classes": CLASSES,
+                "dataset_dvc_hash": dataset_revision,
+                "code_revision": code_revision,
+                "torch_version": torch.__version__,
+                "torchvision_version": torchvision.__version__,
+                "numpy_version": np.__version__,
+            }
+        )
 
         history = []
         best_epoch = 0
@@ -169,18 +199,31 @@ def train(
             train_loss, train_acc = train_epoch(model, train_loader, criterion, optimizer, device, scheduler)
             val_loss, val_acc, val_f1, _, _ = evaluate(model, val_loader, criterion, device)
 
-            print(f"Epoch {epoch:02d}/{epochs:02d} - Train Loss: {train_loss:.4f} Acc: {train_acc:.4f} | Val Loss: {val_loss:.4f} Acc: {val_acc:.4f} Macro-F1: {val_f1:.4f}")
+            print(
+                f"Epoch {epoch:02d}/{epochs:02d} - Train Loss: {train_loss:.4f} Acc: {train_acc:.4f} | Val Loss: {val_loss:.4f} Acc: {val_acc:.4f} Macro-F1: {val_f1:.4f}"
+            )
 
-            mlflow.log_metrics({
-                "train_loss": train_loss,
-                "train_acc": train_acc,
-                "val_loss": val_loss,
-                "val_acc": val_acc,
-                "val_f1": val_f1,
-            }, step=epoch)
+            mlflow.log_metrics(
+                {
+                    "train_loss": train_loss,
+                    "train_acc": train_acc,
+                    "val_loss": val_loss,
+                    "val_acc": val_acc,
+                    "val_f1": val_f1,
+                },
+                step=epoch,
+            )
 
-            history.append({"epoch": epoch, "train_loss": train_loss, "train_accuracy": train_acc,
-                            "validation_loss": val_loss, "validation_accuracy": val_acc, "validation_macro_f1": val_f1})
+            history.append(
+                {
+                    "epoch": epoch,
+                    "train_loss": train_loss,
+                    "train_accuracy": train_acc,
+                    "validation_loss": val_loss,
+                    "validation_accuracy": val_acc,
+                    "validation_macro_f1": val_f1,
+                }
+            )
             (REPORTS_DIR / "training_history.json").write_text(json.dumps(history, indent=2) + "\n")
             if val_loss < best_val_loss:
                 best_epoch = epoch
@@ -194,16 +237,31 @@ def train(
             "code_revision": code_revision,
             "checkpoint_sha256": hashlib.sha256(best_weights_path.read_bytes()).hexdigest(),
             "evaluation_status": "retrained_on_deduplicated_splits",
-            "split_counts": {"train": len(train_loader.dataset), "valid": len(val_loader.dataset), "test": len(test_loader.dataset)},
+            "split_counts": {
+                "train": len(train_loader.dataset),
+                "valid": len(val_loader.dataset),
+                "test": len(test_loader.dataset),
+            },
             "test_evaluation": "reserved for selected export; not evaluated during training",
             "best_epoch": best_epoch,
+            "epochs_completed": len(history),
             "best_validation_loss": best_val_loss,
             "seed": seed,
             "initialization": "torchvision Swin_T_Weights.IMAGENET1K_V1",
-            "parameters": {"epochs": epochs, "batch_size": batch_size, "backbone_lr": lr,
-                           "head_lr": 1e-3, "weight_decay": .01, "label_smoothing": .05,
-                           "scheduler": "OneCycleLR", "pct_start": .2},
-            "dependencies": {p: importlib.metadata.version(p) for p in ["torch", "torchvision", "numpy", "pillow", "mlflow", "onnx", "onnxruntime"]},
+            "parameters": {
+                "epochs": epochs,
+                "batch_size": batch_size,
+                "backbone_lr": lr,
+                "head_lr": 1e-3,
+                "weight_decay": 0.01,
+                "label_smoothing": 0.05,
+                "scheduler": "OneCycleLR",
+                "pct_start": 0.2,
+            },
+            "dependencies": {
+                p: importlib.metadata.version(p)
+                for p in ["torch", "torchvision", "numpy", "pillow", "mlflow", "onnx", "onnxruntime"]
+            },
             "device": str(device),
             "training_duration_seconds": time.perf_counter() - started,
             "mlflow_run_id": mlflow.active_run().info.run_id,

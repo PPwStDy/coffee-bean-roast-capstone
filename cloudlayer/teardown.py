@@ -1,4 +1,5 @@
 """Delete only the dedicated tagged capstone group; retain all shared lab resources."""
+
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,22 +21,46 @@ def teardown(config, tags):
     resources = az("resource", "list", "--resource-group", GROUP)
     if any(any(r.get("tags", {}).get(k) != v for k, v in EXPECTED.items()) for r in resources):
         raise ValueError("An unowned resource exists inside the group; refusing group deletion")
-    shared = az("ml", "workspace", "show", "--name", config["AZURE_ML_WORKSPACE"],
-                "--resource-group", config["AZURE_ML_RESOURCE_GROUP"])
+    shared = az(
+        "ml",
+        "workspace",
+        "show",
+        "--name",
+        config["AZURE_ML_WORKSPACE"],
+        "--resource-group",
+        config["AZURE_ML_RESOURCE_GROUP"],
+    )
     ids = [r["id"] for r in resources]
     az("group", "delete", "--name", GROUP, "--yes")
     if az("group", "exists", "--name", GROUP):
         raise RuntimeError("Group still exists after deletion")
-    after = az("ml", "workspace", "show", "--name", config["AZURE_ML_WORKSPACE"],
-               "--resource-group", config["AZURE_ML_RESOURCE_GROUP"])
+    after = az(
+        "ml",
+        "workspace",
+        "show",
+        "--name",
+        config["AZURE_ML_WORKSPACE"],
+        "--resource-group",
+        config["AZURE_ML_RESOURCE_GROUP"],
+    )
     if after["id"] != shared["id"]:
         raise RuntimeError("Shared workspace preservation could not be verified")
-    Path("reports/evidence/teardown.json").write_text(json.dumps({
-        "time": datetime.now(timezone.utc).isoformat(), "deleted_resources": ids,
-        "group_absent": True, "shared_workspace_preserved": after["id"]}, indent=2) + "\n")
+    Path("reports/evidence/teardown.json").write_text(
+        json.dumps(
+            {
+                "time": datetime.now(timezone.utc).isoformat(),
+                "deleted_resources": ids,
+                "group_absent": True,
+                "shared_workspace_preserved": after["id"],
+            },
+            indent=2,
+        )
+        + "\n"
+    )
     return ids
 
 
 if __name__ == "__main__":
     from cloudlayer.config import settings
+
     teardown(settings(), EXPECTED)

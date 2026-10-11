@@ -1,4 +1,5 @@
 """Send a synthetic solid-color frame to demonstrate the occlusion rejection."""
+
 from __future__ import annotations
 
 import argparse

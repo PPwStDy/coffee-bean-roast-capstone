@@ -1,4 +1,5 @@
 """Azure implementation of the complete course interface."""
+
 import re
 import subprocess
 import tempfile
@@ -22,6 +23,7 @@ class AzureCloudAdapter(CloudAdapter):
     def _blob(self, uri):
         from azure.identity import DefaultAzureCredential
         from azure.storage.blob import BlobClient
+
         if not uri.startswith(self.config["BLOB_URI"].rstrip("/") + "/"):
             raise ValueError("Object is outside the configured storage root")
         return BlobClient.from_blob_url(uri, credential=DefaultAzureCredential())
@@ -57,29 +59,53 @@ class AzureCloudAdapter(CloudAdapter):
         if not required <= args.keys():
             raise ValueError(f"Training requires {sorted(required)}")
         import yaml
+
         spec = {
             "$schema": "https://azuremlschemas.azureedge.net/latest/commandJob.schema.json",
-            "type": "command", "display_name": "capstone-roast-training", "code": str(Path(args["code"]).resolve()),
-            "command": "python -m src.train --epochs 20 --batch-size 32 --seed 42",
-            "environment": {"image": image_uri}, "compute": self.config["TRAINING_TARGET"],
+            "type": "command",
+            "display_name": "capstone-roast-training",
+            "code": str(Path(args["code"]).resolve()),
+            "command": "DATA_DIR=${{inputs.data}} REPORTS_DIR=${{outputs.release}} python -m src.train --epochs 20 --batch-size 8 --seed 42",
+            "environment": {"image": image_uri},
+            "compute": self.config["TRAINING_TARGET"],
             "inputs": {"data": {"type": "uri_folder", "path": args["data_uri"], "mode": "download"}},
-            "environment_variables": {"DATA_DIR": "${{inputs.data}}", "GITHUB_SHA": args["git_commit"],
-                                      "DATASET_REVISION": args["dataset_revision"]},
+            "environment_variables": {
+                "GITHUB_SHA": args["git_commit"],
+                "DATASET_REVISION": args["dataset_revision"],
+            },
             "outputs": {"release": {"type": "uri_folder", "mode": "upload"}},
             "tags": {"course": "itcs355", "student": "6688218", "lab": "capstone"},
         }
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / "job.yml"
             path.write_text(yaml.safe_dump(spec))
-            result = az("ml", "job", "create", "--file", path, "--workspace-name", self.workspace,
-                        "--resource-group", self.ml_group)
+            result = az(
+                "ml",
+                "job",
+                "create",
+                "--file",
+                path,
+                "--workspace-name",
+                self.workspace,
+                "--resource-group",
+                self.ml_group,
+            )
         return result["name"]
 
     def wait_training(self, job_id):
         deadline = time.monotonic() + 6 * 3600
         while time.monotonic() < deadline:
-            job = az("ml", "job", "show", "--name", job_id, "--workspace-name", self.workspace,
-                     "--resource-group", self.ml_group)
+            job = az(
+                "ml",
+                "job",
+                "show",
+                "--name",
+                job_id,
+                "--workspace-name",
+                self.workspace,
+                "--resource-group",
+                self.ml_group,
+            )
             if job["status"] == "Completed":
                 return job
             if job["status"] in {"Failed", "Canceled", "NotResponding"}:
@@ -88,9 +114,25 @@ class AzureCloudAdapter(CloudAdapter):
         raise TimeoutError(f"Training {job_id} exceeded six hours")
 
     def register_model(self, model_uri, name):
-        result = az("ml", "model", "create", "--name", name, "--path", model_uri, "--type", "custom_model",
-                    "--workspace-name", self.workspace, "--resource-group", self.ml_group,
-                    "--tags", "course=itcs355", "student=6688218", "lab=capstone")
+        result = az(
+            "ml",
+            "model",
+            "create",
+            "--name",
+            name,
+            "--path",
+            model_uri,
+            "--type",
+            "custom_model",
+            "--workspace-name",
+            self.workspace,
+            "--resource-group",
+            self.ml_group,
+            "--tags",
+            "course=itcs355",
+            "student=6688218",
+            "lab=capstone",
+        )
         return result["id"]
 
     def deploy(self, model_ref, endpoint, instance):
@@ -99,6 +141,7 @@ class AzureCloudAdapter(CloudAdapter):
         if not re.fullmatch(r"[^\s]+@sha256:[0-9a-f]{64}", model_ref):
             raise ValueError("Deployment requires an immutable image digest")
         from cloudlayer.release import deploy_candidate
+
         return deploy_candidate(self.config, model_ref, endpoint)
 
     def invoke(self, endpoint, payload):
@@ -114,16 +157,29 @@ class AzureCloudAdapter(CloudAdapter):
             raise ValueError("Unsupported metric unit")
         from azure.identity import DefaultAzureCredential
         from datetime import datetime, timezone
+
         resource = self.config["METRICS_RESOURCE_ID"]
         token = DefaultAzureCredential().get_token("https://monitoring.azure.com/.default").token
-        body = {"time": datetime.now(timezone.utc).isoformat(), "data": {
-            "baseData": {"metric": name, "namespace": self.config["METRICS_NAMESPACE"],
-                         "dimNames": ["unit"], "series": [{"dimValues": [unit], "min": value,
-                         "max": value, "sum": value, "count": 1}]}}}
-        response = httpx.post(f"https://{self.config['REGION']}.monitoring.azure.com{resource}/metrics",
-                              headers={"Authorization": f"Bearer {token}"}, json=body, timeout=30)
+        body = {
+            "time": datetime.now(timezone.utc).isoformat(),
+            "data": {
+                "baseData": {
+                    "metric": name,
+                    "namespace": self.config["METRICS_NAMESPACE"],
+                    "dimNames": ["unit"],
+                    "series": [{"dimValues": [unit], "min": value, "max": value, "sum": value, "count": 1}],
+                }
+            },
+        }
+        response = httpx.post(
+            f"https://{self.config['REGION']}.monitoring.azure.com{resource}/metrics",
+            headers={"Authorization": f"Bearer {token}"},
+            json=body,
+            timeout=30,
+        )
         response.raise_for_status()
 
     def teardown(self, tags):
         from cloudlayer.teardown import teardown
+
         return teardown(self.config, tags)

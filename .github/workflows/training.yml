@@ -28,7 +28,7 @@ jobs:
           AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
         run: |
           uv run --frozen dvc pull data/coffee_bean_roast.dvc
-          uv run --frozen python -m src.train --epochs 20 --batch-size 32 --seed 42
+          uv run --frozen python -m src.train --epochs 20 --batch-size 8 --seed 42
           uv run --frozen python -m src.export_onnx --evaluate-test
           uv run --frozen dvc add releases/*/
           uv run --frozen dvc push releases/*.dvc
