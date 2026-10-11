@@ -1,0 +1,92 @@
+[
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/quotas/ManagedEnvironmentCount",
+    "name": "ManagedEnvironmentCount",
+    "properties": {
+      "isQuotaApplicable": true,
+      "limit": {
+        "limitObjectType": "LimitValue",
+        "limitType": "Independent",
+        "value": 1
+      },
+      "name": {
+        "localizedValue": "Managed Environment Count",
+        "value": "ManagedEnvironmentCount"
+      },
+      "properties": {}
+    },
+    "type": "Microsoft.Quota/Quotas"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/quotas/SubscriptionDedicatedNCA100Gpus",
+    "name": "SubscriptionDedicatedNCA100Gpus",
+    "properties": {
+      "isQuotaApplicable": false,
+      "limit": {
+        "limitObjectType": "LimitValue",
+        "limitType": "Independent",
+        "value": 0
+      },
+      "name": {
+        "localizedValue": "Subscription Dedicated NCA 100 Gpus",
+        "value": "SubscriptionDedicatedNCA100Gpus"
+      },
+      "properties": {}
+    },
+    "type": "Microsoft.Quota/Quotas"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/quotas/SessionPools",
+    "name": "SessionPools",
+    "properties": {
+      "isQuotaApplicable": true,
+      "limit": {
+        "limitObjectType": "LimitValue",
+        "limitType": "Independent",
+        "value": 1
+      },
+      "name": {
+        "localizedValue": "Session Pools",
+        "value": "SessionPools"
+      },
+      "properties": {}
+    },
+    "type": "Microsoft.Quota/Quotas"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/quotas/ExpressEnvironmentCount",
+    "name": "ExpressEnvironmentCount",
+    "properties": {
+      "isQuotaApplicable": false,
+      "limit": {
+        "limitObjectType": "LimitValue",
+        "limitType": "Independent",
+        "value": 400
+      },
+      "name": {
+        "localizedValue": "Express Environment Count",
+        "value": "ExpressEnvironmentCount"
+      },
+      "properties": {}
+    },
+    "type": "Microsoft.Quota/Quotas"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/quotas/SandboxCores",
+    "name": "SandboxCores",
+    "properties": {
+      "isQuotaApplicable": false,
+      "limit": {
+        "limitObjectType": "LimitValue",
+        "limitType": "Independent",
+        "value": 1
+      },
+      "name": {
+        "localizedValue": "Sandbox Cores",
+        "value": "SandboxCores"
+      },
+      "properties": {}
+    },
+    "type": "Microsoft.Quota/Quotas"
+  }
+]

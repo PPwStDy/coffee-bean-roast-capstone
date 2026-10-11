@@ -1,0 +1,24 @@
+[
+  {
+    "resource": {
+      "apiVersion": null,
+      "extension": null,
+      "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/scheduledQueryRules/coffee6688218-camera-occlusion",
+      "identifiers": null,
+      "resourceGroup": "rg-itcs355-6688218-capstone",
+      "resourceName": "coffee6688218-camera-occlusion",
+      "resourceType": "Microsoft.Insights/scheduledQueryRules",
+      "symbolicName": null
+    },
+    "status": {
+      "error": {
+        "additionalInfo": null,
+        "code": "BadRequest",
+        "details": null,
+        "message": "Couldn't execute the query. Make sure the query syntax is correct and that the logs solution is deployed in the workspace and try again Activity ID: b4b78440-8b61-476c-afdf-c7136e25be7a.",
+        "target": null
+      },
+      "status": "Failed"
+    }
+  }
+]

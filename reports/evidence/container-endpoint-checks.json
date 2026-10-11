@@ -1,0 +1,109 @@
+{
+  "url": "http://127.0.0.1:18080",
+  "model_version": "roast-iteration4-swin-v1",
+  "checks": [
+    {
+      "fixture": "Dark",
+      "status": 200,
+      "result": {
+        "predicted_class": "Dark",
+        "predicted_class_id": 0,
+        "confidence": 0.9594,
+        "probabilities": {
+          "Dark": 0.9594,
+          "Green": 0.0207,
+          "Light": 0.0127,
+          "Medium": 0.0072
+        },
+        "pixel_std": 0.3291,
+        "shannon_entropy": 6.7341,
+        "latency_ms": 631.41,
+        "model_version": "roast-iteration4-swin-v1"
+      }
+    },
+    {
+      "fixture": "Green",
+      "status": 200,
+      "result": {
+        "predicted_class": "Green",
+        "predicted_class_id": 1,
+        "confidence": 0.9611,
+        "probabilities": {
+          "Dark": 0.0106,
+          "Green": 0.9611,
+          "Light": 0.0184,
+          "Medium": 0.0099
+        },
+        "pixel_std": 0.1747,
+        "shannon_entropy": 6.7793,
+        "latency_ms": 522.16,
+        "model_version": "roast-iteration4-swin-v1"
+      }
+    },
+    {
+      "fixture": "Light",
+      "status": 200,
+      "result": {
+        "predicted_class": "Light",
+        "predicted_class_id": 2,
+        "confidence": 0.9713,
+        "probabilities": {
+          "Dark": 0.0094,
+          "Green": 0.0099,
+          "Light": 0.9713,
+          "Medium": 0.0093
+        },
+        "pixel_std": 0.3018,
+        "shannon_entropy": 7.2873,
+        "latency_ms": 505.21,
+        "model_version": "roast-iteration4-swin-v1"
+      }
+    },
+    {
+      "fixture": "Medium",
+      "status": 200,
+      "result": {
+        "predicted_class": "Medium",
+        "predicted_class_id": 3,
+        "confidence": 0.9473,
+        "probabilities": {
+          "Dark": 0.0076,
+          "Green": 0.0208,
+          "Light": 0.0243,
+          "Medium": 0.9473
+        },
+        "pixel_std": 0.2966,
+        "shannon_entropy": 6.0291,
+        "latency_ms": 507.23,
+        "model_version": "roast-iteration4-swin-v1"
+      }
+    },
+    {
+      "fault": "black",
+      "status": 422,
+      "response": {
+        "detail": {
+          "error": "Optical Occlusion / Specular Glare Detected",
+          "pixel_std": 0.0,
+          "threshold": 0.05,
+          "shannon_entropy": -0.0,
+          "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+        }
+      }
+    },
+    {
+      "fault": "white",
+      "status": 422,
+      "response": {
+        "detail": {
+          "error": "Optical Occlusion / Specular Glare Detected",
+          "pixel_std": 0.4714,
+          "threshold": 0.05,
+          "shannon_entropy": -0.0,
+          "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+        }
+      }
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,32 @@
+{
+  "eTag": null,
+  "id": "subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.CostManagement/query/17abba74-ed1c-400d-b2c6-8edeb10f767b",
+  "location": null,
+  "name": "17abba74-ed1c-400d-b2c6-8edeb10f767b",
+  "properties": {
+    "columns": [
+      {
+        "name": "Cost",
+        "type": "Number"
+      },
+      {
+        "name": "ResourceGroupName",
+        "type": "String"
+      },
+      {
+        "name": "Currency",
+        "type": "String"
+      }
+    ],
+    "nextLink": null,
+    "rows": [
+      [
+        1.7076636612,
+        "itcs355-6688218",
+        "USD"
+      ]
+    ]
+  },
+  "sku": null,
+  "type": "Microsoft.CostManagement/query"
+}

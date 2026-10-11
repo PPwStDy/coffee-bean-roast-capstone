@@ -1,4 +1,6 @@
 name: CI
+env:
+  PYTHONPATH: .
 on:
   push:
     branches: [main, 'codex/**']

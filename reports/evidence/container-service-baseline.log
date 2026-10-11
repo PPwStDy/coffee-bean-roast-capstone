@@ -1,0 +1,30 @@
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+{"ts": "2026-10-11 12:50:11,574", "level": "INFO", "message": "Loaded ONNX model: reports/model.onnx"}
+{"ts": "2026-10-11 12:50:11,740", "level": "INFO", "message": "Model ready, engine=ONNXRuntime, version=roast-iteration4-swin-v1"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+{"ts": "2026-10-11 12:50:14,169", "level": "INFO", "event": "http_request", "request_id": "18222b0e-a1d1-42cb-ab2b-5a3b2b92f9ab", "path": "/ready", "status": 200, "latency_ms": 24.96, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "GET /ready HTTP/1.1" 200 OK
+{"ts": "2026-10-11 12:50:14,899", "level": "INFO", "event": "http_request", "request_id": "ac83cb36-3079-4945-9988-7109cd352783", "path": "/predict", "status": 200, "latency_ms": 702.75, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 12:50:15,452", "level": "INFO", "event": "http_request", "request_id": "df76aeb9-e912-485f-9b81-84bd32c4e821", "path": "/predict", "status": 200, "latency_ms": 528.78, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 12:50:15,970", "level": "INFO", "event": "http_request", "request_id": "1b32abd8-2d70-4ec1-b91e-179e97372b3d", "path": "/predict", "status": 200, "latency_ms": 512.91, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 12:50:16,496", "level": "INFO", "event": "http_request", "request_id": "69807d7b-d74f-431c-844a-68f2cf47a573", "path": "/predict", "status": 200, "latency_ms": 510.18, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 12:50:17,092", "level": "INFO", "event": "http_request", "request_id": "c0822c2a-c38a-467b-ac5e-352457ad8f6b", "path": "/predict/base64", "status": 200, "latency_ms": 590.15, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "POST /predict/base64 HTTP/1.1" 200 OK
+{"ts": "2026-10-11 12:50:17,176", "level": "WARNING", "event": "occlusion_guard_rejection", "pixel_std": 0.0, "entropy": -0.0, "threshold": 0.05}
+{"ts": "2026-10-11 12:50:17,183", "level": "INFO", "event": "http_request", "request_id": "28343c0b-4192-4a89-9671-ffb65affa778", "path": "/predict", "status": 422, "latency_ms": 18.07, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+{"ts": "2026-10-11 12:50:17,196", "level": "WARNING", "event": "occlusion_guard_rejection", "pixel_std": 0.4714, "entropy": -0.0, "threshold": 0.05}
+{"ts": "2026-10-11 12:50:17,196", "level": "INFO", "event": "http_request", "request_id": "087028dc-74f2-4390-b6d0-a121bc9baa09", "path": "/predict", "status": 422, "latency_ms": 7.14, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+{"ts": "2026-10-11 12:50:17,471", "level": "INFO", "event": "http_request", "request_id": "01782da0-94a0-4767-8bad-394bbdc00ee0", "path": "/predict", "status": 400, "latency_ms": 270.03, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "POST /predict HTTP/1.1" 400 Bad Request
+{"ts": "2026-10-11 12:50:17,480", "level": "INFO", "event": "http_request", "request_id": "e1de50ef-adc6-4c98-b5a8-ba02c2ebce15", "path": "/predict/base64", "status": 400, "latency_ms": 4.31, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "POST /predict/base64 HTTP/1.1" 400 Bad Request
+{"ts": "2026-10-11 12:50:17,491", "level": "INFO", "event": "http_request", "request_id": "d672be31-0cff-409c-89d7-4e7d76539a01", "path": "/metrics", "status": 200, "latency_ms": 8.79, "model_version": "roast-iteration4-swin-v1"}
+INFO:     192.168.65.1:42349 - "GET /metrics HTTP/1.1" 200 OK

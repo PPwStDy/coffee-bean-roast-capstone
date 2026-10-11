@@ -1,0 +1,20 @@
+[
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.Storage/locations/eastasia/providers/Microsoft.Quota/usages/StorageAccounts",
+    "name": "StorageAccounts",
+    "properties": {
+      "isQuotaApplicable": true,
+      "name": {
+        "localizedValue": "Storage Accounts",
+        "value": "StorageAccounts"
+      },
+      "properties": {},
+      "unit": "Count",
+      "usages": {
+        "usagesType": "Individual",
+        "value": 1
+      }
+    },
+    "type": "Microsoft.Quota/Usages"
+  }
+]

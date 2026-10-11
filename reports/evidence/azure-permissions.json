@@ -1,0 +1,33 @@
+[
+  {
+    "createdBy": "",
+    "createdOn": "2026-09-07T03:23:26.302534+00:00",
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.Authorization/roleAssignments/6635579c-19d5-47a4-9d29-04cf45ca278b",
+    "name": "6635579c-19d5-47a4-9d29-04cf45ca278b",
+    "principalId": "907e21d9-24eb-4337-b32d-8d3e4a427e7e",
+    "principalName": "peerawat.son@student.mahidol.ac.th",
+    "principalType": "User",
+    "roleDefinitionId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+    "roleDefinitionName": "Owner",
+    "scope": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "updatedBy": "",
+    "updatedOn": "2026-09-07T03:23:26.302534+00:00"
+  },
+  {
+    "createdBy": "907e21d9-24eb-4337-b32d-8d3e4a427e7e",
+    "createdOn": "2026-09-07T03:40:50.890242+00:00",
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/itcs355-6688218/providers/Microsoft.Storage/storageAccounts/itcs3556688218/providers/Microsoft.Authorization/roleAssignments/f7b50cdc-5730-4e17-94b8-a03a022963a3",
+    "name": "f7b50cdc-5730-4e17-94b8-a03a022963a3",
+    "principalId": "907e21d9-24eb-4337-b32d-8d3e4a427e7e",
+    "principalName": "peerawat.son@student.mahidol.ac.th",
+    "principalType": "User",
+    "resourceGroup": "itcs355-6688218",
+    "roleDefinitionId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+    "roleDefinitionName": "Storage Blob Data Contributor",
+    "scope": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/itcs355-6688218/providers/Microsoft.Storage/storageAccounts/itcs3556688218",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "updatedBy": "907e21d9-24eb-4337-b32d-8d3e4a427e7e",
+    "updatedOn": "2026-09-07T03:40:50.890242+00:00"
+  }
+]

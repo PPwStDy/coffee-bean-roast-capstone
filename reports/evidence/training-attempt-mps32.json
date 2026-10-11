@@ -1,0 +1,8 @@
+{
+  "status": "stopped_before_first_epoch_completed",
+  "reason": "8 GiB Mac; 6.2 GiB training plus 3 GiB Docker caused severe memory pressure",
+  "epochs_completed": 0,
+  "checkpoint_created": false,
+  "git_commit": "791cdda",
+  "next_attempt": "20 epochs, seed42, batch8, MPS, Docker stopped"
+}

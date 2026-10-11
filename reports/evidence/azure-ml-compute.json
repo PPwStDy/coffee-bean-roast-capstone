@@ -1,0 +1,19 @@
+[
+  {
+    "created_on": "2026-09-19T12:13:53.0230277+00:00",
+    "enable_node_public_ip": true,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/itcs355-6688218/providers/Microsoft.MachineLearningServices/workspaces/itcs355-6688218/computes/cpu-cluster",
+    "idle_time_before_scale_down": 120,
+    "location": "eastasia",
+    "max_instances": 1,
+    "min_instances": 0,
+    "name": "cpu-cluster",
+    "network_settings": {},
+    "provisioning_state": "Succeeded",
+    "resourceGroup": "itcs355-6688218",
+    "size": "Standard_DS2_v2",
+    "ssh_public_access_enabled": true,
+    "tier": "dedicated",
+    "type": "amlcompute"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "git_commit": "41f11dfad14f5d8543590146e3c5a595af0ac9fa",
+  "path": "/private/tmp/coffee-capstone-clean",
+  "dataset_manifest_sha256": "f2cb1886496a9ddf11c579088be333027d4bbae5851f761eab7f8d04df0a5f2f",
+  "split_counts": {
+    "train": 835,
+    "valid": 178,
+    "test": 181
+  },
+  "files_restored": 1197,
+  "isolated_environment": true,
+  "result": "DVC download and full data contracts passed; training CLI loads"
+}

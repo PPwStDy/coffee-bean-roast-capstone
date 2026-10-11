@@ -1,4 +1,6 @@
 name: Release
+env:
+  PYTHONPATH: .
 on:
   workflow_run:
     workflows: [CI]

@@ -1,0 +1,1145 @@
+[
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83",
+    "limit": 200,
+    "name": {
+      "value": "TotalClusters"
+    },
+    "type": "Microsoft.MachineLearningServices/totalClusters/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83",
+    "limit": 20,
+    "name": {
+      "value": "TotalDedicatedCores"
+    },
+    "type": "Microsoft.MachineLearningServices/totalDedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDFamily",
+    "limit": 6,
+    "name": {
+      "value": "standardDFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDv2Family",
+    "limit": 6,
+    "name": {
+      "value": "standardDv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDv3Family",
+    "limit": 6,
+    "name": {
+      "value": "standardDv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDSv2Family",
+    "limit": 6,
+    "name": {
+      "value": "standardDSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDSv3Family",
+    "limit": 6,
+    "name": {
+      "value": "standardDSv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardFSv2Family",
+    "limit": 16,
+    "name": {
+      "value": "standardFSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCFamily",
+    "limit": 6,
+    "name": {
+      "value": "standardNCFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCSv2Family",
+    "limit": 0,
+    "name": {
+      "value": "standardNCSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCSv3Family",
+    "limit": 0,
+    "name": {
+      "value": "standardNCSv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDSFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardNDSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDSv2Family",
+    "limit": 0,
+    "name": {
+      "value": "standardNDSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNVFamily",
+    "limit": 6,
+    "name": {
+      "value": "standardNVFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardMSFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardMSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNVSv3Family",
+    "limit": 0,
+    "name": {
+      "value": "standardNVSv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHBrsv2Family",
+    "limit": 0,
+    "name": {
+      "value": "standardHBrsv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHCSFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardHCSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/Standard_NCASv3_T4_Family",
+    "limit": 0,
+    "name": {
+      "value": "Standard NCASv3_T4 Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/Standard_NDASv4_A100_Family",
+    "limit": 0,
+    "name": {
+      "value": "Standard NDASv4_A100 Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCADSA100v4Family",
+    "limit": 0,
+    "name": {
+      "value": "standardNCADSA100v4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standard_NDAMSv4_A100Family",
+    "limit": 0,
+    "name": {
+      "value": "standard NDAMSv4_A100Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCPromoFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardNCPromoFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEAv4Family",
+    "limit": 0,
+    "name": {
+      "value": "standardEAv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHBSFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardHBSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEv3Family",
+    "limit": 0,
+    "name": {
+      "value": "standardEv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDDSv4Family",
+    "limit": 0,
+    "name": {
+      "value": "standardDDSv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardLSv2Family",
+    "limit": 4,
+    "name": {
+      "value": "standardLSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHBv3Family",
+    "limit": 0,
+    "name": {
+      "value": "standardHBv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardFXMDVSFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardFXMDVSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardESv3Family",
+    "limit": 0,
+    "name": {
+      "value": "standardESv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDASv4Family",
+    "limit": 4,
+    "name": {
+      "value": "standardDASv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEADSv5Family",
+    "limit": 0,
+    "name": {
+      "value": "standardEADSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDDv4Family",
+    "limit": 0,
+    "name": {
+      "value": "standardDDv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDAv4Family",
+    "limit": 0,
+    "name": {
+      "value": "standardDAv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEDSv4Family",
+    "limit": 4,
+    "name": {
+      "value": "standardEDSv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEDv4Family",
+    "limit": 0,
+    "name": {
+      "value": "standardEDv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEASv4Family",
+    "limit": 0,
+    "name": {
+      "value": "standardEASv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardAv2Family",
+    "limit": 0,
+    "name": {
+      "value": "standardAv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardHFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDAMSv4A100noRDMAFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardNDAMSv4A100noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDADSv5Family",
+    "limit": 0,
+    "name": {
+      "value": "standardDADSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEBDSv5Family",
+    "limit": 0,
+    "name": {
+      "value": "standardEBDSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDDSv5Family",
+    "limit": 0,
+    "name": {
+      "value": "standardDDSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDv5H100Family",
+    "limit": 0,
+    "name": {
+      "value": "standardNDv5H100Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEDSv5Family",
+    "limit": 0,
+    "name": {
+      "value": "standardEDSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEDv5Family",
+    "limit": 0,
+    "name": {
+      "value": "standardEDv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDDv5Family",
+    "limit": 0,
+    "name": {
+      "value": "standardDDv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardLSv3Family",
+    "limit": 0,
+    "name": {
+      "value": "standardLSv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardLASv3Family",
+    "limit": 0,
+    "name": {
+      "value": "standardLASv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDv4A100FlexFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardNDv4A100FlexFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCADSH100v5Family",
+    "limit": 0,
+    "name": {
+      "value": "standardNCADSH100v5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNVADSA10v5Family",
+    "limit": 0,
+    "name": {
+      "value": "StandardNVADSA10v5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDv5H100FlexFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardNDv5H100FlexFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDAMSFv4A100Family",
+    "limit": 0,
+    "name": {
+      "value": "StandardNDAMSFv4A100Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISH100V5noRDMAFamily",
+    "limit": 0,
+    "name": {
+      "value": "StandardNDISH100V5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISFlexH100V5noRDMAFamily",
+    "limit": 0,
+    "name": {
+      "value": "StandardNDISFlexH100V5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardMSv2Family",
+    "limit": 0,
+    "name": {
+      "value": "standardMSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISH200V5noRDMAFamily",
+    "limit": 0,
+    "name": {
+      "value": "StandardNDISH200V5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISRH200V5Family",
+    "limit": 0,
+    "name": {
+      "value": "StandardNDISRH200V5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISFlexH200V5noRDMAFamily",
+    "limit": 0,
+    "name": {
+      "value": "StandardNDISFlexH200V5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISRFlexH200V5Family",
+    "limit": 0,
+    "name": {
+      "value": "StandardNDISRFlexH200V5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDMI300Xv5IBFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardNDMI300Xv5IBFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDFlexMI300XV5noRDMAFamily",
+    "limit": 0,
+    "name": {
+      "value": "standardNDFlexMI300XV5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/dedicatedCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83",
+    "limit": 0,
+    "name": {
+      "value": "TotalLowPriorityCores"
+    },
+    "type": "Microsoft.MachineLearningServices/totalLowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardDFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDv2Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDv3Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDSv2Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDSv3Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDSv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardFSv2Family",
+    "limit": -1,
+    "name": {
+      "value": "standardFSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardNCFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCSv2Family",
+    "limit": -1,
+    "name": {
+      "value": "standardNCSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCSv3Family",
+    "limit": -1,
+    "name": {
+      "value": "standardNCSv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDSFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardNDSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDSv2Family",
+    "limit": -1,
+    "name": {
+      "value": "standardNDSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNVFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardNVFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardMSFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardMSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNVSv3Family",
+    "limit": -1,
+    "name": {
+      "value": "standardNVSv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHBrsv2Family",
+    "limit": -1,
+    "name": {
+      "value": "standardHBrsv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHCSFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardHCSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/Standard_NCASv3_T4_Family",
+    "limit": -1,
+    "name": {
+      "value": "Standard NCASv3_T4 Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/Standard_NDASv4_A100_Family",
+    "limit": -1,
+    "name": {
+      "value": "Standard NDASv4_A100 Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCADSA100v4Family",
+    "limit": -1,
+    "name": {
+      "value": "standardNCADSA100v4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standard_NDAMSv4_A100Family",
+    "limit": -1,
+    "name": {
+      "value": "standard NDAMSv4_A100Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCPromoFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardNCPromoFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEAv4Family",
+    "limit": -1,
+    "name": {
+      "value": "standardEAv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHBSFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardHBSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEv3Family",
+    "limit": -1,
+    "name": {
+      "value": "standardEv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDDSv4Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDDSv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardLSv2Family",
+    "limit": -1,
+    "name": {
+      "value": "standardLSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHBv3Family",
+    "limit": -1,
+    "name": {
+      "value": "standardHBv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardFXMDVSFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardFXMDVSFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardESv3Family",
+    "limit": -1,
+    "name": {
+      "value": "standardESv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDASv4Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDASv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEADSv5Family",
+    "limit": -1,
+    "name": {
+      "value": "standardEADSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDDv4Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDDv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDAv4Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDAv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEDSv4Family",
+    "limit": -1,
+    "name": {
+      "value": "standardEDSv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEDv4Family",
+    "limit": -1,
+    "name": {
+      "value": "standardEDv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEASv4Family",
+    "limit": -1,
+    "name": {
+      "value": "standardEASv4Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardAv2Family",
+    "limit": -1,
+    "name": {
+      "value": "standardAv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardHFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardHFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDAMSv4A100noRDMAFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardNDAMSv4A100noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDADSv5Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDADSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEBDSv5Family",
+    "limit": -1,
+    "name": {
+      "value": "standardEBDSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDDSv5Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDDSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDv5H100Family",
+    "limit": -1,
+    "name": {
+      "value": "standardNDv5H100Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEDSv5Family",
+    "limit": -1,
+    "name": {
+      "value": "standardEDSv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardEDv5Family",
+    "limit": -1,
+    "name": {
+      "value": "standardEDv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardDDv5Family",
+    "limit": -1,
+    "name": {
+      "value": "standardDDv5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardLSv3Family",
+    "limit": -1,
+    "name": {
+      "value": "standardLSv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardLASv3Family",
+    "limit": -1,
+    "name": {
+      "value": "standardLASv3Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDv4A100FlexFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardNDv4A100FlexFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNCADSH100v5Family",
+    "limit": -1,
+    "name": {
+      "value": "standardNCADSH100v5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNVADSA10v5Family",
+    "limit": -1,
+    "name": {
+      "value": "StandardNVADSA10v5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDv5H100FlexFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardNDv5H100FlexFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDAMSFv4A100Family",
+    "limit": -1,
+    "name": {
+      "value": "StandardNDAMSFv4A100Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISH100V5noRDMAFamily",
+    "limit": -1,
+    "name": {
+      "value": "StandardNDISH100V5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISFlexH100V5noRDMAFamily",
+    "limit": -1,
+    "name": {
+      "value": "StandardNDISFlexH100V5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardMSv2Family",
+    "limit": -1,
+    "name": {
+      "value": "standardMSv2Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISH200V5noRDMAFamily",
+    "limit": -1,
+    "name": {
+      "value": "StandardNDISH200V5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISRH200V5Family",
+    "limit": -1,
+    "name": {
+      "value": "StandardNDISRH200V5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISFlexH200V5noRDMAFamily",
+    "limit": -1,
+    "name": {
+      "value": "StandardNDISFlexH200V5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/StandardNDISRFlexH200V5Family",
+    "limit": -1,
+    "name": {
+      "value": "StandardNDISRFlexH200V5Family"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDMI300Xv5IBFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardNDMI300Xv5IBFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/usages/standardNDFlexMI300XV5noRDMAFamily",
+    "limit": -1,
+    "name": {
+      "value": "standardNDFlexMI300XV5noRDMAFamily"
+    },
+    "type": "Microsoft.MachineLearningServices/vmFamily/lowPriorityCores/usages",
+    "unit": "Count"
+  }
+]

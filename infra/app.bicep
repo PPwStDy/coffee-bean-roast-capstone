@@ -10,7 +10,7 @@ param revisionSuffix string
 param previousRevision string = ''
 var tags = { course: 'itcs355', student: '6688218', lab: 'capstone' }
 
-resource app 'Microsoft.App/containerApps@2024-03-01' = {
+resource app 'Microsoft.App/containerApps@2025-07-01' = {
   name: appName
   location: location
   tags: tags
@@ -46,7 +46,7 @@ resource app 'Microsoft.App/containerApps@2024-03-01' = {
           { type: 'Startup', httpGet: { path: '/ready', port: 8080 }, periodSeconds: 5, failureThreshold: 60, timeoutSeconds: 5 }
         ]
       }]
-      scale: { minReplicas: 0, maxReplicas: 2, rules: [{ name: 'http', http: { metadata: { concurrentRequests: '2' } } }] }
+      scale: { minReplicas: 0, maxReplicas: 2, cooldownPeriod: 30, rules: [{ name: 'http', http: { metadata: { concurrentRequests: '2' } } }] }
     }
   }
 }

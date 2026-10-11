@@ -1,0 +1,19 @@
+{
+  "condition": null,
+  "conditionVersion": null,
+  "createdBy": null,
+  "createdOn": "2026-10-11T13:08:52.349635+00:00",
+  "delegatedManagedIdentityResourceId": null,
+  "description": null,
+  "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/itcs355-6688218/providers/Microsoft.MachineLearningServices/workspaces/itcs355-6688218/providers/Microsoft.Authorization/roleAssignments/2ae3f8c3-c8a1-41dc-8278-50b7f2fe46b6",
+  "name": "2ae3f8c3-c8a1-41dc-8278-50b7f2fe46b6",
+  "principalId": "408b862a-b296-407a-98b8-96267f7a55ce",
+  "principalType": "ServicePrincipal",
+  "resourceGroup": "itcs355-6688218",
+  "roleDefinitionId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.Authorization/roleDefinitions/f6c7c914-8db3-469d-8ca1-694a8f32e121",
+  "scope": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/itcs355-6688218/providers/Microsoft.MachineLearningServices/workspaces/itcs355-6688218",
+  "systemData": null,
+  "type": "Microsoft.Authorization/roleAssignments",
+  "updatedBy": "907e21d9-24eb-4337-b32d-8d3e4a427e7e",
+  "updatedOn": "2026-10-11T13:08:52.586640+00:00"
+}

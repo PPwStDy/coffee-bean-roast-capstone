@@ -1,0 +1,44 @@
+[
+  {
+    "location": "eastasia",
+    "name": "itcs3556688218",
+    "resourceGroup": "itcs355-6688218",
+    "type": "Microsoft.Storage/storageAccounts"
+  },
+  {
+    "location": "eastasia",
+    "name": "itcs3556688218",
+    "resourceGroup": "itcs355-6688218",
+    "type": "Microsoft.ContainerRegistry/registries"
+  },
+  {
+    "location": "eastasia",
+    "name": "itcs3556keyvault40890c1e",
+    "resourceGroup": "itcs355-6688218",
+    "type": "Microsoft.KeyVault/vaults"
+  },
+  {
+    "location": "eastasia",
+    "name": "itcs3556logalytic2eb4b92",
+    "resourceGroup": "itcs355-6688218",
+    "type": "Microsoft.OperationalInsights/workspaces"
+  },
+  {
+    "location": "eastasia",
+    "name": "itcs3556insights03231f90",
+    "resourceGroup": "itcs355-6688218",
+    "type": "Microsoft.Insights/components"
+  },
+  {
+    "location": "eastasia",
+    "name": "itcs355-6688218",
+    "resourceGroup": "itcs355-6688218",
+    "type": "Microsoft.MachineLearningServices/workspaces"
+  },
+  {
+    "location": "global",
+    "name": "Application Insights Smart Detection",
+    "resourceGroup": "itcs355-6688218",
+    "type": "microsoft.insights/actiongroups"
+  }
+]

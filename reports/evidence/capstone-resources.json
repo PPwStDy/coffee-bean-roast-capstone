@@ -1,0 +1,93 @@
+[
+  {
+    "name": "coffee6688218-ci",
+    "state": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "name": "coffee6688218-logs",
+    "state": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.OperationalInsights/workspaces"
+  },
+  {
+    "name": "coffee6688218-identity",
+    "state": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "name": "cf6688218enafhtyqhoyi6",
+    "state": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.Storage/storageAccounts"
+  },
+  {
+    "name": "coffee6688218enafhtyqhoyi6",
+    "state": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.ContainerRegistry/registries"
+  },
+  {
+    "name": "coffee6688218-ci-read",
+    "state": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "name": "coffee6688218-email",
+    "state": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.Insights/actiongroups"
+  },
+  {
+    "name": "1f289b63-43ca-5130-a7e6-abc93b51060f",
+    "state": null,
+    "tags": {
+      "course": "itcs355",
+      "hidden-title": "Coffee roast API operations",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.Insights/workbooks"
+  },
+  {
+    "name": "coffee6688218-environment",
+    "state": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.App/managedEnvironments"
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/usages/ManagedEnvironmentCount",
+    "name": "ManagedEnvironmentCount",
+    "properties": {
+      "isQuotaApplicable": true,
+      "name": {
+        "localizedValue": "Managed Environment Count",
+        "value": "ManagedEnvironmentCount"
+      },
+      "properties": {},
+      "usages": {
+        "usagesType": "Individual",
+        "value": 0
+      }
+    },
+    "type": "Microsoft.Quota/Usages"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/usages/SubscriptionDedicatedNCA100Gpus",
+    "name": "SubscriptionDedicatedNCA100Gpus",
+    "properties": {
+      "isQuotaApplicable": false,
+      "name": {
+        "localizedValue": "Subscription Dedicated NCA 100 Gpus",
+        "value": "SubscriptionDedicatedNCA100Gpus"
+      },
+      "properties": {},
+      "usages": {
+        "usagesType": "Individual",
+        "value": -1
+      }
+    },
+    "type": "Microsoft.Quota/Usages"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/usages/SessionPools",
+    "name": "SessionPools",
+    "properties": {
+      "isQuotaApplicable": true,
+      "name": {
+        "localizedValue": "Session Pools",
+        "value": "SessionPools"
+      },
+      "properties": {},
+      "usages": {
+        "usagesType": "Individual",
+        "value": 0
+      }
+    },
+    "type": "Microsoft.Quota/Usages"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/usages/ExpressEnvironmentCount",
+    "name": "ExpressEnvironmentCount",
+    "properties": {
+      "isQuotaApplicable": false,
+      "name": {
+        "localizedValue": "Express Environment Count",
+        "value": "ExpressEnvironmentCount"
+      },
+      "properties": {},
+      "usages": {
+        "usagesType": "Individual",
+        "value": 0
+      }
+    },
+    "type": "Microsoft.Quota/Usages"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.App/locations/eastasia/providers/Microsoft.Quota/usages/SandboxCores",
+    "name": "SandboxCores",
+    "properties": {
+      "isQuotaApplicable": false,
+      "name": {
+        "localizedValue": "Sandbox Cores",
+        "value": "SandboxCores"
+      },
+      "properties": {},
+      "usages": {
+        "usagesType": "Individual",
+        "value": 0
+      }
+    },
+    "type": "Microsoft.Quota/Usages"
+  }
+]

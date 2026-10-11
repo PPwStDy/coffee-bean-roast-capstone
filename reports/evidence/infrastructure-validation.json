@@ -1,0 +1,274 @@
+{
+  "error": null,
+  "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.Resources/deployments/main",
+  "location": "eastasia",
+  "name": "main",
+  "properties": {
+    "correlationId": "f5aaf56d-f989-4bcc-b771-99d7b809cb60",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone",
+            "resourceName": "rg-itcs355-6688218-capstone",
+            "resourceType": "Microsoft.Resources/resourceGroups"
+          }
+        ],
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Resources/deployments/capstone-foundation",
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceName": "capstone-foundation",
+        "resourceType": "Microsoft.Resources/deployments"
+      }
+    ],
+    "diagnostics": null,
+    "duration": "PT0S",
+    "error": null,
+    "extensions": [],
+    "mode": "Incremental",
+    "onErrorDeployment": null,
+    "outputResources": null,
+    "outputs": null,
+    "parameters": {
+      "alertEmail": {
+        "type": "String",
+        "value": "peerawat.son@student.mahidol.ac.th"
+      },
+      "groupName": {
+        "type": "String",
+        "value": "rg-itcs355-6688218-capstone"
+      },
+      "location": {
+        "type": "String",
+        "value": "eastasia"
+      },
+      "operatorObjectId": {
+        "type": "String",
+        "value": "907e21d9-24eb-4337-b32d-8d3e4a427e7e"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Resources",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastasia"
+            ],
+            "properties": null,
+            "resourceType": "resourceGroups",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "deployments",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "11221438902165660858",
+    "templateLink": null,
+    "timestamp": "2026-10-11T13:02:01.362877+00:00",
+    "validatedResources": [
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone",
+        "identifiers": null,
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/managedEnvironments/coffee6688218-environment",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Authorization/roleAssignments/c4e91abd-033c-5776-8d51-0edd278d79ff",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ContainerRegistry/registries/coffee6688218enafhtyqhoyi6",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ContainerRegistry/registries/coffee6688218enafhtyqhoyi6/providers/Microsoft.Authorization/roleAssignments/955f655a-4e8c-55cb-8602-492bda0655c4",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ContainerRegistry/registries/coffee6688218enafhtyqhoyi6/providers/Microsoft.Authorization/roleAssignments/c11bce2c-8a0e-54ce-8667-2bd025f9cf01",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/actionGroups/coffee6688218-email",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/scheduledQueryRules/coffee6688218-camera-occlusion",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/workbooks/1f289b63-43ca-5130-a7e6-abc93b51060f",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-ci",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-ci-read",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-ci-read/federatedIdentityCredentials/github-pull-request",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-ci/federatedIdentityCredentials/github-main",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-identity",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.OperationalInsights/workspaces/coffee6688218-logs",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Resources/deployments/capstone-foundation",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Storage/storageAccounts/cf6688218enafhtyqhoyi6",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Storage/storageAccounts/cf6688218enafhtyqhoyi6/blobServices/default",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Storage/storageAccounts/cf6688218enafhtyqhoyi6/blobServices/default/containers/capstone",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Storage/storageAccounts/cf6688218enafhtyqhoyi6/providers/Microsoft.Authorization/roleAssignments/6575e160-9d27-5f5c-91d9-ba03326f02cb",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Storage/storageAccounts/cf6688218enafhtyqhoyi6/providers/Microsoft.Authorization/roleAssignments/c4968888-3000-58c8-b052-1bd466aadfad",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Storage/storageAccounts/cf6688218enafhtyqhoyi6/providers/Microsoft.Authorization/roleAssignments/d01a9c79-1a27-5973-a00b-88633fae5bb6",
+        "identifiers": null,
+        "resourceGroup": "rg-itcs355-6688218-capstone",
+        "resourceType": null
+      }
+    ],
+    "validationLevel": null
+  },
+  "type": "Microsoft.Resources/deployments"
+}

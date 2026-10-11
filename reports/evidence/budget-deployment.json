@@ -1,0 +1,91 @@
+{
+  "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.Resources/deployments/coffee-roast-budget",
+  "location": "eastasia",
+  "name": "coffee-roast-budget",
+  "properties": {
+    "correlationId": "32d4853a-004e-49c1-b3aa-6ef5bfc46afb",
+    "debugSetting": null,
+    "dependencies": [],
+    "diagnostics": null,
+    "duration": "PT26.2215249S",
+    "error": null,
+    "extensions": [],
+    "mode": "Incremental",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.Consumption/budgets/itcs355-6688218-capstone",
+        "identifiers": null,
+        "resourceType": "Microsoft.Consumption/budgets"
+      }
+    ],
+    "outputs": {
+      "allowanceTHB": {
+        "type": "Int",
+        "value": 635
+      }
+    },
+    "parameters": {
+      "alertEmail": {
+        "type": "String",
+        "value": "peerawat.son@student.mahidol.ac.th"
+      },
+      "billingBudgetAmount": {
+        "type": "Int",
+        "value": 18
+      },
+      "capstoneGroup": {
+        "type": "String",
+        "value": "rg-itcs355-6688218-capstone"
+      },
+      "endDate": {
+        "type": "String",
+        "value": "2027-10-01"
+      },
+      "remainingAllowanceTHB": {
+        "type": "Int",
+        "value": 635
+      },
+      "startDate": {
+        "type": "String",
+        "value": "2026-10-01"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Consumption",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "budgets",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "3482648693658253772",
+    "templateLink": null,
+    "timestamp": "2026-10-11T13:07:02.126595+00:00",
+    "validatedResources": null,
+    "validationLevel": null
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}

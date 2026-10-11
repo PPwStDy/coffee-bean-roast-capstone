@@ -1,0 +1,6 @@
+outs:
+- md5: 863219fd0c2578fd0f3a93558e76868a.dir
+  size: 251883609
+  nfiles: 9
+  hash: md5
+  path: roast-swin-retrained-v1

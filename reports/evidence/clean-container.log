@@ -1,0 +1,32 @@
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+{"ts": "2026-10-11 13:23:45,742", "level": "INFO", "message": "Loaded ONNX model: reports/model.onnx"}
+{"ts": "2026-10-11 13:23:45,744", "level": "INFO", "message": "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+{"ts": "2026-10-11 13:23:47,586", "level": "INFO", "event": "http_request", "request_id": "9ba33ab9-b366-4ab2-99cc-8cef0cc0ead5", "path": "/ready", "status": 200, "latency_ms": 5.66, "model_version": "roast-swin-retrained-v1"}
+INFO:     127.0.0.1:50438 - "GET /ready HTTP/1.1" 200 OK
+{"ts": "2026-10-11 13:23:47,933", "level": "INFO", "event": "http_request", "request_id": "500dbd44-d84a-4784-a008-4b7c3bf04beb", "path": "/ready", "status": 200, "latency_ms": 3.26, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "GET /ready HTTP/1.1" 200 OK
+{"ts": "2026-10-11 13:23:48,464", "level": "INFO", "event": "http_request", "request_id": "8afda3d3-8c27-4cb9-ab73-6558ba38aff4", "path": "/predict", "status": 200, "latency_ms": 525.4, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 13:23:48,924", "level": "INFO", "event": "http_request", "request_id": "7b23ea6a-f61f-429b-9747-34f1da360405", "path": "/predict", "status": 200, "latency_ms": 456.6, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 13:23:49,390", "level": "INFO", "event": "http_request", "request_id": "d4aa9458-a844-4606-a321-1dcd20858e2c", "path": "/predict", "status": 200, "latency_ms": 462.11, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 13:23:49,854", "level": "INFO", "event": "http_request", "request_id": "7c8563b4-4eef-476e-9d97-46fb235bf064", "path": "/predict", "status": 200, "latency_ms": 460.79, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 13:23:50,322", "level": "INFO", "event": "http_request", "request_id": "c2de5f5b-3402-446a-b0e6-f42c0f638b2d", "path": "/predict/base64", "status": 200, "latency_ms": 463.85, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "POST /predict/base64 HTTP/1.1" 200 OK
+{"ts": "2026-10-11 13:23:50,350", "level": "WARNING", "event": "occlusion_guard_rejection", "pixel_std": 0.0, "entropy": -0.0, "threshold": 0.05}
+{"ts": "2026-10-11 13:23:50,351", "level": "INFO", "event": "http_request", "request_id": "995e8a2e-5226-44d7-b65f-398f0d6a908b", "path": "/predict", "status": 422, "latency_ms": 5.8, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+{"ts": "2026-10-11 13:23:50,359", "level": "WARNING", "event": "occlusion_guard_rejection", "pixel_std": 0.4714, "entropy": -0.0, "threshold": 0.05}
+{"ts": "2026-10-11 13:23:50,360", "level": "INFO", "event": "http_request", "request_id": "3c45dc78-62c2-489d-8c2d-a21219fe15d1", "path": "/predict", "status": 422, "latency_ms": 6.29, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+{"ts": "2026-10-11 13:23:50,400", "level": "INFO", "event": "http_request", "request_id": "b191e40d-eb67-4494-ae70-19c2c57a22db", "path": "/predict", "status": 400, "latency_ms": 37.82, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "POST /predict HTTP/1.1" 400 Bad Request
+{"ts": "2026-10-11 13:23:50,402", "level": "INFO", "event": "http_request", "request_id": "6f37576f-656f-4af4-9a70-371fc4a8df5f", "path": "/predict/base64", "status": 400, "latency_ms": 0.62, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "POST /predict/base64 HTTP/1.1" 400 Bad Request
+{"ts": "2026-10-11 13:23:50,405", "level": "INFO", "event": "http_request", "request_id": "56aff7ea-16fc-44ce-ab6c-51fe8d4cf816", "path": "/metrics", "status": 200, "latency_ms": 1.99, "model_version": "roast-swin-retrained-v1"}
+INFO:     192.168.65.1:29125 - "GET /metrics HTTP/1.1" 200 OK

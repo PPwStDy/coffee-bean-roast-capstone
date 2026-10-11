@@ -1,6 +1,7 @@
 .PHONY: help data dvc-pull train export serve test loadtest cost portability-audit verify container-build container-run monitor-up monitor-down trigger-alert clean
 
 PYTHON ?= $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
+export PYTHONPATH := .
 EPOCHS ?= 20
 BATCH_SIZE ?= 8
 URL ?= http://127.0.0.1:8080
