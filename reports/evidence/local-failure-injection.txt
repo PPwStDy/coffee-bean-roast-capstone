@@ -1,0 +1,1 @@
+Occlusion guard rejected the synthetic frame (HTTP 422): Optical Occlusion / Specular Glare Detected

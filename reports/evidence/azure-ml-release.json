@@ -1,0 +1,26 @@
+{
+  "creation_context": {
+    "created_at": "2026-10-11T13:24:19.697725+00:00",
+    "created_by": "PEERAWAT SONSURAT",
+    "created_by_type": "CreatedByType.USER",
+    "last_modified_at": "2026-10-11T13:24:19.697725+00:00",
+    "last_modified_by": "PEERAWAT SONSURAT",
+    "last_modified_by_type": "CreatedByType.USER"
+  },
+  "id": "azureml:/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/itcs355-6688218/providers/Microsoft.MachineLearningServices/workspaces/itcs355-6688218/models/coffee-bean-roast-classifier/versions/1",
+  "name": "coffee-bean-roast-classifier",
+  "path": "azureml://subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/itcs355-6688218/workspaces/itcs355-6688218/datastores/workspaceblobstore/paths/LocalUpload/47a0515e840aa92447a17689c569f1cfdf05aa74209cfec3ea67cc6e8e0cf62f/roast-swin-retrained-v1",
+  "properties": {},
+  "resourceGroup": "itcs355-6688218",
+  "stage": "Development",
+  "tags": {
+    "course": "itcs355",
+    "dataset_revision": "d241ed318d2c1d8672d939938d3b71be.dir",
+    "lab": "capstone",
+    "model_version": "roast-swin-retrained-v1",
+    "source_commit": "763915a0b9d05af803194239a3601a4a15dfa08f",
+    "student": "6688218"
+  },
+  "type": "custom_model",
+  "version": "1"
+}

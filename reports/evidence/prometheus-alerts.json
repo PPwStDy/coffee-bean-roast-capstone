@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "data": {
+    "alerts": [
+      {
+        "labels": {
+          "alertname": "CameraSensorOcclusionWarning",
+          "instance": "api:8080",
+          "job": "coffee-roast-api",
+          "rejection_reason": "low_variance_occlusion",
+          "severity": "warning",
+          "tier": "hardware_telemetry"
+        },
+        "annotations": {
+          "description": "Conveyor inspection camera is reporting collapsed dynamic range (pixel std dev < 0.05). Check lens for chaff buildup or glare.",
+          "summary": "Camera sensor optical occlusion or specular glare detected"
+        },
+        "state": "firing",
+        "activeAt": "2026-10-11T13:28:37.327675963Z",
+        "value": "1.454624797716239e-01"
+      }
+    ]
+  }
+}

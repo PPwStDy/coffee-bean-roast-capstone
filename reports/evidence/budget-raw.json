@@ -1,0 +1,63 @@
+{
+  "eTag": "\"1dd598166ccc8c7\"",
+  "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.Consumption/budgets/itcs355-6688218-capstone",
+  "name": "itcs355-6688218-capstone",
+  "properties": {
+    "amount": 18.0,
+    "category": "Cost",
+    "currentSpend": {
+      "amount": 0.0,
+      "unit": "USD"
+    },
+    "filter": {
+      "dimensions": {
+        "name": "ResourceGroupName",
+        "operator": "In",
+        "values": [
+          "rg-itcs355-6688218-capstone"
+        ]
+      }
+    },
+    "notifications": {
+      "half": {
+        "contactEmails": [
+          "peerawat.son@student.mahidol.ac.th"
+        ],
+        "contactGroups": [],
+        "contactRoles": [],
+        "enabled": true,
+        "operator": "GreaterThanOrEqualTo",
+        "threshold": 50.0,
+        "thresholdType": "Actual"
+      },
+      "limit": {
+        "contactEmails": [
+          "peerawat.son@student.mahidol.ac.th"
+        ],
+        "contactGroups": [],
+        "contactRoles": [],
+        "enabled": true,
+        "operator": "GreaterThanOrEqualTo",
+        "threshold": 100.0,
+        "thresholdType": "Actual"
+      },
+      "warning": {
+        "contactEmails": [
+          "peerawat.son@student.mahidol.ac.th"
+        ],
+        "contactGroups": [],
+        "contactRoles": [],
+        "enabled": true,
+        "operator": "GreaterThanOrEqualTo",
+        "threshold": 80.0,
+        "thresholdType": "Actual"
+      }
+    },
+    "timeGrain": "Monthly",
+    "timePeriod": {
+      "endDate": "2027-10-01T00:00:00Z",
+      "startDate": "2026-10-01T00:00:00Z"
+    }
+  },
+  "type": "Microsoft.Consumption/budgets"
+}

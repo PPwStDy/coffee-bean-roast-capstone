@@ -91,6 +91,8 @@ Initial targets require1,000 warm requests at concurrency2 and20 cold-start tria
 
 `make cloud-teardown` verifies ownership before deleting only capstone resources and verifies preservation of the shared Azure ML workspace. The scheduled teardown enforces the configured seven-day retention. Owner cleanup of the exact capstone subscription budget and external role assignments is recorded separately; no shared workspace or unrelated lab resource is deleted.
 
+After group deletion, the subscription owner runs `uv run --frozen python -m cloudlayer.cleanup_external` to remove the exact recorded capstone budget and two external role grants. The CI identity has no subscription-wide permission to remove those objects.
+
 ## Submission
 
 The comprehensive report, revised proposal, one-page model card, slides and eight-minute demonstration script are maintained with evidence. The instructor's scope approval, architecture review, live presentation/Q&A and final submission remain pending until they actually happen. Model accuracy carries no capstone marks; reproducible operations and honest evidence are the focus.
