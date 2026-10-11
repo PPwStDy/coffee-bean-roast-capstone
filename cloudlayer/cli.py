@@ -2,16 +2,22 @@
 
 import json
 import subprocess
+import time
 from functools import lru_cache
 from urllib.parse import quote
 
 
 def az(*args, parse=True):
-    result = subprocess.run(
-        ["az", *map(str, args), "--only-show-errors", "-o", "json"],
-        capture_output=True,
-        text=True,
-    )
+    for attempt in range(5):
+        result = subprocess.run(
+            ["az", *map(str, args), "--only-show-errors", "-o", "json"],
+            capture_output=True,
+            text=True,
+        )
+        cost_read = args[0] == "rest" and any("Microsoft.CostManagement/query" in str(a) for a in args)
+        if not (result.returncode and cost_read and "429" in result.stderr and attempt < 4):
+            break
+        time.sleep(10 * 2**attempt)
     if result.returncode:
         if args[0] == "containerapp" and "is not registered" in result.stderr:
             # East Asia may be available while registration in other regions is pending.

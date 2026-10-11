@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 import subprocess
+from datetime import datetime, timezone
 from cloudlayer.adapter import AzureCloudAdapter
 from cloudlayer.budget import calculate
 from cloudlayer.cli import az
@@ -10,10 +11,11 @@ from cloudlayer.config import settings
 
 config = settings()
 # Read current spend on every deployment; earlier evidence is not a credit balance.
+now = datetime.now(timezone.utc)
 query = {
     "type": "ActualCost",
     "timeframe": "Custom",
-    "timePeriod": {"from": "2026-01-01T00:00:00Z", "to": "2026-12-31T23:59:59Z"},
+    "timePeriod": {"from": f"{now.year}-01-01T00:00:00Z", "to": now.strftime("%Y-%m-%dT%H:%M:%SZ")},
     "dataset": {
         "granularity": "None",
         "aggregation": {"totalCost": {"name": "Cost", "function": "Sum"}},

@@ -99,11 +99,12 @@ resource logs 'Microsoft.OperationalInsights/workspaces@2023-09-01' = {
   tags: tags
   properties: { sku: { name: 'PerGB2018' }, retentionInDays: 30, workspaceCapping: { dailyQuotaGb: json('0.1') } }
 }
-resource environment 'Microsoft.App/managedEnvironments@2024-03-01' = {
+resource environment 'Microsoft.App/managedEnvironments@2026-07-01' = {
   name: '${prefix}-environment'
   location: location
   tags: tags
   properties: {
+    environmentMode: 'WorkloadProfiles'
     workloadProfiles: [{ name: 'Consumption', workloadProfileType: 'Consumption' }]
     appLogsConfiguration: {
       destination: 'log-analytics'
