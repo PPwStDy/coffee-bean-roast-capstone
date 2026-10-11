@@ -2,8 +2,8 @@
   "pricing_source": "https://prices.azure.com/api/retail/prices",
   "budget": {
     "allowance_thb": 800,
-    "conservative_prior_subscription_spend_thb": 164.48285725375976,
-    "remaining_allowance_thb": 635.5171427462402,
+    "conservative_prior_subscription_spend_thb": 165.41388802278632,
+    "remaining_allowance_thb": 634.5861119772137,
     "exchange": {
       "source": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
       "date": "2026-10-09",

@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-10-11T17:46:40.295848+00:00",
+  "artifacts": [
+    {
+      "path": "deliverables/capstone_slides_submission.pptx",
+      "sha256": "126365bde02c1c3bb7afe4d0b821b74f4770f550f52ccc9582252750a401619e",
+      "bytes": 430022,
+      "slides": 8
+    },
+    {
+      "path": "deliverables/comprehensive_report.pdf",
+      "sha256": "b5512488229ea4f15cb2f8e01a4ff4ef2b114fd42f501212247a941434d78768",
+      "bytes": 15080,
+      "pages": 7
+    },
+    {
+      "path": "deliverables/model_card.pdf",
+      "sha256": "afdeb7eae8c5fcde8091ae8fcf8a80f1b87c41b47c1d9e4e51bdada8f5997506",
+      "bytes": 3720,
+      "pages": 1
+    },
+    {
+      "path": "deliverables/revised_proposal.docx",
+      "sha256": "1209a21c739595239c8a0d2ff84eeb1a437de4e6b2dc444aa2a74285b5188038",
+      "bytes": 38115
+    }
+  ],
+  "proposal_pages": 1,
+  "visual_review": {
+    "report": "All seven rendered pages reviewed; final pages 1\u20135 pixel-identical to reviewed renders, updated pages 6\u20137 inspected.",
+    "proposal": "Final one-page rendering inspected.",
+    "model_card": "One-page rendering inspected; final rendering pixel-identical.",
+    "slides": "All eight slides reviewed; notes updated for retained resources, all final slide renders pixel-identical to reviewed renders.",
+    "rendered_layout_result": "readable; no observed clipping or overlap"
+  },
+  "presentation_package_validation": "presentation-validation.json",
+  "native_powerpoint_opening_verified": false,
+  "academic_events": "pending actual approval, clinic, presentation/Q&A and submission",
+  "teardown": "pending user-approved October 18 retention"
+}

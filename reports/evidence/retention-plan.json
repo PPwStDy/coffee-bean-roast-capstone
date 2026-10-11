@@ -1,0 +1,17 @@
+{
+  "recorded_at": "2026-10-11T17:33:39.081695+00:00",
+  "user_choice": "Keep them until the scheduled October 18 cleanup (recommended)",
+  "resources_retained": [
+    "live Azure Container Apps API",
+    "Azure Blob DVC remote"
+  ],
+  "teardown_after": "2026-10-18T13:00:00+00:00",
+  "workflow_cron": "17 13 * * *",
+  "first_due_utc": "2026-10-18T13:17:00+00:00",
+  "first_due_bangkok": "2026-10-18T20:17:00+07:00",
+  "schedule_may_delay": true,
+  "resource_group_deletion": "pending by user retention choice",
+  "external_budget_and_role_cleanup": "pending Owner cleanup after resource group deletion",
+  "ownership_audit": "teardown-before.json",
+  "completed_temporary_diagnostic_cleanup": "temporary-alert-cleanup.json"
+}

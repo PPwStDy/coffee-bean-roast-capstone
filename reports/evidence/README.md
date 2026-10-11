@@ -18,7 +18,17 @@ Final release, remote CI, deployed benchmarks, delivered alert, costs and teardo
 - `final-tests.xml`: 52 passing local checks, including regional Azure management, verified traffic changes and fixed-target contracts.
 - `local-alert-delivery.log`: Alertmanager delivered the actual firing occlusion alert to the local webhook.
 - `local-grafana.png`: local operational dashboard capture.
-- `image-digest.json`: private registry upload digest; actual deployed digest is recorded separately in candidate deployment evidence.
+- `image-digest.json`: private registry upload digest; matching current deployed digest and source commit are recorded in candidate deployment evidence.
 - `ci-success.json`: completed passing GitHub CI with Linux container integration.
 
 Training lineage and float/INT8 validation comparison are retained in the immutable DVC release. Its single selected-release test evaluation scored 181/181; source/camera generalization remains unmeasured.
+
+## Live monitoring and retention
+
+- `azure-email-delivery.json` and `azure-email-search.png`: camera-warning email observed in the authenticated mailbox; the receiver-refresh diagnostic evaluated a 30-minute replay window.
+- `production-camera-alert-history.json` and `production-email-notification.json`: the separate production five-minute rule fired and Azure recorded Email / Succeeded / Success.
+- `temporary-alert-cleanup.json`: all three completed diagnostic rules deleted; the production rule, API and DVC remote retained.
+- `retention-plan.json`: user requested retention until October 18; full teardown and subsequent Owner cleanup remain pending.
+
+- `release-success.json`, `candidate-deployment.json`, `release-validation-warm.json`: successful later release, actual promotion and 1,000 successful requests within the fixed warm targets.
+- `documentation-release-skip.json`: redundant document-only release canceled before deployment began; latest source CI still passed.

@@ -1,0 +1,12 @@
+{
+  "time": "2026-10-11T17:28:22.219965+00:00",
+  "deleted_diagnostic_rules": [
+    "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-delivery",
+    "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-receiver-refresh",
+    "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-fresh-group"
+  ],
+  "verified_absent": true,
+  "production_rule_preserved": true,
+  "live_api_and_dvc_retained_until": "2026-10-18T13:00:00+00:00",
+  "user_retention_choice": "Keep until scheduled October 18 cleanup"
+}

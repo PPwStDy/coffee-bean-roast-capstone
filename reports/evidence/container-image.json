@@ -1,8 +1,7 @@
 {
-  "Id": "sha256:e4e88da462b2b753b0f4f8bfba2a4d6664ddc52ab0331222fbbb1cef1f42ad9f",
-  "Size": 164650776,
+  "Id": "sha256:d9dd1642af67fadbe5c600e31620c748472b7d25f2eda6173a63e45b18200f87",
+  "Size": 387476528,
   "Architecture": "amd64",
   "Os": "linux",
-  "deployed_digest": "coffee6688218enafhtyqhoyi6.azurecr.io/coffee-roast@sha256:e4e88da462b2b753b0f4f8bfba2a4d6664ddc52ab0331222fbbb1cef1f42ad9f",
-  "source_commit": "201d5480cf9280c121986dba6ae6faa964b210fa"
+  "source_commit": "751601c9214bbc96aba853dbeed00cb9cee4e358"
 }

@@ -1,0 +1,15 @@
+{
+  "recorded_at": "2026-10-11T17:43:45.928231+00:00",
+  "run_id": 38160723418,
+  "head_sha": "26813cf0007bc970d658420192bf256dd15101a3",
+  "changed_files": [
+    "scripts/build_submission.py"
+  ],
+  "reason": "Document-generator-only change; current source CI passed. Retain the preceding successful fixed-target deployment of identical API/model/infrastructure source.",
+  "canceled_before_deployment_started": true,
+  "deployment_step_status_at_cancellation": "pending",
+  "latest_ci": "https://github.com/PPwStDy/coffee-bean-roast-capstone/actions/runs/38160514077",
+  "successful_deployment": "https://github.com/PPwStDy/coffee-bean-roast-capstone/actions/runs/38160430486",
+  "confirmed_workflow_conclusion": "cancelled",
+  "confirmed_deployment_step_conclusion": "skipped"
+}

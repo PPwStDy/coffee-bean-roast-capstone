@@ -17,7 +17,7 @@
         },
         "pixel_std": 0.3291,
         "shannon_entropy": 6.7341,
-        "latency_ms": 81.68,
+        "latency_ms": 89.61,
         "model_version": "roast-swin-retrained-v1"
       }
     },
@@ -36,7 +36,7 @@
         },
         "pixel_std": 0.1747,
         "shannon_entropy": 6.7793,
-        "latency_ms": 81.56,
+        "latency_ms": 79.28,
         "model_version": "roast-swin-retrained-v1"
       }
     },
@@ -55,7 +55,7 @@
         },
         "pixel_std": 0.3018,
         "shannon_entropy": 7.2873,
-        "latency_ms": 79.24,
+        "latency_ms": 75.62,
         "model_version": "roast-swin-retrained-v1"
       }
     },
@@ -74,7 +74,7 @@
         },
         "pixel_std": 0.2966,
         "shannon_entropy": 6.0291,
-        "latency_ms": 77.71,
+        "latency_ms": 76.44,
         "model_version": "roast-swin-retrained-v1"
       }
     },
@@ -97,7 +97,7 @@
       "response": {
         "detail": {
           "error": "Optical Occlusion / Specular Glare Detected",
-          "pixel_std": 0.4714,
+          "pixel_std": 0.0,
           "threshold": 0.05,
           "shannon_entropy": -0.0,
           "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."

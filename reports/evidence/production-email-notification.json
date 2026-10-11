@@ -1,0 +1,19 @@
+{
+  "actionDetails": [
+    {
+      "MechanismType": "Email",
+      "Message": null,
+      "Name": "student",
+      "SendTime": "2026-10-11T17:24:17+00:00",
+      "Status": "Succeeded",
+      "SubState": "Success"
+    }
+  ],
+  "completedTime": "2026-10-11T17:24:19.9680088+00:00",
+  "context": {
+    "contextIdType": "Alert Id",
+    "notificationSource": "OMS Log Search"
+  },
+  "createdTime": "2026-10-11T17:24:13.7451429+00:00",
+  "state": "Complete"
+}

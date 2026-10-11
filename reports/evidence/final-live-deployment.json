@@ -1,0 +1,38 @@
+{
+  "name": "coffee6688218-api",
+  "latestRevision": "coffee6688218-api--r1791740383",
+  "traffic": [
+    {
+      "revisionName": "coffee6688218-api--r1791740383",
+      "weight": 100
+    }
+  ],
+  "scale": {
+    "cooldownPeriod": 30,
+    "maxReplicas": 2,
+    "minReplicas": 0,
+    "pollingInterval": 30,
+    "rules": [
+      {
+        "http": {
+          "metadata": {
+            "concurrentRequests": "2"
+          }
+        },
+        "name": "http"
+      }
+    ]
+  },
+  "resources": {
+    "cpu": 2,
+    "ephemeralStorage": "8Gi",
+    "memory": "4Gi"
+  },
+  "image": "coffee6688218enafhtyqhoyi6.azurecr.io/coffee-roast@sha256:a9ac24d5e6880f9e2233cd33489080ea98e75e0d1483e6b53bd32d8d81142136",
+  "tags": {
+    "course": "itcs355",
+    "lab": "capstone",
+    "student": "6688218"
+  },
+  "inspection": "ARM REST 2025-07-01; regional provider active although CLI global registration precheck remains unavailable"
+}

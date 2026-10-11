@@ -1,0 +1,413 @@
+[
+  {
+    "changedTime": "2026-10-11T13:03:24.691100+00:00",
+    "createdTime": "2026-10-11T12:53:22.151598+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-ci",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-ci",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "changedTime": "2026-10-11T13:12:50.987191+00:00",
+    "createdTime": "2026-10-11T12:53:22.154920+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.OperationalInsights/workspaces/coffee6688218-logs",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-logs",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.OperationalInsights/workspaces"
+  },
+  {
+    "changedTime": "2026-10-11T13:03:24.831664+00:00",
+    "createdTime": "2026-10-11T12:53:22.153951+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-identity",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-identity",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "changedTime": "2026-10-11T13:12:29.084233+00:00",
+    "createdTime": "2026-10-11T12:53:22.157496+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Storage/storageAccounts/cf6688218enafhtyqhoyi6",
+    "identity": null,
+    "kind": "StorageV2",
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "cf6688218enafhtyqhoyi6",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": {
+      "capacity": null,
+      "family": null,
+      "model": null,
+      "name": "Standard_LRS",
+      "size": null,
+      "tier": "Standard"
+    },
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.Storage/storageAccounts"
+  },
+  {
+    "changedTime": "2026-10-11T13:12:29.748641+00:00",
+    "createdTime": "2026-10-11T12:53:22.162137+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ContainerRegistry/registries/coffee6688218enafhtyqhoyi6",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218enafhtyqhoyi6",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": {
+      "capacity": null,
+      "family": null,
+      "model": null,
+      "name": "Basic",
+      "size": null,
+      "tier": "Basic"
+    },
+    "systemData": {
+      "createdAt": "2026-10-11T12:53:22.1727833Z",
+      "createdBy": "peerawat.son@student.mahidol.ac.th",
+      "createdByType": "User",
+      "lastModifiedAt": "2026-10-11T13:02:27.2001789Z",
+      "lastModifiedBy": "peerawat.son@student.mahidol.ac.th",
+      "lastModifiedByType": "User"
+    },
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.ContainerRegistry/registries"
+  },
+  {
+    "changedTime": "2026-10-11T13:03:22.870819+00:00",
+    "createdTime": "2026-10-11T12:53:22.169851+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/actiongroups/coffee6688218-email",
+    "identity": null,
+    "kind": null,
+    "location": "global",
+    "managedBy": null,
+    "name": "coffee6688218-email",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.Insights/actiongroups"
+  },
+  {
+    "changedTime": "2026-10-11T13:03:23.854277+00:00",
+    "createdTime": "2026-10-11T12:53:22.170857+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-ci-read",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-ci-read",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  {
+    "changedTime": "2026-10-11T13:12:51.801852+00:00",
+    "createdTime": "2026-10-11T13:02:50.886713+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/scheduledqueryrules/coffee6688218-camera-occlusion",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-camera-occlusion",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "systemData": {
+      "createdAt": "2026-10-11T13:02:50.9702799Z",
+      "createdBy": "peerawat.son@student.mahidol.ac.th",
+      "createdByType": "User",
+      "lastModifiedAt": "2026-10-11T13:02:50.9702799Z",
+      "lastModifiedBy": "peerawat.son@student.mahidol.ac.th",
+      "lastModifiedByType": "User"
+    },
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.Insights/scheduledqueryrules"
+  },
+  {
+    "changedTime": "2026-10-11T13:12:53.123150+00:00",
+    "createdTime": "2026-10-11T12:53:45.934379+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/workbooks/1f289b63-43ca-5130-a7e6-abc93b51060f",
+    "identity": null,
+    "kind": "shared",
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "1f289b63-43ca-5130-a7e6-abc93b51060f",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "tags": {
+      "course": "itcs355",
+      "hidden-title": "Coffee roast API operations",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.Insights/workbooks"
+  },
+  {
+    "changedTime": "2026-10-11T13:05:01.194974+00:00",
+    "createdTime": "2026-10-11T12:53:45.947201+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/managedEnvironments/coffee6688218-environment",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-environment",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "systemData": {
+      "createdAt": "2026-10-11T12:53:45.9625102Z",
+      "createdBy": "peerawat.son@student.mahidol.ac.th",
+      "createdByType": "User",
+      "lastModifiedAt": "2026-10-11T13:02:51.6577956Z",
+      "lastModifiedBy": "peerawat.son@student.mahidol.ac.th",
+      "lastModifiedByType": "User"
+    },
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.App/managedEnvironments"
+  },
+  {
+    "changedTime": "2026-10-11T17:24:50.324409+00:00",
+    "createdTime": "2026-10-11T16:02:32.242521+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/containerApps/coffee6688218-api",
+    "identity": {
+      "principalId": null,
+      "tenantId": null,
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-identity": {
+          "clientId": "4e817ece-9575-41f3-973b-7d449dda9c86",
+          "principalId": "10347196-9617-44c1-afe8-8f6d064b1cf7"
+        }
+      }
+    },
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-api",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "systemData": {
+      "createdAt": "2026-10-11T16:02:32.3206617Z",
+      "createdBy": "b31bc319-5462-4360-a4ea-c20a1a9f6fbc",
+      "createdByType": "Application",
+      "lastModifiedAt": "2026-10-11T17:24:32.7973062Z",
+      "lastModifiedBy": "b31bc319-5462-4360-a4ea-c20a1a9f6fbc",
+      "lastModifiedByType": "Application"
+    },
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.App/containerApps"
+  },
+  {
+    "changedTime": "2026-10-11T16:41:34.831028+00:00",
+    "createdTime": "2026-10-11T16:31:32.865984+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-delivery",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-camera-occlusion-delivery",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "systemData": {
+      "createdAt": "2026-10-11T16:31:32.8839969Z",
+      "createdBy": "peerawat.son@student.mahidol.ac.th",
+      "createdByType": "User",
+      "lastModifiedAt": "2026-10-11T16:31:32.8839969Z",
+      "lastModifiedBy": "peerawat.son@student.mahidol.ac.th",
+      "lastModifiedByType": "User"
+    },
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "microsoft.insights/scheduledqueryrules"
+  },
+  {
+    "changedTime": "2026-10-11T16:55:12.668728+00:00",
+    "createdTime": "2026-10-11T16:45:11.287535+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-receiver-refresh",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-camera-occlusion-receiver-refresh",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "systemData": {
+      "createdAt": "2026-10-11T16:45:11.2980175Z",
+      "createdBy": "peerawat.son@student.mahidol.ac.th",
+      "createdByType": "User",
+      "lastModifiedAt": "2026-10-11T16:45:11.2980175Z",
+      "lastModifiedBy": "peerawat.son@student.mahidol.ac.th",
+      "lastModifiedByType": "User"
+    },
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "microsoft.insights/scheduledqueryrules"
+  },
+  {
+    "changedTime": "2026-10-11T17:00:10.100120+00:00",
+    "createdTime": "2026-10-11T16:50:08.534992+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/actiongroups/coffee6688218-email-verified",
+    "identity": null,
+    "kind": null,
+    "location": "global",
+    "managedBy": null,
+    "name": "coffee6688218-email-verified",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "Microsoft.Insights/actiongroups"
+  },
+  {
+    "changedTime": "2026-10-11T17:00:11.889440+00:00",
+    "createdTime": "2026-10-11T16:50:10.586571+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion-fresh-group",
+    "identity": null,
+    "kind": null,
+    "location": "eastasia",
+    "managedBy": null,
+    "name": "coffee6688218-camera-occlusion-fresh-group",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "rg-itcs355-6688218-capstone",
+    "sku": null,
+    "systemData": {
+      "createdAt": "2026-10-11T16:50:10.5988884Z",
+      "createdBy": "peerawat.son@student.mahidol.ac.th",
+      "createdByType": "User",
+      "lastModifiedAt": "2026-10-11T16:50:10.5988884Z",
+      "lastModifiedBy": "peerawat.son@student.mahidol.ac.th",
+      "lastModifiedByType": "User"
+    },
+    "tags": {
+      "course": "itcs355",
+      "lab": "capstone",
+      "student": "6688218"
+    },
+    "type": "microsoft.insights/scheduledqueryrules"
+  }
+]

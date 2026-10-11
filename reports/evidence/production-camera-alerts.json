@@ -1,0 +1,55 @@
+[
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs/providers/Microsoft.AlertsManagement/alerts/0337b6a0-b7ba-2cd7-c8ad-10ba842f001c",
+    "name": "Camera sensor occlusion warning",
+    "properties": {
+      "essentials": {
+        "actionStatus": {
+          "isSuppressed": false
+        },
+        "alertRule": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion",
+        "alertState": "New",
+        "lastModifiedDateTime": "2026-10-11T17:24:12.8393655Z",
+        "lastModifiedUserName": "System",
+        "monitorCondition": "Fired",
+        "monitorService": "Log Alerts V2",
+        "severity": "Sev2",
+        "signalType": "Log",
+        "sourceCreatedId": "bea64c16-bb20-ec4a-65af-03d4954ece5d",
+        "startDateTime": "2026-10-11T17:24:12.8393655Z",
+        "targetResource": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs",
+        "targetResourceGroup": "rg-itcs355-6688218-capstone",
+        "targetResourceName": "coffee6688218-logs",
+        "targetResourceType": "microsoft.operationalinsights/workspaces"
+      }
+    },
+    "type": "microsoft.alertsmanagement/alerts"
+  },
+  {
+    "id": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs/providers/Microsoft.AlertsManagement/alerts/c193821c-fbdd-d364-2f65-3075b073001c",
+    "name": "Camera sensor occlusion warning",
+    "properties": {
+      "essentials": {
+        "actionStatus": {
+          "isSuppressed": false
+        },
+        "alertRule": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/microsoft.insights/scheduledqueryrules/coffee6688218-camera-occlusion",
+        "alertState": "New",
+        "lastModifiedDateTime": "2026-10-11T16:55:11.0871456Z",
+        "lastModifiedUserName": "System",
+        "monitorCondition": "Resolved",
+        "monitorConditionResolvedDateTime": "2026-10-11T16:55:11.1214851Z",
+        "monitorService": "Log Alerts V2",
+        "severity": "Sev2",
+        "signalType": "Log",
+        "sourceCreatedId": "7c5b08d0-d4d4-6252-be24-8fb6844be447",
+        "startDateTime": "2026-10-11T16:19:09.3582795Z",
+        "targetResource": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourcegroups/rg-itcs355-6688218-capstone/providers/microsoft.operationalinsights/workspaces/coffee6688218-logs",
+        "targetResourceGroup": "rg-itcs355-6688218-capstone",
+        "targetResourceName": "coffee6688218-logs",
+        "targetResourceType": "microsoft.operationalinsights/workspaces"
+      }
+    },
+    "type": "microsoft.alertsmanagement/alerts"
+  }
+]

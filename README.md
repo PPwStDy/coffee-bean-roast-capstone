@@ -93,7 +93,7 @@ Initial targets require 1,000 warm requests at concurrency 2 and 20 cold-start t
 
 [Cost report](reports/cost_report.md) separates serving, storage, registry, monitoring and training. The deployment gate uses actual prior subscription spending, dated East Asia prices and a dated USD/THB exchange rate against the remaining 800 THB course allowance. Free grants are excluded conservatively. Budget notifications are configured at 50/80/100%; notifications are not a hard spending cap.
 
-`make cloud-teardown` verifies ownership before deleting only capstone resources and verifies preservation of the shared Azure ML workspace. The scheduled teardown enforces the configured seven-day retention. Owner cleanup of the exact capstone subscription budget and external role assignments is recorded separately; no shared workspace or unrelated lab resource is deleted.
+`make cloud-teardown` verifies ownership before deleting only capstone resources and verifies preservation of the shared Azure ML workspace. At the user's request, the live API and DVC remote remain available until October 18. The scheduled cleanup is due at 13:17 UTC / 20:17 Bangkok that day, subject to GitHub scheduling delays. Actual deletion evidence remains pending until the cleanup verifies it. Owner cleanup of the exact capstone subscription budget and external role assignments is recorded separately; no shared workspace or unrelated lab resource is deleted.
 
 After group deletion, the subscription owner runs `uv run --frozen python -m cloudlayer.cleanup_external` to remove the exact recorded capstone budget and two external role grants. The CI identity has no subscription-wide permission to remove those objects.
 

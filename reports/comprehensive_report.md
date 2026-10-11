@@ -22,7 +22,7 @@ Data, historical weights and the clean release use DVC pointers with a shared pr
 
 # Reproducible training and export selection
 
-The actual training source commit is 763915a0b9d05af803194239a3601a4a15dfa08f; dataset DVC revision isd241ed318d2c1d8672d939938d3b71be.dir. The dependency lock SHA-256 is 51616381f32a57131c7a4fb27d694b819edfde071519a124ad54195d9ddd99d5. Check out that exact commit and lock to reproduce the recorded procedure rather than silently using newer dependencies.
+The actual training source commit is 763915a0b9d05af803194239a3601a4a15dfa08f; dataset DVC revision is d241ed318d2c1d8672d939938d3b71be.dir. The dependency lock SHA-256 is 51616381f32a57131c7a4fb27d694b819edfde071519a124ad54195d9ddd99d5. Check out that exact commit and lock to reproduce the recorded procedure rather than silently using newer dependencies.
 
 The isolated Python 3.12 environment does not inherit machine site-packages. ImageNet Swin-T initialization replaces the contaminated coffee checkpoint. Seed 42 is recorded with 20 epochs, batch 8, backbone LR 5e-5, head LR 1e-3, AdamW weight decay 0.01, label smoothing 0.05, OneCycleLR and pct_start 0.2. MPS numerical behavior can differ between machines; the procedure is reproducible without promising bitwise identity.
 
@@ -36,7 +36,7 @@ The selected INT8 release was evaluated on 181 test images exactly once: accurac
 
 FastAPI preserves /predict,/predict/base64,/health,/ready and /metrics. Raw JPEG/PNG and multipart file uploads are documented in OpenAPI; strict base64 JSON is supported. Returned fields include predicted_class, predicted_class_id, confidence, four probabilities, quality measurements, latency and model_version. X-Model-Version must agree with the body.
 
-Input handling checks actual format, decoded size at most 5 MiB and dimensions at most 20 megapixels before image loading. Controlled errors distinguish malformed or unreadable bytes 400, unsupported image format 415, oversized payload 413, schema/optical rejection422 and unavailable/busy inference503. Inference runs outside the asynchronous request loop with concurrency 2 and bounded waiting.
+Input handling checks actual format, decoded size at most 5 MiB and dimensions at most 20 megapixels before image loading. Controlled errors distinguish malformed or unreadable bytes 400, unsupported image format 415, oversized payload 413, schema/optical rejection 422 and unavailable/busy inference 503. Inference runs outside the asynchronous request loop with concurrency 2 and bounded waiting.
 
 Readiness checks architecture, class order, input layout, ImageNet preprocessing, mandatory model/version hashes, output shape and finite outputs. Missing, corrupted and incompatible artifacts produce failed readiness and controlled 503 predictions. Liveness remains available to diagnose the process.
 
@@ -54,29 +54,31 @@ Container Apps uses 2 vCPU/4 GiB, HTTP concurrency 2, min 0/max 2, managed ident
 
 Local Prometheus, Grafana and Alertmanager expose class counts, latency and camera anomaly counters. Structured JSON application logs reach Azure Log Analytics. The deployed workbook shows request status volume, server p50/p95/p99 and optical rejection events. Foundation provisioning skips query validation before the log table exists; after ingestion, the actual five-minute production query was validated successfully. Failed provisioning and notification attempts were retained.
 
-The engineered failure is collapsed dynamic range: black and white frames return 422 before model invocation. Logs and metrics name occlusion_guard_rejection. The student's email receiver was verified in Azure. A real camera warning reached the student's mailbox; the alert record and delivery screenshot preserve the rule, resource and timestamp. A fresh evaluation instance of the same optical rejection query tested delivery after verification.
+The engineered failure is collapsed dynamic range: black and white frames return 422 before model invocation. Logs and metrics name occlusion_guard_rejection. The student's email receiver was verified in Azure. A real camera warning reached the student's mailbox. The receipt records the subject, alert ID, resource, rule and time; the screenshot shows filtered mailbox results. The delivery verification used a 30-minute query window over real camera faults. The production rule uses a five-minute window and evaluation interval. Azure separately recorded successful Email transport from the production five-minute rule.
 
 # Measured performance and operating costs
 
 Warm benchmark: 1000 requests, concurrency 2, p95 240.64 ms, p99 250.66 ms; wall time 113.8s.
 
-Cold benchmark: 20 trials with verified zero replicas, p95 28950.42 ms, p99 28994.38 ms.
+Cold benchmark from the Bangkok Mac: 20 trials with verified zero replicas, p95 28950.42 ms, p99 28994.38 ms.
 
-Frozen targets: Fixed warm p95/p99: 289/301 ms; cold p95/p99: 34741/34794 ms. Warm client: github-actions-ubuntu. Image size is reported separately: 164, 650, 776 bytes. Future releases enforce these values.
+Frozen targets: Fixed warm p95/p99: 289/301 ms; cold p95/p99: 34741/34794 ms. Warm client: github-actions-ubuntu. Image size is reported separately: initial 164,650,776 bytes. Future releases enforce the fixed latency targets.
 
-Conservative remaining course allowance: 635.52 THB after prior subscription spending. Seven-day forecast: 239.09 THB including 25% margin. Primary East Asia retail rates and dated ECB USD/THB exchange evidence are captured. Free grants are excluded; these are estimates, not final invoices.
+Latest Linux container: 387,476,528 uncompressed bytes, linux/amd64, source 751601c9214bbc96aba853dbeed00cb9cee4e358. This current build is recorded separately from the immutable initial image measurement.
 
-Serving cost per 1, 000: At most USD 0.014056 / 0.4713 THB per 1, 000 predictions, using 113.80 measured seconds, 2 vCPU / 4 GiB per replica and at most two replicas active throughout. This is a conservative allocation bound, not an invoice; exact replica-seconds and free-grant deductions are unmeasured.
+Conservative remaining course allowance: 634.59 THB after prior subscription spending. Seven-day forecast: 239.09 THB including 25% margin. Primary East Asia retail rates and dated ECB USD/THB exchange evidence are captured. Free grants are excluded; these are estimates, not final invoices.
+
+Serving cost per 1,000: At most USD 0.014056 / 0.4713 THB per 1,000 predictions, using 113.80 measured seconds, 2 vCPU / 4 GiB per replica and at most two replicas active throughout. This is a conservative allocation bound, not an invoice; exact replica-seconds and free-grant deductions are unmeasured.
 
 Storage, registry, log ingestion/alerts and training are reported separately in cost_report.md. Local MPS training incurs zero Azure compute charge; device and electricity costs are unmeasured. One-time DVC downloads and other network transfer are not itemized in the allocation estimate; billing evidence may lag. Budget notifications at 50/80/100% of an 18 USD remaining-allowance budget are alerts, not a shutdown. A forecast gate blocks over-budget deployments. Scoped teardown and scheduled seven-day retention remove chargeable owned resources.
 
 # Acceptance evidence and academic completion
 
-Remote CI: https://github.com/PPwStDy/coffee-bean-roast-capstone/actions/runs/38155673260; result: success. Azure ML registered coffee-bean-roast-classifier version 1. Deployed candidate promoted: True. Teardown verified: pending.
+Remote CI: https://github.com/PPwStDy/coffee-bean-roast-capstone/actions/runs/38160514077; result: success. Azure ML registered coffee-bean-roast-classifier version 1. Deployed candidate promoted: True. Teardown verified: pending.
 
 The detailed requirement-to-evidence checklist records every acceptance scenario separately. It includes actual CI links, lineage, endpoint results, export parity, image size, warm/cold reports, dashboard captures, delivered email, cost and teardown. Historical container tests and generated templates cannot stand in for final deployed evidence.
 
-Teardown requires exact capstone group ownership and checks all resource tags. It verifies group absence and preservation of the existing shared workspace. The subscription owner separately removes only the exact capstone budget and two recorded external role assignments. Shared registry history and unrelated laboratory resources are preserved.
+At the user's request, the live API and DVC remote remain available until the scheduled October 18 cleanup (due at 20:17 Bangkok, subject to scheduler delay). Actual deletion verification is pending. Teardown requires exact capstone group ownership and checks all resource tags. It verifies group absence and preservation of the existing shared workspace. The subscription owner separately removes only the exact capstone budget and two recorded external role assignments. Shared Azure ML model history and unrelated laboratory resources are preserved.
 
 Proposed responsibility split: Peerawat owns data/model lineage and deployment; Yongyot owns monitoring, failure demonstration and presentation. Actual contributions need team confirmation. The presentation script allocates one minute each to problem, data, training, architecture, live prediction, failure and regression, performance and cost, and limitations. Live timing, unexpected input and five-minute Q&A are external demonstration requirements.
 

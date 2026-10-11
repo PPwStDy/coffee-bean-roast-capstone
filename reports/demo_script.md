@@ -32,7 +32,7 @@ Show the actual 1,000-request concurrency 2 warm report, 20 zero-replica cold tr
 
 ## 7:00 to 8:00 Limits and completion
 
-Show the requirement checklist and safe teardown record, with the shared Azure ML workspace preserved. Explain source/camera confounding, uncalibrated confidence, absence of near-duplicate guarantees and limited dataset size. “Another week would buy new independently captured images and calibration, plus broader camera-condition checks.” State any technical evidence still pending and the external academic milestones. Finish before 8:00; reserve5 minutes for Q&A.
+Show the requirement checklist, resource ownership audit and October 18 cleanup schedule. Actual teardown verification remains pending while the API and DVC remote are retained for presentation; show the deletion receipt only after cleanup actually runs. Explain source/camera confounding, uncalibrated confidence, absence of near-duplicate guarantees and limited dataset size. “Another week would buy new independently captured images and calibration, plus broader camera-condition checks.” State any technical evidence still pending and the external academic milestones. Finish before 8:00; reserve 5 minutes for Q&A.
 
 ## Questions to prepare
 

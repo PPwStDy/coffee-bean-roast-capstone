@@ -1,0 +1,33 @@
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+[0;93m2026-10-11 17:41:36.413185645 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+{"ts": "2026-10-11 17:41:37,556", "level": "INFO", "message": "Loaded ONNX model: reports/model.onnx"}
+{"ts": "2026-10-11 17:41:37,556", "level": "INFO", "message": "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+{"ts": "2026-10-11 17:41:40,725", "level": "INFO", "event": "http_request", "request_id": "3bcb110a-171c-4fc8-b1c7-76f685b4e211", "path": "/ready", "status": 200, "latency_ms": 1.79, "model_version": "roast-swin-retrained-v1"}
+INFO:     127.0.0.1:50998 - "GET /ready HTTP/1.1" 200 OK
+INFO:     172.17.0.1:37060 - "GET /ready HTTP/1.1" 200 OK
+{"ts": "2026-10-11 17:41:41,116", "level": "INFO", "event": "http_request", "request_id": "0c33e7ce-1447-4bc2-b6b8-cf64df71fc00", "path": "/ready", "status": 200, "latency_ms": 0.76, "model_version": "roast-swin-retrained-v1"}
+{"ts": "2026-10-11 17:41:41,217", "level": "INFO", "event": "http_request", "request_id": "04acb688-479a-413d-ae46-9ed9713172e9", "path": "/predict", "status": 200, "latency_ms": 97.78, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 17:41:41,306", "level": "INFO", "event": "http_request", "request_id": "1bcead39-80c6-419d-b848-2f62c0b10440", "path": "/predict", "status": 200, "latency_ms": 86.59, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 17:41:41,395", "level": "INFO", "event": "http_request", "request_id": "5de523c8-b25d-445a-889e-92fac0d99fd2", "path": "/predict", "status": 200, "latency_ms": 85.78, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 17:41:41,483", "level": "INFO", "event": "http_request", "request_id": "c9e3ae5f-6458-4d64-8103-8de4d6a27ea8", "path": "/predict", "status": 200, "latency_ms": 85.4, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "POST /predict HTTP/1.1" 200 OK
+{"ts": "2026-10-11 17:41:41,572", "level": "INFO", "event": "http_request", "request_id": "1e163af0-6801-4b6a-807c-b8a4bb0ee2cb", "path": "/predict/base64", "status": 200, "latency_ms": 85.89, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "POST /predict/base64 HTTP/1.1" 200 OK
+{"ts": "2026-10-11 17:41:41,589", "level": "WARNING", "event": "occlusion_guard_rejection", "pixel_std": 0.0, "entropy": -0.0, "threshold": 0.05}
+{"ts": "2026-10-11 17:41:41,590", "level": "INFO", "event": "http_request", "request_id": "90ef9c00-647e-41ca-b8f4-433ad07d2e2f", "path": "/predict", "status": 422, "latency_ms": 4.31, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+{"ts": "2026-10-11 17:41:41,597", "level": "WARNING", "event": "occlusion_guard_rejection", "pixel_std": 0.0, "entropy": -0.0, "threshold": 0.05}
+{"ts": "2026-10-11 17:41:41,597", "level": "INFO", "event": "http_request", "request_id": "ac8fad13-321e-41d1-9e1c-efcc8f7060c4", "path": "/predict", "status": 422, "latency_ms": 4.16, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "POST /predict HTTP/1.1" 422 Unprocessable Entity
+{"ts": "2026-10-11 17:41:41,624", "level": "INFO", "event": "http_request", "request_id": "36426fa0-bf6f-4084-b759-21ecbca7e5d8", "path": "/predict", "status": 400, "latency_ms": 24.44, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "POST /predict HTTP/1.1" 400 Bad Request
+{"ts": "2026-10-11 17:41:41,626", "level": "INFO", "event": "http_request", "request_id": "ec9d53da-d2b9-42c9-80c4-3fefda60f4ac", "path": "/predict/base64", "status": 400, "latency_ms": 0.63, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "POST /predict/base64 HTTP/1.1" 400 Bad Request
+{"ts": "2026-10-11 17:41:41,630", "level": "INFO", "event": "http_request", "request_id": "1e0059f4-2e86-430b-af13-1b808eecbcb3", "path": "/metrics", "status": 200, "latency_ms": 1.85, "model_version": "roast-swin-retrained-v1"}
+INFO:     172.17.0.1:37060 - "GET /metrics HTTP/1.1" 200 OK
