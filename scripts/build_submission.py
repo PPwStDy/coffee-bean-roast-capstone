@@ -39,15 +39,19 @@ budget = cost["budget"]
 
 
 def readable(text):
-    prefixes = "seed|batch|epoch|version|concurrency|accuracy|loss|took|on|and|all|after|before|at|with|an|is|leaving|removes|achieved|macro-F1|min|max|are|return|plus|uses|float|RGB|unique|its|has|by|Python|LR|decay|of|were|pending|deployed|median|error|reject|remaining|historical|classified|in|the"
-    text = re.sub(rf"\b({prefixes})(?=\d)", r"\1 ", text)
+    prefixes = "seed|batch|epoch|version|concurrency|accuracy|loss|took|on|and|all|after|before|at|with|an|is|leaving|removes|achieved|macro-F1|min|max|are|return|plus|uses|float|RGB|unique|its|has|by|Python|LR|decay|of|were|pending|deployed|median|error|reject|remaining|historical|classified|in|the|removing|yields|restored|arXiv|than|most|was|shrank|to|smoothing|pct_start|per|Session|accept|payload|count"
+    text = re.sub(rf"\b({prefixes})(?=\d)", r"\1 ", text, flags=re.IGNORECASE)
     text = re.sub(r"([,;:])(?=\d)", r"\1 ", text)
     text = re.sub(
         r"(\d)(?=epochs|minutes|images|seconds|GiB|MiB|THB|USD|vCPU|MP|px|ms|requests|copies|trials|megapixels)",
         r"\1 ",
         text,
     )
-    return text.replace("CC BY-SA4.0", "CC BY-SA 4.0").replace("al.2022", "al. (2022)").replace("Swin-T,", "Swin-T, ")
+    return (
+        text.replace("CC BY-SA4.0", "CC BY-SA 4.0")
+        .replace("al.2022", "al. (2022)")
+        .replace("Swin-T,", "Swin-T, ")
+    )
 
 
 proposal = [

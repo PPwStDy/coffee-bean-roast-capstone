@@ -1,0 +1,13 @@
+{
+  "url": "https://coffee6688218-api.greenwave-5725ddc9.eastasia.azurecontainerapps.io",
+  "requests": 1000,
+  "concurrency": 2,
+  "successful_requests": 1000,
+  "model_version": "roast-swin-retrained-v1",
+  "duration_seconds": 88.08554575000016,
+  "requests_per_second": 11.352600378252163,
+  "p50_ms": 159.03291649738094,
+  "p95_ms": 226.65045834510238,
+  "p99_ms": 251.16197749346608,
+  "server_p95_ms": 100.08249999999998
+}

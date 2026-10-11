@@ -2,9 +2,9 @@
 
 Official East Asia retail rates and dated ECB currency conversion are captured under reports/evidence.
 
-Conservative remaining allowance: 635.98 THB. Seven-day forecast with 25% margin: 239.09 THB.
+Conservative remaining allowance: 635.52 THB. Seven-day forecast with 25% margin: 239.09 THB.
 
-Serving cost per1,000 is pending deployed measurements. The old 50ms/512MiB estimate is withdrawn.
+Serving per 1,000 predictions: at most $0.010970 / 0.3678 THB under the documented maximum-allocation assumption, using 88.09 measured seconds.
 
 | Component | Seven-day USD forecast |
 |---|---:|

@@ -1,8 +1,8 @@
 {
   "eTag": null,
-  "id": "subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.CostManagement/query/7ee60aa9-965e-47b9-a2cc-68888e8c7edd",
+  "id": "subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/providers/Microsoft.CostManagement/query/78eea1dc-c52e-4ba8-8633-3b0ff6bf81d5",
   "location": null,
-  "name": "7ee60aa9-965e-47b9-a2cc-68888e8c7edd",
+  "name": "78eea1dc-c52e-4ba8-8633-3b0ff6bf81d5",
   "properties": {
     "columns": [
       {
@@ -21,7 +21,7 @@
     "nextLink": null,
     "rows": [
       [
-        4.8916227524,
+        4.9055061968,
         "itcs355-6688218",
         "USD"
       ]

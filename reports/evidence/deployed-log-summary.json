@@ -1,0 +1,26 @@
+[
+  {
+    "Count": "1060",
+    "Event": "http_request",
+    "Status": "200",
+    "TableName": "PrimaryResult"
+  },
+  {
+    "Count": "4",
+    "Event": "occlusion_guard_rejection",
+    "Status": "",
+    "TableName": "PrimaryResult"
+  },
+  {
+    "Count": "4",
+    "Event": "http_request",
+    "Status": "422",
+    "TableName": "PrimaryResult"
+  },
+  {
+    "Count": "4",
+    "Event": "http_request",
+    "Status": "400",
+    "TableName": "PrimaryResult"
+  }
+]

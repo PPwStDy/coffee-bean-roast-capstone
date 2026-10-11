@@ -2,11 +2,27 @@
 
 import json
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 from cloudlayer.cli import az
 from cloudlayer.budget import calculate
 from scripts.endpoint_checks import check
+
+
+def verify_traffic(group, endpoint, expected):
+    """Wait for ARM to report the requested revision weights after an async update."""
+    wanted = {t["revisionName"]: t["weight"] for t in expected if t.get("weight", 0)}
+    deadline = time.monotonic() + 300
+    while True:
+        actual = az("containerapp", "show", "--name", endpoint, "--resource-group", group)
+        traffic = actual["properties"]["configuration"]["ingress"]["traffic"]
+        observed = {t.get("revisionName"): t["weight"] for t in traffic if t.get("weight", 0)}
+        if observed == wanted:
+            return traffic
+        if time.monotonic() >= deadline:
+            raise TimeoutError("Azure did not apply the requested revision traffic weights")
+        time.sleep(5)
 
 
 def deploy_candidate(config, digest, endpoint):
@@ -74,7 +90,13 @@ def deploy_candidate(config, digest, endpoint):
         revision,
     )
     url = "https://" + candidate["properties"]["fqdn"]
-    evidence = {"digest": digest, "candidate": revision, "previous_traffic": previous, "candidate_url": url}
+    evidence = {
+        "time": datetime.now(timezone.utc).isoformat(),
+        "digest": digest,
+        "candidate": revision,
+        "previous_traffic": previous,
+        "candidate_url": url,
+    }
     try:
         evidence["checks"] = check(url, metadata["model_version"])
         if Path("monitoring/slo.json").exists():
@@ -95,6 +117,9 @@ def deploy_candidate(config, digest, endpoint):
             "--revision-weight",
             f"{revision}=100",
         )
+        evidence["promoted_traffic"] = verify_traffic(
+            group, endpoint, [{"revisionName": revision, "weight": 100}]
+        )
         evidence["promoted"] = True
     except Exception as exc:
         evidence.update(promoted=False, error=str(exc))
@@ -111,9 +136,8 @@ def deploy_candidate(config, digest, endpoint):
                 "--revision-weight",
                 *[f"{t.get('revisionName', previous_revision)}={t['weight']}" for t in previous],
             )
-            evidence["rollback_verified"] = az(
-                "containerapp", "show", "--name", endpoint, "--resource-group", group
-            )["properties"]["configuration"]["ingress"]["traffic"]
+            expected = previous or [{"revisionName": previous_revision, "weight": 100}]
+            evidence["rollback_verified"] = verify_traffic(group, endpoint, expected)
         az(
             "containerapp",
             "revision",
@@ -125,6 +149,20 @@ def deploy_candidate(config, digest, endpoint):
             "--revision",
             revision,
         )
+        rejected = az(
+            "containerapp",
+            "revision",
+            "show",
+            "--name",
+            endpoint,
+            "--resource-group",
+            group,
+            "--revision",
+            revision,
+        )
+        evidence["rejected_candidate_inactive"] = not rejected["properties"].get("active", True)
+        if not evidence["rejected_candidate_inactive"]:
+            raise RuntimeError("Rejected candidate is still active") from exc
         raise
     finally:
         Path("reports/evidence/candidate-deployment.json").write_text(json.dumps(evidence, indent=2) + "\n")

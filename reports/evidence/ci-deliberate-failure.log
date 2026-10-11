@@ -1,0 +1,530 @@
+validation	Data, model, API, artifact and cloud contracts	﻿2026-10-11T16:06:59.2479082Z ##[group]Run uv run --frozen pytest tests -q --junitxml=reports/evidence/ci-tests.xml
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2479741Z ^[[36;1muv run --frozen pytest tests -q --junitxml=reports/evidence/ci-tests.xml^[[0m
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2764177Z shell: /usr/bin/bash -e {0}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2764652Z env:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2764997Z   PYTHONPATH: .
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2765460Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2766143Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2766893Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2767633Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2768321Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2769154Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2769603Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:06:59.2769945Z ##[endgroup]
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4975913Z ................FEFE......................FF.                            [100%]
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4977024Z ==================================== ERRORS ====================================
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4978151Z ________ ERROR at teardown of test_optical_guard_precedes_inference[0] _________
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4978978Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4979352Z     @pytest.fixture
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4979957Z     def client():
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4980600Z >       with TestClient(service.app) as client:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4981350Z              ^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4981870Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4982246Z tests/test_hardening.py:19: 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4983305Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4984370Z .venv/lib/python3.12/site-packages/starlette/testclient.py:528: in __exit__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4985330Z     self.exit_stack.close()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4986225Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:618: in close
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4987660Z     self.__exit__(None, None, None)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4988650Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:610: in __exit__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4989650Z     raise exc_details[1]
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4990564Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:595: in __exit__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4991524Z     if cb(*exc_details):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4992141Z        ^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4993440Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:478: in _exit_wrapper
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4994573Z     callback(*args, **kwds)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4995514Z .venv/lib/python3.12/site-packages/starlette/testclient.py:521: in wait_shutdown
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4996517Z     portal.call(self.wait_shutdown)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4997417Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:340: in call
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4998557Z     return cast(T_Retval, self.start_task_soon(func, *args).result())
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.4999477Z                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5000478Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:382: in start_task_soon
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5001432Z     self._check_running()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5002198Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5003121Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5003695Z self = <anyio.from_thread.BlockingPortal object at 0x7f86a1fe7b60>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5004426Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5004852Z     def _check_running(self) -> None:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5005658Z         if self._event_loop_thread_id is None:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5006521Z >           raise RuntimeError("This portal is not running")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5007389Z E           RuntimeError: This portal is not running
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5008012Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5008607Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:216: RuntimeError
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5009663Z ---------------------------- Captured stderr setup -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5013454Z ^[[0;93m2026-10-11 16:07:14.295823634 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+^[[m
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5016526Z {"ts": "2026-10-11 16:07:15,567", "level": "INFO", "message": "Loaded ONNX model: /home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/reports/model.onnx"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5018155Z {"ts": "2026-10-11 16:07:15,568", "level": "INFO", "message": "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5019265Z ------------------------------ Captured log setup ------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5020548Z INFO     coffee_service:app.py:166 "Loaded ONNX model: /home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/reports/model.onnx"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5022003Z INFO     coffee_service:app.py:195 "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5023237Z ----------------------------- Captured stderr call -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5024309Z {"ts": "2026-10-11 16:07:15,606", "level": "ERROR", "event": "request_error", "request_id": "d7f48239-f432-4761-b3d5-ace99e2e867e"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5026034Z {"ts": "2026-10-11 16:07:15,607", "level": "INFO", "event": "http_request", "request_id": "d7f48239-f432-4761-b3d5-ace99e2e867e", "path": "/predict", "status": 500, "latency_ms": 7.99, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5027561Z ------------------------------ Captured log call -------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5028621Z ERROR    coffee_service:app.py:221 {"event": "request_error", "request_id": "d7f48239-f432-4761-b3d5-ace99e2e867e"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5029819Z Traceback (most recent call last):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5046962Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 156, in call_next
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5048335Z     message = await recv_stream.receive()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5048768Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5049884Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/anyio/streams/memory.py", line 133, in receive
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5051002Z     raise EndOfStream from None
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5051384Z anyio.EndOfStream
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5051580Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5051857Z During handling of the above exception, another exception occurred:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5052284Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5052745Z Traceback (most recent call last):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5053786Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/service/app.py", line 219, in add_telemetry_headers
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5054795Z     response = await call_next(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5055208Z                ^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5056329Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 174, in call_next
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5057564Z     raise RuntimeError("No response returned.")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5058010Z RuntimeError: No response returned.
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5059262Z INFO     coffee_service:app.py:237 {"event": "http_request", "request_id": "d7f48239-f432-4761-b3d5-ace99e2e867e", "path": "/predict", "status": 500, "latency_ms": 7.99, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5060738Z _______ ERROR at teardown of test_optical_guard_precedes_inference[255] ________
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5061205Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5061335Z     @pytest.fixture
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5061654Z     def client():
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5062004Z >       with TestClient(service.app) as client:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5063175Z              ^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5063463Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5063655Z tests/test_hardening.py:19: 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5064153Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5064857Z .venv/lib/python3.12/site-packages/starlette/testclient.py:528: in __exit__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5065456Z     self.exit_stack.close()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5066025Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:618: in close
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5066644Z     self.__exit__(None, None, None)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5067231Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:610: in __exit__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5067862Z     raise exc_details[1]
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5068406Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:595: in __exit__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5069034Z     if cb(*exc_details):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5069375Z        ^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5069942Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:478: in _exit_wrapper
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5070614Z     callback(*args, **kwds)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5071175Z .venv/lib/python3.12/site-packages/starlette/testclient.py:521: in wait_shutdown
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5071799Z     portal.call(self.wait_shutdown)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5072337Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:340: in call
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5073204Z     return cast(T_Retval, self.start_task_soon(func, *args).result())
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5073769Z                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5074398Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:382: in start_task_soon
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5074999Z     self._check_running()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5075415Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5075771Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5076040Z self = <anyio.from_thread.BlockingPortal object at 0x7f86a1ed9d30>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5076637Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5076796Z     def _check_running(self) -> None:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5077220Z         if self._event_loop_thread_id is None:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5077711Z >           raise RuntimeError("This portal is not running")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5078222Z E           RuntimeError: This portal is not running
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5078536Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5078841Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:216: RuntimeError
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5079546Z ---------------------------- Captured stderr setup -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5080720Z {"ts": "2026-10-11 16:07:17,476", "level": "INFO", "message": "Loaded ONNX model: /home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/reports/model.onnx"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5082093Z {"ts": "2026-10-11 16:07:17,490", "level": "INFO", "message": "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5083406Z ------------------------------ Captured log setup ------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5084508Z INFO     coffee_service:app.py:166 "Loaded ONNX model: /home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/reports/model.onnx"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5085770Z INFO     coffee_service:app.py:195 "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5086602Z ----------------------------- Captured stderr call -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5087523Z {"ts": "2026-10-11 16:07:17,498", "level": "ERROR", "event": "request_error", "request_id": "e911942e-4ecf-4bff-b70b-eed03acb4326"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5089168Z {"ts": "2026-10-11 16:07:17,498", "level": "INFO", "event": "http_request", "request_id": "e911942e-4ecf-4bff-b70b-eed03acb4326", "path": "/predict", "status": 500, "latency_ms": 4.84, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5090546Z ------------------------------ Captured log call -------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5091656Z ERROR    coffee_service:app.py:221 {"event": "request_error", "request_id": "e911942e-4ecf-4bff-b70b-eed03acb4326"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5092641Z Traceback (most recent call last):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5093797Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 156, in call_next
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5094933Z     message = await recv_stream.receive()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5095331Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5096394Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/anyio/streams/memory.py", line 133, in receive
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5097486Z     raise EndOfStream from None
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5097855Z anyio.EndOfStream
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5098044Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5098318Z During handling of the above exception, another exception occurred:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5098735Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5098898Z Traceback (most recent call last):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5099873Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/service/app.py", line 219, in add_telemetry_headers
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5100772Z     response = await call_next(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5101163Z                ^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5102248Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 174, in call_next
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5103735Z     raise RuntimeError("No response returned.")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5104200Z RuntimeError: No response returned.
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5105384Z INFO     coffee_service:app.py:237 {"event": "http_request", "request_id": "e911942e-4ecf-4bff-b70b-eed03acb4326", "path": "/predict", "status": 500, "latency_ms": 4.84, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5106726Z =================================== FAILURES ===================================
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5107532Z ___________________ test_optical_guard_precedes_inference[0] ___________________
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5107973Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5108255Z client = <starlette.testclient.TestClient object at 0x7f86a1fe5c70>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5108985Z monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f86a1ff8b00>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5109573Z color = 0
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5109756Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5109954Z     @pytest.mark.parametrize("color", [0, 255])
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5110547Z     def test_optical_guard_precedes_inference(client, monkeypatch, color):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5111130Z         def forbidden(_):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5111590Z             pytest.fail("Optically rejected frame reached the model")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5112106Z     
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5112673Z         monkeypatch.setattr(service, "run_inference", forbidden)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5113544Z >       response = client.post("/predict", content=image_bytes(color), headers={"content-type": "image/png"})
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5114423Z                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5114828Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5114983Z tests/test_hardening.py:35: 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5115439Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5116057Z .venv/lib/python3.12/site-packages/httpx/_client.py:1144: in post
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5116603Z     return self.request(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5117153Z .venv/lib/python3.12/site-packages/starlette/testclient.py:463: in request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5117748Z     return super().request(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5118227Z .venv/lib/python3.12/site-packages/httpx/_client.py:825: in request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5118925Z     return self.send(request, auth=auth, follow_redirects=follow_redirects)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5119544Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5120120Z .venv/lib/python3.12/site-packages/httpx/_client.py:914: in send
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5120858Z     response = self._send_handling_auth(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5121472Z .venv/lib/python3.12/site-packages/httpx/_client.py:942: in _send_handling_auth
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5122132Z     response = self._send_handling_redirects(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5123061Z .venv/lib/python3.12/site-packages/httpx/_client.py:979: in _send_handling_redirects
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5123718Z     response = self._send_single_request(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5124164Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5124750Z .venv/lib/python3.12/site-packages/httpx/_client.py:1014: in _send_single_request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5125422Z     response = transport.handle_request(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5125860Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5126448Z .venv/lib/python3.12/site-packages/starlette/testclient.py:360: in handle_request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5127035Z     raise exc
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5127513Z .venv/lib/python3.12/site-packages/starlette/testclient.py:357: in handle_request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5128163Z     portal.call(self.app, scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5128729Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:340: in call
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5129388Z     return cast(T_Retval, self.start_task_soon(func, *args).result())
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5129966Z                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5130734Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/concurrent/futures/_base.py:456: in result
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5131491Z     return self.__get_result()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5131852Z            ^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5132666Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/concurrent/futures/_base.py:401: in __get_result
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5133412Z     raise self._exception
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5133923Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:265: in _call_func
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5134514Z     retval = await retval_or_awaitable
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5135112Z              ^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5135673Z .venv/lib/python3.12/site-packages/fastapi/applications.py:1216: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5136305Z     await super().__call__(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5136913Z .venv/lib/python3.12/site-packages/starlette/applications.py:96: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5137556Z     await self.middleware_stack(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5138228Z .venv/lib/python3.12/site-packages/starlette/middleware/errors.py:164: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5138859Z     await self.app(scope, receive, _send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5139457Z .venv/lib/python3.12/site-packages/fastapi/telemetry/_asgi.py:151: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5140096Z     await self.app(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5140748Z .venv/lib/python3.12/site-packages/starlette/middleware/base.py:196: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5141460Z     async with create_collapsing_task_group() as task_group:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5141967Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5142864Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:217: in __aexit__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5143504Z     await anext(self.gen)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5144097Z .venv/lib/python3.12/site-packages/starlette/_utils.py:115: in create_collapsing_task_group
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5144791Z     raise exc from exc.__cause__ or context
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5145380Z .venv/lib/python3.12/site-packages/starlette/middleware/base.py:149: in coro
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5146064Z     await self.app(scope, receive_or_disconnect, send_no_error)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5146784Z .venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py:63: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5147588Z     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5148387Z .venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5149043Z     await app(scope, receive, sender)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5149861Z .venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py:18: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5150522Z     await self.app(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5151062Z .venv/lib/python3.12/site-packages/starlette/routing.py:676: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5151692Z     await self.middleware_stack(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5152275Z .venv/lib/python3.12/site-packages/fastapi/routing.py:2786: in app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5153029Z     await route.handle(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5153593Z .venv/lib/python3.12/site-packages/fastapi/routing.py:1310: in handle
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5154170Z     await super().handle(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5154751Z .venv/lib/python3.12/site-packages/starlette/routing.py:282: in handle
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5155316Z     await self.app(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5155843Z .venv/lib/python3.12/site-packages/fastapi/routing.py:165: in app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5156548Z     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5157363Z .venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5158025Z     await app(scope, receive, sender)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5158539Z .venv/lib/python3.12/site-packages/fastapi/routing.py:151: in app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5159076Z     response = await f(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5159433Z                ^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5159891Z .venv/lib/python3.12/site-packages/fastapi/routing.py:727: in app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5160448Z     raw_response = await run_endpoint_function(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5161094Z .venv/lib/python3.12/site-packages/fastapi/routing.py:360: in run_endpoint_function
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5161745Z     return await dependant.call(**values)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5162160Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5162849Z service/app.py:496: in predict
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5163261Z     return await score_bytes(request, contents)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5163897Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5164320Z service/app.py:441: in score_bytes
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5164897Z     return await run_in_threadpool(lambda: execute_scoring(decode_image(contents)))
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5165551Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5166231Z .venv/lib/python3.12/site-packages/starlette/concurrency.py:34: in run_in_threadpool
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5166912Z     return await anyio.to_thread.run_sync(func)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5167329Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5167855Z .venv/lib/python3.12/site-packages/anyio/to_thread.py:65: in run_sync
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5168487Z     return await get_async_backend().run_sync_in_worker_thread(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5169262Z .venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:2706: in run_sync_in_worker_thread
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5169957Z     return await future
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5170292Z            ^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5170782Z .venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:1100: in run
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5171405Z     result = context.run(func, *args)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5171789Z              ^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5172160Z service/app.py:441: in <lambda>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5172903Z     return await run_in_threadpool(lambda: execute_scoring(decode_image(contents)))
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5173560Z                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5174039Z service/app.py:371: in execute_scoring
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5174444Z     probs = run_inference(batch_np)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5174824Z             ^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5175266Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5175625Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5175866Z _ = array([[[[-2.117904 , -2.117904 , -2.117904 , ..., -2.117904 ,
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5176350Z           -2.117904 , -2.117904 ],
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5176889Z          [-2.117904 ...4],
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5177273Z          [-1.8044444, -1.8044444, -1.8044444, ..., -1.8044444,
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5177762Z           -1.8044444, -1.8044444]]]], dtype=float32)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5178057Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5178190Z     def forbidden(_):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5178610Z >       pytest.fail("Optically rejected frame reached the model")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5179163Z E       Failed: Optically rejected frame reached the model
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5179495Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5179644Z tests/test_hardening.py:32: Failed
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5180153Z ---------------------------- Captured stderr setup -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5183111Z ^[[0;93m2026-10-11 16:07:14.295823634 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+^[[m
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5185787Z {"ts": "2026-10-11 16:07:15,567", "level": "INFO", "message": "Loaded ONNX model: /home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/reports/model.onnx"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5187154Z {"ts": "2026-10-11 16:07:15,568", "level": "INFO", "message": "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5188049Z ------------------------------ Captured log setup ------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5189126Z INFO     coffee_service:app.py:166 "Loaded ONNX model: /home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/reports/model.onnx"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5190360Z INFO     coffee_service:app.py:195 "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5191198Z ----------------------------- Captured stderr call -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5192379Z {"ts": "2026-10-11 16:07:15,606", "level": "ERROR", "event": "request_error", "request_id": "d7f48239-f432-4761-b3d5-ace99e2e867e"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5194154Z {"ts": "2026-10-11 16:07:15,607", "level": "INFO", "event": "http_request", "request_id": "d7f48239-f432-4761-b3d5-ace99e2e867e", "path": "/predict", "status": 500, "latency_ms": 7.99, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5195477Z ------------------------------ Captured log call -------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5196365Z ERROR    coffee_service:app.py:221 {"event": "request_error", "request_id": "d7f48239-f432-4761-b3d5-ace99e2e867e"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5197115Z Traceback (most recent call last):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5198350Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 156, in call_next
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5199460Z     message = await recv_stream.receive()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5199872Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5200938Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/anyio/streams/memory.py", line 133, in receive
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5202033Z     raise EndOfStream from None
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5202395Z anyio.EndOfStream
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5203105Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5203390Z During handling of the above exception, another exception occurred:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5203814Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5203960Z Traceback (most recent call last):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5204926Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/service/app.py", line 219, in add_telemetry_headers
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5205927Z     response = await call_next(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5206329Z                ^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5207437Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 174, in call_next
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5208863Z     raise RuntimeError("No response returned.")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5209321Z RuntimeError: No response returned.
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5210532Z INFO     coffee_service:app.py:237 {"event": "http_request", "request_id": "d7f48239-f432-4761-b3d5-ace99e2e867e", "path": "/predict", "status": 500, "latency_ms": 7.99, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5211872Z __________________ test_optical_guard_precedes_inference[255] __________________
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5212330Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5212813Z client = <starlette.testclient.TestClient object at 0x7f86a1ed8500>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5213549Z monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f86a1ed3e30>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5214118Z color = 255
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5214281Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5214452Z     @pytest.mark.parametrize("color", [0, 255])
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5215027Z     def test_optical_guard_precedes_inference(client, monkeypatch, color):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5215590Z         def forbidden(_):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5216055Z             pytest.fail("Optically rejected frame reached the model")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5216537Z     
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5216918Z         monkeypatch.setattr(service, "run_inference", forbidden)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5217728Z >       response = client.post("/predict", content=image_bytes(color), headers={"content-type": "image/png"})
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5218541Z                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5218917Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5219059Z tests/test_hardening.py:35: 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5219490Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5220087Z .venv/lib/python3.12/site-packages/httpx/_client.py:1144: in post
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5220609Z     return self.request(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5221086Z .venv/lib/python3.12/site-packages/starlette/testclient.py:463: in request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5221824Z     return super().request(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5222324Z .venv/lib/python3.12/site-packages/httpx/_client.py:825: in request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5223221Z     return self.send(request, auth=auth, follow_redirects=follow_redirects)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5223812Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5224411Z .venv/lib/python3.12/site-packages/httpx/_client.py:914: in send
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5224971Z     response = self._send_handling_auth(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5225576Z .venv/lib/python3.12/site-packages/httpx/_client.py:942: in _send_handling_auth
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5226204Z     response = self._send_handling_redirects(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5226846Z .venv/lib/python3.12/site-packages/httpx/_client.py:979: in _send_handling_redirects
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5227523Z     response = self._send_single_request(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5227985Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5228569Z .venv/lib/python3.12/site-packages/httpx/_client.py:1014: in _send_single_request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5229234Z     response = transport.handle_request(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5229667Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5230263Z .venv/lib/python3.12/site-packages/starlette/testclient.py:360: in handle_request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5230851Z     raise exc
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5231335Z .venv/lib/python3.12/site-packages/starlette/testclient.py:357: in handle_request
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5231981Z     portal.call(self.app, scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5232744Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:340: in call
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5233416Z     return cast(T_Retval, self.start_task_soon(func, *args).result())
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5233967Z                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5234664Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/concurrent/futures/_base.py:456: in result
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5235349Z     return self.__get_result()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5235896Z            ^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5236553Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/concurrent/futures/_base.py:401: in __get_result
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5237261Z     raise self._exception
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5237770Z .venv/lib/python3.12/site-packages/anyio/from_thread.py:265: in _call_func
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5238352Z     retval = await retval_or_awaitable
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5238729Z              ^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5239256Z .venv/lib/python3.12/site-packages/fastapi/applications.py:1216: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5239894Z     await super().__call__(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5240511Z .venv/lib/python3.12/site-packages/starlette/applications.py:96: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5241163Z     await self.middleware_stack(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5241829Z .venv/lib/python3.12/site-packages/starlette/middleware/errors.py:164: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5242661Z     await self.app(scope, receive, _send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5243289Z .venv/lib/python3.12/site-packages/fastapi/telemetry/_asgi.py:151: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5243894Z     await self.app(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5244510Z .venv/lib/python3.12/site-packages/starlette/middleware/base.py:196: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5245190Z     async with create_collapsing_task_group() as task_group:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5245678Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5246283Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py:217: in __aexit__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5246909Z     await anext(self.gen)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5247505Z .venv/lib/python3.12/site-packages/starlette/_utils.py:115: in create_collapsing_task_group
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5248195Z     raise exc from exc.__cause__ or context
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5248771Z .venv/lib/python3.12/site-packages/starlette/middleware/base.py:149: in coro
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5249453Z     await self.app(scope, receive_or_disconnect, send_no_error)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5250371Z .venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py:63: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5251160Z     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5251948Z .venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5252800Z     await app(scope, receive, sender)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5253434Z .venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py:18: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5254100Z     await self.app(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5254652Z .venv/lib/python3.12/site-packages/starlette/routing.py:676: in __call__
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5255281Z     await self.middleware_stack(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5255851Z .venv/lib/python3.12/site-packages/fastapi/routing.py:2786: in app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5256414Z     await route.handle(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5256970Z .venv/lib/python3.12/site-packages/fastapi/routing.py:1310: in handle
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5257581Z     await super().handle(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5258157Z .venv/lib/python3.12/site-packages/starlette/routing.py:282: in handle
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5258713Z     await self.app(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5259223Z .venv/lib/python3.12/site-packages/fastapi/routing.py:165: in app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5259890Z     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5260657Z .venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5261307Z     await app(scope, receive, sender)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5261818Z .venv/lib/python3.12/site-packages/fastapi/routing.py:151: in app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5262333Z     response = await f(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5262912Z                ^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5263376Z .venv/lib/python3.12/site-packages/fastapi/routing.py:727: in app
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5263939Z     raw_response = await run_endpoint_function(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5264778Z .venv/lib/python3.12/site-packages/fastapi/routing.py:360: in run_endpoint_function
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5265444Z     return await dependant.call(**values)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5265900Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5266313Z service/app.py:496: in predict
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5266755Z     return await score_bytes(request, contents)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5267200Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5267613Z service/app.py:441: in score_bytes
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5268190Z     return await run_in_threadpool(lambda: execute_scoring(decode_image(contents)))
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5268853Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5269529Z .venv/lib/python3.12/site-packages/starlette/concurrency.py:34: in run_in_threadpool
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5270201Z     return await anyio.to_thread.run_sync(func)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5270643Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5271193Z .venv/lib/python3.12/site-packages/anyio/to_thread.py:65: in run_sync
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5271849Z     return await get_async_backend().run_sync_in_worker_thread(
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5272831Z .venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:2706: in run_sync_in_worker_thread
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5273545Z     return await future
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5273881Z            ^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5274382Z .venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:1100: in run
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5275014Z     result = context.run(func, *args)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5275399Z              ^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5275801Z service/app.py:441: in <lambda>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5276369Z     return await run_in_threadpool(lambda: execute_scoring(decode_image(contents)))
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5277025Z                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5277501Z service/app.py:371: in execute_scoring
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5278085Z     probs = run_inference(batch_np)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5278464Z             ^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5278902Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5279257Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5279465Z _ = array([[[[ 2.2489083,  2.2489083,  2.2489083, ...,  2.2489083,
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5279919Z            2.2489083,  2.2489083],
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5280270Z          [ 2.2489083...4],
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5280654Z          [-1.8044444, -1.8044444, -1.8044444, ..., -1.8044444,
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5281122Z           -1.8044444, -1.8044444]]]], dtype=float32)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5281414Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5281549Z     def forbidden(_):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5281979Z >       pytest.fail("Optically rejected frame reached the model")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5282763Z E       Failed: Optically rejected frame reached the model
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5283104Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5283262Z tests/test_hardening.py:32: Failed
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5283788Z ---------------------------- Captured stderr setup -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5284926Z {"ts": "2026-10-11 16:07:17,476", "level": "INFO", "message": "Loaded ONNX model: /home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/reports/model.onnx"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5286283Z {"ts": "2026-10-11 16:07:17,490", "level": "INFO", "message": "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5287179Z ------------------------------ Captured log setup ------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5288217Z INFO     coffee_service:app.py:166 "Loaded ONNX model: /home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/reports/model.onnx"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5289405Z INFO     coffee_service:app.py:195 "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5290216Z ----------------------------- Captured stderr call -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5291297Z {"ts": "2026-10-11 16:07:17,498", "level": "ERROR", "event": "request_error", "request_id": "e911942e-4ecf-4bff-b70b-eed03acb4326"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5293031Z {"ts": "2026-10-11 16:07:17,498", "level": "INFO", "event": "http_request", "request_id": "e911942e-4ecf-4bff-b70b-eed03acb4326", "path": "/predict", "status": 500, "latency_ms": 4.84, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5294382Z ------------------------------ Captured log call -------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5295245Z ERROR    coffee_service:app.py:221 {"event": "request_error", "request_id": "e911942e-4ecf-4bff-b70b-eed03acb4326"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5296010Z Traceback (most recent call last):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5297190Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 156, in call_next
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5298312Z     message = await recv_stream.receive()
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5298738Z               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5299778Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/anyio/streams/memory.py", line 133, in receive
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5300856Z     raise EndOfStream from None
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5301234Z anyio.EndOfStream
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5301422Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5301687Z During handling of the above exception, another exception occurred:
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5302138Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5302314Z Traceback (most recent call last):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5303446Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/service/app.py", line 219, in add_telemetry_headers
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5304372Z     response = await call_next(request)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5304772Z                ^^^^^^^^^^^^^^^^^^^^^^^^
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5305921Z   File "/home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 174, in call_next
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5307339Z     raise RuntimeError("No response returned.")
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5307807Z RuntimeError: No response returned.
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5308992Z INFO     coffee_service:app.py:237 {"event": "http_request", "request_id": "e911942e-4ecf-4bff-b70b-eed03acb4326", "path": "/predict", "status": 500, "latency_ms": 4.84, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5310311Z _______________ test_deliberate_failure_specular_glare_rejected ________________
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5310757Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5311029Z client = <starlette.testclient.TestClient object at 0x7f86a02c78c0>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5311447Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5311690Z     def test_deliberate_failure_specular_glare_rejected(client):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5312389Z         """Engineered Fault Injection: Specular optical glare (pure white frame).
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5313155Z     
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5313734Z         Unprotected classifiers normalize inputs and output high-confidence predictions on solid white.
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5314684Z         Our variance guard must intercept this and reject with HTTP 422 Unprocessable Entity.
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5315300Z         """
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5315689Z         white_img = Image.new("RGB", (224, 224), color=(255, 255, 255))
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5316249Z         raw_bytes = _make_test_image_bytes(white_img)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5316668Z     
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5317191Z         res = client.post("/predict", content=raw_bytes, headers={"Content-Type": "image/jpeg"})
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5318092Z >       assert res.status_code == 422, f"Expected 422 for pure glare, got {res.status_code}: {res.text}"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5320039Z E       AssertionError: Expected 422 for pure glare, got 200: {"predicted_class":"Dark","predicted_class_id":0,"confidence":0.4257,"probabilities":{"Dark":0.4257,"Green":0.1677,"Light":0.2189,"Medium":0.1878},"pixel_std":0.2,"shannon_entropy":7.0,"latency_ms":80.58,"model_version":"roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5321911Z E       assert 200 == 422
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5322302Z E        +  where 200 = <Response [200 OK]>.status_code
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5322835Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5323004Z tests/test_service.py:85: AssertionError
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5323556Z ----------------------------- Captured stderr call -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5324930Z {"ts": "2026-10-11 16:07:33,324", "level": "INFO", "event": "http_request", "request_id": "5f8f941b-99da-4e61-8871-a9fb58f09b80", "path": "/predict", "status": 200, "latency_ms": 82.12, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5326364Z ------------------------------ Captured log call -------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5327691Z INFO     coffee_service:app.py:237 {"event": "http_request", "request_id": "5f8f941b-99da-4e61-8871-a9fb58f09b80", "path": "/predict", "status": 200, "latency_ms": 82.12, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5329024Z _______________ test_deliberate_failure_lens_occlusion_rejected ________________
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5329478Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5329766Z client = <starlette.testclient.TestClient object at 0x7f86a02c78c0>
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5330189Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5330436Z     def test_deliberate_failure_lens_occlusion_rejected(client):
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5331132Z         """Engineered Fault Injection: Lens dust/chaff occlusion (pure black frame).
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5331708Z     
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5332214Z         Our variance guard must intercept collapsed dynamic range and reject with HTTP 422.
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5333024Z         """
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5333403Z         black_img = Image.new("RGB", (224, 224), color=(0, 0, 0))
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5333940Z         raw_bytes = _make_test_image_bytes(black_img)
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5334352Z     
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5334862Z         res = client.post("/predict", content=raw_bytes, headers={"Content-Type": "image/jpeg"})
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5335780Z >       assert res.status_code == 422, f"Expected 422 for dust occlusion, got {res.status_code}: {res.text}"
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5337854Z E       AssertionError: Expected 422 for dust occlusion, got 200: {"predicted_class":"Dark","predicted_class_id":0,"confidence":0.458,"probabilities":{"Dark":0.458,"Green":0.1643,"Light":0.2221,"Medium":0.1556},"pixel_std":0.2,"shannon_entropy":7.0,"latency_ms":80.59,"model_version":"roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5339453Z E       assert 200 == 422
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5339840Z E        +  where 200 = <Response [200 OK]>.status_code
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5340156Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5340325Z tests/test_service.py:102: AssertionError
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5340879Z ----------------------------- Captured stderr call -----------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5342188Z {"ts": "2026-10-11 16:07:33,413", "level": "INFO", "event": "http_request", "request_id": "c43b4c18-d971-400d-9998-c3f8b4b9be13", "path": "/predict", "status": 200, "latency_ms": 82.13, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5343737Z ------------------------------ Captured log call -------------------------------
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5345042Z INFO     coffee_service:app.py:237 {"event": "http_request", "request_id": "c43b4c18-d971-400d-9998-c3f8b4b9be13", "path": "/predict", "status": 200, "latency_ms": 82.13, "model_version": "roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5346296Z =============================== warnings summary ===============================
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5346888Z .venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5348484Z   /home/runner/work/coffee-bean-roast-capstone/coffee-bean-roast-capstone/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5350148Z     from starlette.testclient import TestClient as TestClient  # noqa
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5350569Z 
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5350874Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5351716Z =========================== short test summary info ============================
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5352872Z FAILED tests/test_hardening.py::test_optical_guard_precedes_inference[0] - Failed: Optically rejected frame reached the model
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5354147Z FAILED tests/test_hardening.py::test_optical_guard_precedes_inference[255] - Failed: Optically rejected frame reached the model
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5356539Z FAILED tests/test_service.py::test_deliberate_failure_specular_glare_rejected - AssertionError: Expected 422 for pure glare, got 200: {"predicted_class":"Dark","predicted_class_id":0,"confidence":0.4257,"probabilities":{"Dark":0.4257,"Green":0.1677,"Light":0.2189,"Medium":0.1878},"pixel_std":0.2,"shannon_entropy":7.0,"latency_ms":80.58,"model_version":"roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.5358499Z assert 200 == 422
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.7594052Z  +  where 200 = <Response [200 OK]>.status_code
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.7596981Z FAILED tests/test_service.py::test_deliberate_failure_lens_occlusion_rejected - AssertionError: Expected 422 for dust occlusion, got 200: {"predicted_class":"Dark","predicted_class_id":0,"confidence":0.458,"probabilities":{"Dark":0.458,"Green":0.1643,"Light":0.2221,"Medium":0.1556},"pixel_std":0.2,"shannon_entropy":7.0,"latency_ms":80.59,"model_version":"roast-swin-retrained-v1"}
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.7599283Z assert 200 == 422
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.7599825Z  +  where 200 = <Response [200 OK]>.status_code
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.7603825Z ERROR tests/test_hardening.py::test_optical_guard_precedes_inference[0] - RuntimeError: This portal is not running
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.7605640Z ERROR tests/test_hardening.py::test_optical_guard_precedes_inference[255] - RuntimeError: This portal is not running
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:33.7607072Z 4 failed, 39 passed, 1 warning, 2 errors in 32.43s
+validation	Data, model, API, artifact and cloud contracts	2026-10-11T16:07:34.6988698Z ##[error]Process completed with exit code 1.
