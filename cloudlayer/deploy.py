@@ -1,4 +1,6 @@
 """Release entry point: refreshed budget, Linux image, immutable digest and safe promotion."""
+import json
+from pathlib import Path
 import subprocess
 from cloudlayer.adapter import AzureCloudAdapter
 from cloudlayer.budget import calculate
@@ -10,8 +12,6 @@ config=settings()
 query={'type':'ActualCost','timeframe':'Custom','timePeriod':{'from':'2026-01-01T00:00:00Z','to':'2026-12-31T23:59:59Z'},
        'dataset':{'granularity':'None','aggregation':{'totalCost':{'name':'Cost','function':'Sum'}},
                   'grouping':[{'type':'Dimension','name':'ResourceGroupName'}]}}
-import json
-from pathlib import Path
 result=az('rest','--method','post','--url',f"https://management.azure.com/subscriptions/{config['AZURE_SUBSCRIPTION_ID']}/providers/Microsoft.CostManagement/query?api-version=2023-11-01",'--body',json.dumps(query))
 Path('reports/evidence/azure-course-spending.json').write_text(json.dumps(result,indent=2)+'\n')
 calculate()
