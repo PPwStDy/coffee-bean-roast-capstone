@@ -43,13 +43,15 @@ test_count = (
     int(ElementTree.parse(tests_path).find("testsuite").attrib["tests"]) if tests_path.exists() else 0
 )
 delivery = read("reports/evidence/azure-email-delivery.json")
+container = read("reports/evidence/container-image.json")
+production_email = read("reports/evidence/production-email-notification.json")
 recorded_date = datetime.now(timezone.utc).strftime("%d %B %Y") + " UTC"
 if slo:
     slo_text = (
         f"Fixed warm p95/p99: {slo['warm_p95_ms']}/{slo['warm_p99_ms']} ms; "
         f"cold p95/p99: {slo['cold_p95_ms']}/{slo['cold_p99_ms']} ms. "
         f"Warm client: {slo['warm_client_origin']}. Image size is reported separately: "
-        f"{slo['container_size_bytes']:,} bytes. Future releases enforce these values."
+        f"initial {slo['container_size_bytes']:,} bytes. Future releases enforce the fixed latency targets."
     )
 else:
     slo_text = "Pending the complete initial benchmark. Freeze measured p95/p99 plus 20%, rounded upward; later releases enforce fixed values."
@@ -69,7 +71,7 @@ serving_text = (
 def readable(text):
     prefixes = "seed|batch|epoch|version|concurrency|accuracy|loss|took|on|and|all|after|before|at|with|an|is|leaving|removes|achieved|macro-F1|min|max|are|return|plus|uses|float|RGB|unique|its|has|by|Python|LR|decay|of|were|pending|deployed|median|error|reject|remaining|historical|classified|in|the|removing|yields|restored|arXiv|than|most|was|shrank|to|smoothing|pct_start|per|Session|accept|payload|count|bytes|format|controlled|promotes|including|IDs|original"
     text = re.sub(rf"\b({prefixes})(?=\d)", r"\1 ", text, flags=re.IGNORECASE)
-    text = re.sub(r"[;:](?=\d)|,(?=\d)(?!\d{3}(?:\D|$))", lambda m: m[0] + " ", text)
+    text = re.sub(r"(?<!\d)[;:](?=\d)|(?<!\d),(?=\d)|,(?=\d)(?!\d{3}(?:\D|$))", lambda m: m[0] + " ", text)
     text = re.sub(r"\bis(?=[a-f0-9]{20,}\b)", "is ", text)
     text = re.sub(r"\b(rejection|inference)(?=\d)", r"\1 ", text)
     text = re.sub(
@@ -292,6 +294,7 @@ sections = [
             "The engineered failure is collapsed dynamic range: black and white frames return 422 before model invocation. Logs and metrics name occlusion_guard_rejection. The student's email receiver was verified in Azure. "
             + (
                 f"A real camera warning reached the student's mailbox. The receipt records the subject, alert ID, resource, rule and time; the screenshot shows filtered mailbox results. The delivery verification used a {delivery['query_window_minutes']}-minute query window over real camera faults. The production rule uses a five-minute window and evaluation interval."
+                + (" Azure separately recorded successful Email transport from the production five-minute rule." if production_email and any(a.get("Status") == "Succeeded" for a in production_email.get("actionDetails", [])) else "")
                 if delivery
                 else "Actual camera-warning mailbox delivery is pending; a fired rule alone is insufficient."
             ),
@@ -303,6 +306,7 @@ sections = [
             f"Warm benchmark: {('1000 requests, concurrency2, p95 ' + str(round(warm['p95_ms'], 2)) + 'ms, p99 ' + str(round(warm['p99_ms'], 2)) + 'ms; wall time ' + str(round(warm['duration_seconds'], 2)) + 's.') if warm else 'pending deployed1000-request concurrency2 evidence.'}",
             f"Cold benchmark from the Bangkok Mac: {('20 trials with verified zero replicas, p95 ' + str(round(cold['p95_ms'], 2)) + 'ms, p99 ' + str(round(cold['p99_ms'], 2)) + 'ms.') if cold else 'pending20 zero-replica trials.'}",
             "Frozen targets: " + slo_text,
+            (f"Latest Linux container: {container['Size']:,} uncompressed bytes, {container['Os']}/{container['Architecture']}, source {container['source_commit']}. This current build is recorded separately from the immutable initial image measurement." if container else "Latest container record pending."),
             f"Conservative remaining course allowance:{budget['remaining_allowance_thb']:.2f}THB after prior subscription spending. Seven-day forecast:{budget['forecast_thb_including_25_percent_margin']:.2f}THB including25% margin. Primary East Asia retail rates and dated ECB USD/THB exchange evidence are captured. Free grants are excluded; these are estimates, not final invoices.",
             "Serving cost per 1,000: " + serving_text,
             "Storage, registry, log ingestion/alerts and training are reported separately in cost_report.md. Local MPS training incurs zero Azure compute charge; device and electricity costs are unmeasured. One-time DVC downloads and other network transfer are not itemized in the allocation estimate; billing evidence may lag. Budget notifications at50/80/100% of an18USD remaining-allowance budget are alerts, not a shutdown. A forecast gate blocks over-budget deployments. Scoped teardown and scheduled seven-day retention remove chargeable owned resources.",
