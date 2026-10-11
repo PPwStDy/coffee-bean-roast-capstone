@@ -43,7 +43,7 @@ test_count = (
     int(ElementTree.parse(tests_path).find("testsuite").attrib["tests"]) if tests_path.exists() else 0
 )
 delivery = read("reports/evidence/azure-email-delivery.json")
-recorded_date = datetime.now(timezone.utc).strftime("%d %B %Y")
+recorded_date = datetime.now(timezone.utc).strftime("%d %B %Y") + " UTC"
 if slo:
     slo_text = (
         f"Fixed warm p95/p99: {slo['warm_p95_ms']}/{slo['warm_p99_ms']} ms; "
@@ -69,7 +69,9 @@ serving_text = (
 def readable(text):
     prefixes = "seed|batch|epoch|version|concurrency|accuracy|loss|took|on|and|all|after|before|at|with|an|is|leaving|removes|achieved|macro-F1|min|max|are|return|plus|uses|float|RGB|unique|its|has|by|Python|LR|decay|of|were|pending|deployed|median|error|reject|remaining|historical|classified|in|the|removing|yields|restored|arXiv|than|most|was|shrank|to|smoothing|pct_start|per|Session|accept|payload|count|bytes|format|controlled|promotes|including|IDs|original"
     text = re.sub(rf"\b({prefixes})(?=\d)", r"\1 ", text, flags=re.IGNORECASE)
-    text = re.sub(r"([,;:])(?=\d)", r"\1 ", text)
+    text = re.sub(r"[;:](?=\d)|,(?=\d)(?!\d{3}(?:\D|$))", lambda m: m[0] + " ", text)
+    text = re.sub(r"\bis(?=[a-f0-9]{20,}\b)", "is ", text)
+    text = re.sub(r"\b(rejection|inference)(?=\d)", r"\1 ", text)
     text = re.sub(
         r"(\d)(?=epochs|minutes|images|seconds|second|GiB|MiB|THB|USD|vCPU|MP|px|ms|requests|copies|trials|megapixels)",
         r"\1 ",
@@ -100,7 +102,7 @@ proposal = [
     ),
     (
         "Serving and performance",
-        "FastAPI serves a digest-pinned ONNX image in Azure Container Apps East Asia at2vCPU/4GiB, min0/max2 replicas and concurrency2. JPEG/PNG limits are5MiB decoded and20megapixels. " + slo_text,
+        "FastAPI serves a digest-pinned ONNX image in Azure Container Apps East Asia at2vCPU/4GiB, min0/max2 replicas and concurrency2. JPEG/PNG limits are5MiB decoded and20megapixels. Initial protocol: 1,000 warm requests at concurrency two and 20 zero-replica cold trials. " + slo_text,
     ),
     (
         "Failure and reliability",
@@ -289,7 +291,7 @@ sections = [
             "Local Prometheus, Grafana and Alertmanager expose class counts, latency and camera anomaly counters. Structured JSON application logs reach Azure Log Analytics. The deployed workbook shows request status volume, server p50/p95/p99 and optical rejection events. Foundation provisioning skips query validation before the log table exists; after ingestion, the actual five-minute production query was validated successfully. Failed provisioning and notification attempts were retained.",
             "The engineered failure is collapsed dynamic range: black and white frames return 422 before model invocation. Logs and metrics name occlusion_guard_rejection. The student's email receiver was verified in Azure. "
             + (
-                "A real camera warning reached the student's mailbox; the alert record and delivery screenshot preserve the rule, resource and timestamp. A fresh evaluation instance of the same optical rejection query tested delivery after verification."
+                f"A real camera warning reached the student's mailbox. The receipt records the subject, alert ID, resource, rule and time; the screenshot shows filtered mailbox results. The delivery verification used a {delivery['query_window_minutes']}-minute query window over real camera faults. The production rule uses a five-minute window and evaluation interval."
                 if delivery
                 else "Actual camera-warning mailbox delivery is pending; a fired rule alone is insufficient."
             ),
@@ -299,7 +301,7 @@ sections = [
         "Measured performance and operating costs",
         [
             f"Warm benchmark: {('1000 requests, concurrency2, p95 ' + str(round(warm['p95_ms'], 2)) + 'ms, p99 ' + str(round(warm['p99_ms'], 2)) + 'ms; wall time ' + str(round(warm['duration_seconds'], 2)) + 's.') if warm else 'pending deployed1000-request concurrency2 evidence.'}",
-            f"Cold benchmark: {('20 trials with verified zero replicas, p95 ' + str(round(cold['p95_ms'], 2)) + 'ms, p99 ' + str(round(cold['p99_ms'], 2)) + 'ms.') if cold else 'pending20 zero-replica trials.'}",
+            f"Cold benchmark from the Bangkok Mac: {('20 trials with verified zero replicas, p95 ' + str(round(cold['p95_ms'], 2)) + 'ms, p99 ' + str(round(cold['p99_ms'], 2)) + 'ms.') if cold else 'pending20 zero-replica trials.'}",
             "Frozen targets: " + slo_text,
             f"Conservative remaining course allowance:{budget['remaining_allowance_thb']:.2f}THB after prior subscription spending. Seven-day forecast:{budget['forecast_thb_including_25_percent_margin']:.2f}THB including25% margin. Primary East Asia retail rates and dated ECB USD/THB exchange evidence are captured. Free grants are excluded; these are estimates, not final invoices.",
             "Serving cost per 1,000: " + serving_text,
@@ -311,7 +313,7 @@ sections = [
         [
             f"Remote CI: {ci.get('url') if ci else 'pending'}; result: {ci.get('conclusion') if ci else 'pending'}. Azure ML registered coffee-bean-roast-classifier version 1. Deployed candidate promoted: {deployment.get('promoted') if deployment else 'pending'}. Teardown verified: {teardown.get('group_absent') if teardown else 'pending'}.",
             "The detailed requirement-to-evidence checklist records every acceptance scenario separately. It includes actual CI links, lineage, endpoint results, export parity, image size, warm/cold reports, dashboard captures, delivered email, cost and teardown. Historical container tests and generated templates cannot stand in for final deployed evidence.",
-            "Teardown requires exact capstone group ownership and checks all resource tags. It verifies group absence and preservation of the existing shared workspace. The subscription owner separately removes only the exact capstone budget and two recorded external role assignments. Shared registry history and unrelated laboratory resources are preserved.",
+            "Teardown requires exact capstone group ownership and checks all resource tags. It verifies group absence and preservation of the existing shared workspace. The subscription owner separately removes only the exact capstone budget and two recorded external role assignments. Shared Azure ML model history and unrelated laboratory resources are preserved.",
             "Proposed responsibility split: Peerawat owns data/model lineage and deployment; Yongyot owns monitoring, failure demonstration and presentation. Actual contributions need team confirmation. The presentation script allocates one minute each to problem, data, training, architecture, live prediction, failure and regression, performance and cost, and limitations. Live timing, unexpected input and five-minute Q&A are external demonstration requirements.",
             "Instructor approval of the changed scope, Session5 architecture review, live presentation/Q&A and final repository submission remain pending. Do not mark the project fully complete until all applicable technical evidence exists and academic events are recorded. A further week should focus on independently captured images, camera/source separation, confidence calibration and broader operating-condition checks.",
             "Sources: Kaggle gpiosenka/coffee-bean-dataset-resized-224-x-224 and sot2542/coffee-bean-dataset-v1; creativecommons.org/licenses/by-sa/4.0/; arxiv.org/abs/2206.01841; learn.microsoft.com/azure/container-apps/scale-app; learn.microsoft.com/azure/container-apps/log-monitoring; prices.azure.com/api/retail/prices; ECB daily exchange rates. Course requirements: local public_teaching_mlaiops/course/project/project-brief.md and the course specification.",
