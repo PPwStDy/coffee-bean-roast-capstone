@@ -136,7 +136,7 @@ resource alert 'Microsoft.Insights/scheduledQueryRules@2023-12-01' = {
     autoMitigate: true
     skipQueryValidation: true
     criteria: { allOf: [{
-      query: 'union isfuzzy=true (datatable(TimeGenerated:datetime, Log_s:string)[]), ContainerAppConsoleLogs_CL | extend event=parse_json(Log_s) | where tostring(event.event) == "occlusion_guard_rejection"'
+      query: 'ContainerAppConsoleLogs_CL | where TimeGenerated > ago(5m) | where ContainerAppName_s == "${prefix}-api" | extend e=parse_json(Log_s) | where tostring(e.event) == "occlusion_guard_rejection"'
       timeAggregation: 'Count'
       operator: 'GreaterThan'
       threshold: 0

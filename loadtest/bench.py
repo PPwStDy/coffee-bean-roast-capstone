@@ -3,6 +3,7 @@
 import argparse
 import json
 import math
+import os
 import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -48,6 +49,7 @@ def benchmark(url, requests=1000, concurrency=2):
     if len(versions) != 1:
         raise AssertionError("Benchmark crossed model versions")
     return {
+        "client_origin": "github-actions-ubuntu" if os.environ.get("GITHUB_ACTIONS") else "local-mac-bangkok",
         "url": url,
         "requests": requests,
         "concurrency": concurrency,
@@ -80,6 +82,7 @@ def freeze(report, cold, container_bytes, path=Path("monitoring/slo.json")):
         "container_size_bytes": container_bytes,
         "model_version": report["model_version"],
         "method": "initial measured percentile +20%, rounded upward; container size separate",
+        "warm_client_origin": report.get("client_origin", "local-mac-bangkok"),
         "warm_evidence": "reports/evidence/deployed-warm.json",
         "cold_evidence": "reports/evidence/deployed-cold.json",
     }
@@ -89,6 +92,9 @@ def freeze(report, cold, container_bytes, path=Path("monitoring/slo.json")):
 
 def enforce(report):
     targets = json.loads(Path("monitoring/slo.json").read_text())
+    assert report.get("client_origin", "local-mac-bangkok") == targets["warm_client_origin"], (
+        "Benchmark client origin differs from the frozen baseline"
+    )
     assert report["successful_requests"] == report["requests"]
     assert report["p95_ms"] <= targets["warm_p95_ms"], "Frozen p95 target exceeded"
     assert report["p99_ms"] <= targets["warm_p99_ms"], "Frozen p99 target exceeded"
