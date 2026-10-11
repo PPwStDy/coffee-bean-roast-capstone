@@ -54,6 +54,15 @@ The delivered model is already trained. Its recorded run used `roast-swin-retrai
 
 Interactive documentation: [localhost:8080/docs](http://localhost:8080/docs).
 
+### Presentation demo
+
+Open `/demo/` on the same host as the API (for a local run, start `make serve` and visit
+`http://localhost:8080/demo/`). The page includes four attributed sample images, drag-and-drop
+JPEG/PNG upload, live class probabilities, model version and latency, and a clear optical-guard
+rejection state. It calls the same-origin API, so no extra CORS configuration or frontend service
+is required. The built-in samples are validation fixtures, not independent test examples; see
+[`DATA_LICENSE.md`](DATA_LICENSE.md) for attribution and license details.
+
 | Route | Request / purpose |
 |---|---|
 | `POST /predict` | Raw JPEG/PNG bytes or multipart field `file` |

@@ -39,6 +39,19 @@ def test_health_liveness_endpoint(client):
     assert "x-model-version" in res.headers
 
 
+def test_presentation_demo_and_attributed_samples_are_served(client):
+    """The presentation UI and its validation example images ship with the API."""
+    page = client.get("/demo/")
+    assert page.status_code == 200
+    assert "What roast do you see?" in page.text
+    assert "Black frame" in page.text
+
+    sample = client.get("/demo-samples/Medium.png")
+    assert sample.status_code == 200
+    assert sample.headers["content-type"].startswith("image/png")
+    assert sample.content.startswith(b"\x89PNG\r\n\x1a\n")
+
+
 def test_ready_readiness_endpoint(client):
     """GET /ready must confirm model is loaded and ready to serve."""
     res = client.get("/ready")

@@ -17,6 +17,7 @@ RUN pip install --no-cache-dir --require-hashes -r requirements-serve.lock
 # Copy application code and model artifacts
 COPY src/ src/
 COPY service/ service/
+COPY tests/fixtures/ tests/fixtures/
 COPY reports/model.onnx reports/model.onnx
 COPY reports/model_metadata.json reports/model_metadata.json
 

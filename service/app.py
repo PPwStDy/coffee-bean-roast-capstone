@@ -22,11 +22,13 @@ import time
 import uuid
 import warnings
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Any
 
 import numpy as np
 from fastapi import FastAPI, HTTPException, Request, Response
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from PIL import Image, UnidentifiedImageError
 from starlette.concurrency import run_in_threadpool
 from prometheus_client import CONTENT_TYPE_LATEST, Counter, Histogram, generate_latest
@@ -207,6 +209,23 @@ app = FastAPI(
     description="Low-latency microservice for coffee bean roast classification with deliberate failure defense.",
     lifespan=lifespan,
 )
+
+# Keep the presentation UI on the API's origin so it can call the deployed
+# service without a separate CORS configuration. The sample images are the
+# attributed validation fixtures copied into this static directory.
+DEMO_DIR = Path(__file__).resolve().parent / "static" / "demo"
+app.mount("/demo", StaticFiles(directory=DEMO_DIR, html=True), name="demo")
+
+DEMO_SAMPLE_DIR = Path(__file__).resolve().parent.parent / "tests" / "fixtures"
+DEMO_SAMPLE_CLASSES = {"Dark", "Green", "Light", "Medium"}
+
+
+@app.get("/demo-samples/{sample_name}.png", include_in_schema=False)
+def demo_sample(sample_name: str):
+    """Serve only the four attributed validation examples used by the demo page."""
+    if sample_name not in DEMO_SAMPLE_CLASSES:
+        raise HTTPException(404, "Unknown demo sample")
+    return FileResponse(DEMO_SAMPLE_DIR / f"{sample_name}.png", media_type="image/png")
 
 
 @app.middleware("http")
