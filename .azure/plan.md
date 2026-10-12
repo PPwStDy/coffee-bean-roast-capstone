@@ -1,6 +1,6 @@
 # Coffee bean roast capstone Azure implementation
 
-Status: Validated
+Status: Deployed
 
 The existing release is deployed; warm/cold benchmarks and actual camera-alert email delivery are recorded. Full teardown is retained until October 18.
 
@@ -71,3 +71,11 @@ Azure Validate completed at 2026-10-12T05:09:10.576911+00:00 for the existing Ea
 - Refreshed actual course spending and existing subscription policy assignments inspected. Budget gate passed: 239.09 THB forecast against 620.94 THB remaining. Evidence: `reports/evidence/demo-deployment-preflight.json`.
 
 Azure Deploy will use the existing main-branch GitHub CI and Release workflows. CI repeats contracts and Linux container integration; release builds the exact committed source, checks the budget again, deploys a digest-pinned candidate, checks demo assets and predictions, enforces the frozen warm targets, and promotes only a passing revision.
+
+## Demo deployment proof
+
+Azure Deploy completed via Release [38206968263](https://github.com/PPwStDy/coffee-bean-roast-capstone/actions/runs/38206968263) after CI [38206723838](https://github.com/PPwStDy/coffee-bean-roast-capstone/actions/runs/38206723838) passed. Deployed source: `652db69878e74dd9cbadd76d4ddf4336c7b0e40e`. Revision `coffee6688218-api--r1791782119` holds 100% of production traffic. All 1,000 candidate warm requests succeeded; p95/p99 268.91/275.44 ms passed the unchanged 289/301 ms limits.
+
+Production verification at 2026-10-12T05:19:12.507538+00:00 passed readiness, serving configuration, four-class predictions, optical rejection, timing headers, and byte-for-byte checks of the five deployed demo assets. A live browser sample returned Medium with matching model headers and populated the request inspector. Evidence: `reports/evidence/demo-deployment.json`. Demo: https://coffee6688218-api.greenwave-5725ddc9.eastasia.azurecontainerapps.io/demo/
+
+The existing region, managed identity, model release, 2 vCPU / 4 GiB allocation, 0–2 replicas and October 18 retention remain as approved.

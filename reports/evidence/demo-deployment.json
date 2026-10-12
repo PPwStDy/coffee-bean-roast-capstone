@@ -1,0 +1,191 @@
+{
+  "verified_at_utc": "2026-10-12T05:19:12.507538+00:00",
+  "source_commit": "652db69878e74dd9cbadd76d4ddf4336c7b0e40e",
+  "demo_url": "https://coffee6688218-api.greenwave-5725ddc9.eastasia.azurecontainerapps.io/demo/",
+  "ci_run": "https://github.com/PPwStDy/coffee-bean-roast-capstone/actions/runs/38206723838",
+  "release_run": "https://github.com/PPwStDy/coffee-bean-roast-capstone/actions/runs/38206968263",
+  "traffic": [
+    {
+      "revisionName": "coffee6688218-api--r1791782119",
+      "weight": 100
+    }
+  ],
+  "latest_ready_revision": "coffee6688218-api--r1791782119",
+  "image": "coffee6688218enafhtyqhoyi6.azurecr.io/coffee-roast@sha256:41d1a771bd7bfe3d92b740f4c504516679d66ca91757f73d8e42d22b76973a0a",
+  "ready": {
+    "status": "ready",
+    "model_loaded": true,
+    "model_version": "roast-swin-retrained-v1",
+    "engine": "ONNXRuntime"
+  },
+  "serving_settings": {
+    "classes": [
+      "Dark",
+      "Green",
+      "Light",
+      "Medium"
+    ],
+    "input_size": 224,
+    "max_payload_bytes": 5242880,
+    "max_pixels": 20000000,
+    "max_concurrency": 2,
+    "pixel_std_threshold": 0.05,
+    "entropy_threshold": 1.0
+  },
+  "assets": [
+    {
+      "path": "/demo/",
+      "sha256": "cde92a8e5b4ee607f39a18732d7554a7bc42b03ef6ba7b032b6767f71e9dde7a",
+      "matches_source": true
+    },
+    {
+      "path": "/demo/observability.js",
+      "sha256": "dde315a50216ced67dffe79c11b61e9095e37afa5dbc6fa62ebd950e7a3fdd3e",
+      "matches_source": true
+    },
+    {
+      "path": "/demo/log-tools.js",
+      "sha256": "a98c790af484a006f3d0dfd354a9e7393d3fc6782d40ba8452538f867f8ffce2",
+      "matches_source": true
+    },
+    {
+      "path": "/demo/observability.css",
+      "sha256": "db38891010eb58b841550864823058bbc750bc7ecd081c44e5293637a9fcbb35",
+      "matches_source": true
+    },
+    {
+      "path": "/demo/evidence.json",
+      "sha256": "475338918ddb4ce24c7da7a0a040d324661c45892148994458a8c47214739565",
+      "matches_source": true
+    }
+  ],
+  "endpoint_checks": {
+    "url": "https://coffee6688218-api.greenwave-5725ddc9.eastasia.azurecontainerapps.io",
+    "model_version": "roast-swin-retrained-v1",
+    "checks": [
+      {
+        "demo": "/demo/",
+        "assets": 4,
+        "config": "passed",
+        "status": 200
+      },
+      {
+        "fixture": "Dark",
+        "status": 200,
+        "result": {
+          "predicted_class": "Dark",
+          "predicted_class_id": 0,
+          "confidence": 0.9629,
+          "probabilities": {
+            "Dark": 0.9629,
+            "Green": 0.0133,
+            "Light": 0.0139,
+            "Medium": 0.0099
+          },
+          "pixel_std": 0.3291,
+          "shannon_entropy": 6.7341,
+          "latency_ms": 83.25,
+          "model_version": "roast-swin-retrained-v1"
+        }
+      },
+      {
+        "fixture": "Green",
+        "status": 200,
+        "result": {
+          "predicted_class": "Green",
+          "predicted_class_id": 1,
+          "confidence": 0.9648,
+          "probabilities": {
+            "Dark": 0.0114,
+            "Green": 0.9648,
+            "Light": 0.0124,
+            "Medium": 0.0114
+          },
+          "pixel_std": 0.1747,
+          "shannon_entropy": 6.7793,
+          "latency_ms": 65.58,
+          "model_version": "roast-swin-retrained-v1"
+        }
+      },
+      {
+        "fixture": "Light",
+        "status": 200,
+        "result": {
+          "predicted_class": "Light",
+          "predicted_class_id": 2,
+          "confidence": 0.9748,
+          "probabilities": {
+            "Dark": 0.0096,
+            "Green": 0.0078,
+            "Light": 0.9748,
+            "Medium": 0.0079
+          },
+          "pixel_std": 0.3018,
+          "shannon_entropy": 7.2873,
+          "latency_ms": 77.21,
+          "model_version": "roast-swin-retrained-v1"
+        }
+      },
+      {
+        "fixture": "Medium",
+        "status": 200,
+        "result": {
+          "predicted_class": "Medium",
+          "predicted_class_id": 3,
+          "confidence": 0.9545,
+          "probabilities": {
+            "Dark": 0.0089,
+            "Green": 0.0197,
+            "Light": 0.0169,
+            "Medium": 0.9545
+          },
+          "pixel_std": 0.2966,
+          "shannon_entropy": 6.0291,
+          "latency_ms": 66.41,
+          "model_version": "roast-swin-retrained-v1"
+        }
+      },
+      {
+        "fault": "black",
+        "status": 422,
+        "response": {
+          "detail": {
+            "error": "Optical Occlusion / Specular Glare Detected",
+            "pixel_std": 0.0,
+            "threshold": 0.05,
+            "shannon_entropy": -0.0,
+            "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+          }
+        }
+      },
+      {
+        "fault": "white",
+        "status": 422,
+        "response": {
+          "detail": {
+            "error": "Optical Occlusion / Specular Glare Detected",
+            "pixel_std": 0.0,
+            "threshold": 0.05,
+            "shannon_entropy": -0.0,
+            "message": "Frame dynamic range collapsed below minimum threshold. Please inspect camera lens for dust, chaff, or specular glare."
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  "passed": true,
+  "release_benchmark": {
+    "client_origin": "github-actions-ubuntu",
+    "requests": 1000,
+    "successful_requests": 1000,
+    "concurrency": 2,
+    "p95_ms": 268.91283694996844,
+    "p99_ms": 275.4402721699819
+  },
+  "warm_limits_ms": {
+    "p95": 289,
+    "p99": 301
+  },
+  "promoted": true
+}
