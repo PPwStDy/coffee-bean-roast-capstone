@@ -30,6 +30,14 @@ def check(url, version=None):
         loaded_version = response.json()["model_version"]
         if version and loaded_version != version:
             raise AssertionError("Candidate version differs from release metadata")
+        demo = client.get("/demo/")
+        assert demo.status_code == 200 and "Follow the request." in demo.text
+        for asset in ("observability.js", "log-tools.js", "observability.css", "evidence.json"):
+            asset_response = client.get(f"/demo/{asset}")
+            assert asset_response.status_code == 200 and asset_response.content, asset
+        config = client.get("/demo-config")
+        assert config.status_code == 200 and config.json()["classes"] == CLASSES
+        results.append({"demo": "/demo/", "assets": 4, "config": "passed", "status": 200})
         for label in CLASSES:
             image = Path("tests/fixtures", label + ".png").read_bytes()
             response = client.post("/predict", content=image, headers={"content-type": "image/png"})
@@ -40,6 +48,7 @@ def check(url, version=None):
             assert abs(sum(result["probabilities"].values()) - 1) < 0.001
             assert CLASSES[result["predicted_class_id"]] == result["predicted_class"]
             assert response.headers["x-model-version"] == result["model_version"] == loaded_version
+            assert response.headers["server-timing"].startswith("app;dur=")
             results.append({"fixture": label, "status": response.status_code, "result": result})
         response = client.post("/predict/base64", json={"image_base64": base64.b64encode(image).decode()})
         assert response.status_code == 200

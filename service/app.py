@@ -243,6 +243,7 @@ async def add_telemetry_headers(request: Request, call_next):
 
     response.headers["x-request-id"] = request_id
     response.headers["x-model-version"] = str(STATE["version"])
+    response.headers["server-timing"] = f"app;dur={latency_ms:.2f}"
 
     route = (
         request.url.path
@@ -272,6 +273,20 @@ async def add_telemetry_headers(request: Request, call_next):
 def health() -> HealthResponse:
     """Liveness probe. Asserts the process is alive."""
     return HealthResponse(status="alive", service="coffee-bean-roast-classification")
+
+
+@app.get("/demo-config", include_in_schema=False)
+def demo_config():
+    """Public serving settings used to explain live observations in the demo."""
+    return {
+        "classes": CLASSES,
+        "input_size": IMAGE_SIZE,
+        "max_payload_bytes": MAX_PAYLOAD,
+        "max_pixels": MAX_PIXELS,
+        "max_concurrency": MAX_CONCURRENCY,
+        "pixel_std_threshold": MIN_PIXEL_STD_THRESHOLD,
+        "entropy_threshold": MIN_SHANNON_ENTROPY_THRESHOLD,
+    }
 
 
 @app.get("/ready", response_model=ReadyResponse)

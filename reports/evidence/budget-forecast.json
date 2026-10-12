@@ -1,7 +1,7 @@
 {
   "allowance_thb": 800,
-  "conservative_prior_subscription_spend_thb": 165.41388802278632,
-  "remaining_allowance_thb": 634.5861119772137,
+  "conservative_prior_subscription_spend_thb": 179.0593730731128,
+  "remaining_allowance_thb": 620.9406269268873,
   "exchange": {
     "source": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
     "date": "2026-10-09",

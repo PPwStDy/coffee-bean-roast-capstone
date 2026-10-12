@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4eee4">
   <title>Roast Studio · Coffee Roast Demo</title>
+  <link rel="stylesheet" href="/demo/observability.css">
   <style>
     :root {
       color-scheme: light;
@@ -216,7 +217,7 @@
             <div id="probability-bars"></div>
             <div class="divider"></div>
             <div class="meta-grid">
-              <div class="meta-card"><span>Inference</span><strong id="latency">—</strong></div>
+              <div class="meta-card"><span>Scoring time</span><strong id="latency">—</strong></div>
               <div class="meta-card"><span>Pixel spread</span><strong id="pixel-std">—</strong></div>
               <div class="meta-card"><span>Image detail</span><strong id="entropy">—</strong></div>
             </div>
@@ -226,10 +227,33 @@
       </div>
     </section>
 
+    <section class="operations" aria-labelledby="operations-title">
+      <div class="operations-heading"><div><div class="eyebrow">03 / INSIDE THE SERVICE</div><h2 id="operations-title">Follow the request.</h2><p>Inspect live responses, explore recorded service logs, or open your own log file.</p></div><button class="utility-button" id="refresh-runtime" type="button">Refresh runtime</button></div>
+      <div class="runtime-strip" id="runtime-strip" aria-live="polite">Reading serving configuration…</div>
+      <div class="operations-grid">
+        <div class="panel log-panel">
+          <div class="log-controls"><label>Source<select id="log-source"><option value="session">Live session responses</option><option value="recorded">Recorded CI service logs</option><option value="imported">Imported log file</option></select></label><label>Filter<select id="log-filter"><option value="all">All events</option><option value="errors">HTTP errors</option><option value="guard">Optical rejections</option><option value="requests">HTTP requests</option></select></label></div>
+          <div class="log-actions"><label class="utility-button" for="log-upload">Open log file<input class="file-input" type="file" id="log-upload" accept=".log,.json,.jsonl,.txt"></label><button class="utility-button" id="export-session" type="button">Export session</button><button class="utility-button" id="clear-session" type="button">Clear session</button></div>
+          <label class="search-label" for="log-search">Search request ID, route, model or message</label><input id="log-search" type="search" placeholder="Search log details…" autocomplete="off">
+          <p class="source-note" id="source-note" aria-live="polite">Live response observations are stored in this tab only.</p>
+          <div class="session-stats" id="log-stats"></div>
+          <div class="log-table-wrap"><table class="log-table"><caption class="file-input">Select an event to inspect its details</caption><thead><tr><th scope="col">Time / event</th><th scope="col">Route</th><th scope="col">Status</th><th scope="col">Server time</th></tr></thead><tbody id="log-rows"></tbody></table></div>
+          <p class="source-note">File import stays in your browser. JSON, JSONL, mixed Uvicorn output and Azure <code>Log_s</code> records are supported. Up to 5 MiB / 1,000 events.</p>
+        </div>
+        <div class="panel inspector-panel">
+          <div class="panel-head"><h3 class="panel-title">Event inspector</h3><span class="step" id="event-source">NO EVENT</span></div>
+          <p class="inspector-empty" id="inspector-empty">Classify a sample or select a recorded event to see what happened inside the service.</p>
+          <div id="event-inspector" hidden><div id="event-outcome" class="event-outcome"></div><ol class="request-stages" id="request-stages"></ol><dl class="event-fields" id="event-fields"></dl><details><summary>Raw event JSON</summary><pre id="raw-event"></pre></details></div>
+        </div>
+      </div>
+      <div class="panel evidence-panel"><div class="panel-head"><h3 class="panel-title">Recorded cloud evidence</h3><span class="step">HISTORICAL · NOT LIVE</span></div><div class="evidence-grid" id="evidence-grid"></div><p class="source-note" id="evidence-note">Loading the checked-in benchmark snapshot…</p></div>
+    </section>
     <div class="notice"><span class="notice-mark" aria-hidden="true">✳</span><span><strong>A helpful visual estimate, not a certification.</strong> Confidence is not calibrated. Lighting, camera, and the dataset affect results. The optical guard rejects very dark or very bright uniform frames before prediction.</span></div>
     <footer><span>Validation samples: <a href="https://www.kaggle.com/datasets/gpiosenka/coffee-bean-dataset-resized-224-x-224" target="_blank" rel="noreferrer">Gerry</a> and <a href="https://www.kaggle.com/datasets/sot2542/coffee-bean-dataset-v1" target="_blank" rel="noreferrer">Sakdipat Ontoum</a>, version 1 · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a></span><span><a href="/docs" target="_blank" rel="noreferrer">API docs</a> &nbsp;·&nbsp; <a href="/ready" target="_blank" rel="noreferrer">Readiness</a></span></footer>
   </main>
 
+  <script src="/demo/log-tools.js"></script>
+  <script src="/demo/observability.js"></script>
   <script>
     (() => {
       const classes = ["Dark", "Green", "Light", "Medium"];
@@ -305,9 +329,11 @@
         buttonLabel.textContent = "Classify this image";
         document.getElementById("empty-state").style.display = "none";
         resultContent.classList.remove("show");
+        const selection = requestNumber;
         createImageBitmap(file).then((bitmap) => {
           const pixels = bitmap.width * bitmap.height;
           bitmap.close();
+          if (selection !== requestNumber) return;
           if (pixels > 20_000_000) {
             clearSelectedImage();
             setError("Image dimensions are too large", "The image must be no larger than 20 megapixels.");
@@ -318,6 +344,9 @@
       async function classify() {
         if (!selectedFile || predictButton.disabled) return;
         const thisRequest = ++requestNumber;
+        const inputFile = selectedFile;
+        const started = performance.now();
+        let observedResponse = false;
         let timeout = null;
         clearError();
         predictButton.disabled = true;
@@ -329,15 +358,25 @@
           timeout = setTimeout(() => controller.abort(), 45_000);
           const response = await fetch("/predict", {
             method: "POST",
-            headers: { "Content-Type": selectedFile.type },
-            body: selectedFile,
+            headers: { "Content-Type": inputFile.type },
+            body: inputFile,
             signal: controller.signal,
           });
-          clearTimeout(timeout);
-          timeout = null;
           const requestId = response.headers.get("x-request-id") || "not supplied";
           const headerVersion = response.headers.get("x-model-version");
           const payload = await response.json().catch(() => ({}));
+          clearTimeout(timeout);
+          timeout = null;
+          observedResponse = true;
+          window.RoastObservability.record({
+            ts: new Date().toISOString(), event: "http_request", source: "Browser response observation",
+            request_id: requestId, path: "/predict", status: response.status,
+            latency_ms: window.RoastLogTools.serverDuration(response.headers.get("server-timing")),
+            browser_ms: performance.now() - started, scoring_ms: payload.latency_ms ?? null,
+            model_version: headerVersion || payload.model_version || null,
+            version_consistent: !headerVersion || !payload.model_version ? null : headerVersion === payload.model_version,
+            file_name: inputFile.name, file_bytes: inputFile.size, response: payload,
+          });
           if (thisRequest !== requestNumber) return;
           if (!response.ok) {
             const detail = payload.detail;
@@ -353,8 +392,13 @@
           renderResult(payload);
           setService("ready", `Model ready · ${payload.model_version}`);
         } catch (error) {
+          if (!observedResponse) window.RoastObservability.record({
+            ts: new Date().toISOString(), event: "client_error", source: "Browser response observation",
+            path: "/predict", status: null, browser_ms: performance.now() - started,
+            file_name: inputFile.name, message: error.name === "AbortError" ? "45-second client timeout" : "API connection failed",
+          });
           if (thisRequest !== requestNumber) return;
-          const message = error.name === "AbortError" ? "The request took longer than 45 seconds." : "Could not reach the API. Check the service and try again.";
+          const message = observedResponse ? error.message : error.name === "AbortError" ? "The request took longer than 45 seconds." : "Could not reach the API. Check the service and try again.";
           setError("Prediction unavailable", message);
           setService("error", "API connection problem");
         } finally {

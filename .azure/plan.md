@@ -1,6 +1,8 @@
 # Coffee bean roast capstone Azure implementation
 
-Status: Deployed and validated; warm/cold benchmarks and actual camera-alert email delivery recorded. Full teardown is retained until October 18.
+Status: Validated
+
+The existing release is deployed; warm/cold benchmarks and actual camera-alert email delivery are recorded. Full teardown is retained until October 18.
 
 The user approved this plan on 2026-10-11. This file records execution; completion requires successful evidence.
 
@@ -52,3 +54,20 @@ Azure Deploy provisioned only the dedicated capstone group using infra/main.bice
 ## External completion steps
 
 Instructor approval, architecture review, live presentation/Q&A and final submission remain pending until they occur.
+
+## Demo update validation proof
+
+Azure Validate completed at 2026-10-12T05:09:10.576911+00:00 for the existing East Asia app update. The approved subscription, group tags, serving allocation, image and production revision were inspected. No new resource group, region, identity or allocation is requested.
+
+- `.venv/bin/python -m pytest tests -q`: 54 passed.
+- `node --test tests/test_demo_logs.cjs`: 5 passed.
+- `PYTHONPATH=. .venv/bin/python scripts/release_integrity.py`: passed; the selected trained release is unchanged.
+- `.venv/bin/python scripts/portability_audit.py` and Ruff: passed.
+- `docker build --platform linux/amd64 -t coffee-roast:demo-validation .`: succeeded.
+- `scripts/endpoint_checks.py --url http://127.0.0.1:8082`: passed in the Linux container, including the demo page, four assets, serving configuration, prediction timing headers and optical rejections. Evidence: `reports/evidence/demo-container-checks.json`.
+- `az bicep build --file infra/app.bicep --outfile tmp/demo-app.compiled.json`: succeeded.
+- `az deployment group validate` using the current image and configured app parameters: Succeeded.
+- `az deployment group what-if`: Succeeded; no resource deletions. Evidence: `reports/evidence/demo-deployment-what-if.json`.
+- Refreshed actual course spending and existing subscription policy assignments inspected. Budget gate passed: 239.09 THB forecast against 620.94 THB remaining. Evidence: `reports/evidence/demo-deployment-preflight.json`.
+
+Azure Deploy will use the existing main-branch GitHub CI and Release workflows. CI repeats contracts and Linux container integration; release builds the exact committed source, checks the budget again, deploys a digest-pinned candidate, checks demo assets and predictions, enforces the frozen warm targets, and promotes only a passing revision.

@@ -6,7 +6,119 @@ An image-level classifier using the **Iteration4 Swin-T architecture** with the 
 
 The revised roast scope requires instructor approval. See the [requirement checklist](reports/requirements_checklist.md) for actual completion evidence and pending academic milestones.
 
-The [architecture](reports/architecture.md) shows model lineage, release gates, serving and alert delivery boundaries.
+## Architecture
+
+The system trains and versions a roast classifier separately from the API release pipeline. The selected model is packaged inside the serving image, so prediction requests use the local artifact in the container.
+
+### Model and deployment pipeline
+
+```mermaid
+flowchart TB
+    subgraph training["Model development · separate training workflow"]
+        Data["DVC-versioned dataset<br/>Deduplicated train / validation / test splits"]
+        Train["Swin-T training<br/>ImageNet initialization"]
+        MLflow["MLflow<br/>Parameters, metrics and lineage"]
+        Export["ONNX export selection<br/>Validation F1, parity and latency gates"]
+        Bundle["Immutable release bundle<br/>Test evaluation once, metadata and SHA-256"]
+        Data --> Train --> Export --> Bundle
+        Train -. "track experiment" .-> MLflow
+    end
+
+    Blob[("Private Azure Blob Storage<br/>DVC remote: data and releases")]
+    Blob -->|restore data| Data
+    Bundle -->|DVC push| Blob
+
+    subgraph delivery["GitHub Actions · release after successful main CI"]
+        Repo["GitHub repository<br/>Source, dependency locks and DVC pointers"]
+        CI["CI validation<br/>Data, model, API and container contracts"]
+        Build["Budget preflight<br/>Build Linux serving image"]
+        Repo --> CI --> Build
+    end
+    Blob -->|restore selected release| CI
+    Blob -->|restore selected release| Build
+
+    subgraph azure["Azure · East Asia"]
+        ACR[("Azure Container Registry<br/>Image pinned by digest")]
+        Candidate["Container Apps candidate revision"]
+        Gates{"Endpoint checks and<br/>fixed warm latency gates"}
+        API["Production FastAPI service<br/>2 vCPU / 4 GiB · 0–2 replicas"]
+        Rollback["Restore verified previous traffic<br/>Deactivate rejected candidate"]
+        ACR -->|managed identity image pull| Candidate
+        Candidate --> Gates
+        Gates -->|pass: promote traffic| API
+        Gates -->|fail| Rollback
+    end
+    Build -->|push image| ACR
+
+    classDef model fill:#eff6ff,stroke:#2563eb,color:#172554;
+    classDef storage fill:#f5f3ff,stroke:#7c3aed,color:#2e1065;
+    classDef delivery fill:#f0fdf4,stroke:#16a34a,color:#14532d;
+    classDef gate fill:#fffbeb,stroke:#d97706,color:#78350f;
+    class Data,Train,MLflow,Export,Bundle model;
+    class Blob,ACR storage;
+    class Repo,CI,Build,Candidate,API delivery;
+    class Gates,Rollback gate;
+```
+
+GitHub Actions authenticates to Azure through OIDC. The release pipeline restores the selected artifact without retraining; its warm latency gate uses the frozen targets in [`monitoring/slo.json`](monitoring/slo.json) when that file exists. Existing production traffic stays on the previous revision while a candidate is checked.
+
+### Serving and observability
+
+```mermaid
+flowchart TB
+    Client["Browser demo / API client<br/>JPEG, PNG or base64 image"]
+
+    subgraph serving["FastAPI container · same service locally and in Azure"]
+        Routes["POST /predict or /predict/base64"]
+        Validate["Bounded worker admission and image validation<br/>Concurrency 2 · 5 MiB · 20 megapixels"]
+        Guard{"Optical quality guard<br/>Pixel variance and entropy"}
+        Reject["HTTP 422<br/>Occlusion / uniform glare rejection"]
+        Preprocess["RGB → 224 × 224<br/>ImageNet normalization"]
+        Infer["ONNX Runtime · CPU<br/>Selected Swin-T model"]
+        Response["JSON prediction<br/>Dark / Green / Light / Medium probabilities<br/>Model version and latency"]
+        Telemetry["Request and inference telemetry<br/>Structured logs and /metrics"]
+        Routes --> Validate --> Guard
+        Guard -->|reject| Reject
+        Guard -->|accept| Preprocess --> Infer --> Response
+        Routes -.-> Telemetry
+        Reject -.-> Telemetry
+        Infer -.-> Telemetry
+    end
+    Client --> Routes
+    Response -->|HTTP 200| Client
+    Reject --> Client
+
+    subgraph cloud["Azure monitoring"]
+        Logs["Log Analytics"]
+        Workbook["Azure workbook"]
+        Rule["Camera rejection alert<br/>5-minute evaluation / window"]
+        Email["Action Group<br/>Student email notification"]
+        Logs --> Workbook
+        Logs --> Rule --> Email
+    end
+    Telemetry -. "container logs" .-> Logs
+
+    subgraph local["Local Docker Compose monitoring"]
+        Prom["Prometheus"]
+        Grafana["Grafana dashboard"]
+        Alerts["Alertmanager"]
+        Sink["Webhook sink<br/>Local alert evidence"]
+        Prom --> Grafana
+        Prom -->|firing alert| Alerts --> Sink
+    end
+    Telemetry -. "scrape /metrics" .-> Prom
+
+    classDef service fill:#eff6ff,stroke:#2563eb,color:#172554;
+    classDef guard fill:#fffbeb,stroke:#d97706,color:#78350f;
+    classDef monitoring fill:#f5f3ff,stroke:#7c3aed,color:#2e1065;
+    class Client,Routes,Validate,Preprocess,Infer,Response service;
+    class Guard,Reject guard;
+    class Telemetry,Logs,Workbook,Rule,Email,Prom,Grafana,Alerts,Sink monitoring;
+```
+
+Dashed arrows show telemetry or experiment tracking. `/health` reports liveness; `/ready` checks the loaded model, metadata and artifact hashes. Local alerts go to the webhook sink; cloud alerts use the email Action Group. Alert configuration and actual recipient delivery are tracked as separate evidence.
+
+See the [detailed architecture](reports/architecture.md) for model lineage, measurement boundaries and resource ownership.
 
 ## Data and model
 
@@ -62,6 +174,18 @@ JPEG/PNG upload, live class probabilities, model version and latency, and a clea
 rejection state. It calls the same-origin API, so no extra CORS configuration or frontend service
 is required. The built-in samples are validation fixtures, not independent test examples; see
 [`DATA_LICENSE.md`](DATA_LICENSE.md) for attribution and license details.
+
+The **Follow the request** inspector shows the request ID, HTTP status, model version, optical
+guard values, raw response JSON and three separate timing boundaries: browser round trip,
+server request duration from `Server-Timing`, and scoring (guard, preprocessing and inference).
+Black/white frame examples demonstrate rejection before inference. Current engine, concurrency
+and guard thresholds come from `/ready` and `/demo-config`.
+
+Use the source selector to explore a representative recorded CI log sample, or open a JSON,
+JSONL or mixed service log file. Azure records with escaped JSON in `Log_s` are supported.
+Imports stay in the browser; session observations can be searched, filtered and exported.
+The cloud benchmark and log-summary cards are a checked-in historical snapshot with source
+paths, separate from live requests. To check the log parser, run `node --test tests/test_demo_logs.cjs`.
 
 | Route | Request / purpose |
 |---|---|

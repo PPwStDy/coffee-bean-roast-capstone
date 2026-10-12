@@ -1,0 +1,153 @@
+{
+  "sources": [
+    "reports/evidence/ci-container.log",
+    "reports/evidence/initial-warm.json",
+    "reports/evidence/initial-cold.json",
+    "reports/evidence/deployed-log-summary.json",
+    "monitoring/slo.json"
+  ],
+  "recorded_logs": [
+    {
+      "ts": "2026-10-11 17:41:37,556",
+      "level": "INFO",
+      "message": "Loaded ONNX model: reports/model.onnx"
+    },
+    {
+      "ts": "2026-10-11 17:41:37,556",
+      "level": "INFO",
+      "message": "Model ready, engine=ONNXRuntime, version=roast-swin-retrained-v1"
+    },
+    {
+      "ts": "2026-10-11 17:41:40,725",
+      "level": "INFO",
+      "event": "http_request",
+      "request_id": "3bcb110a-171c-4fc8-b1c7-76f685b4e211",
+      "path": "/ready",
+      "status": 200,
+      "latency_ms": 1.79,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "ts": "2026-10-11 17:41:41,217",
+      "level": "INFO",
+      "event": "http_request",
+      "request_id": "04acb688-479a-413d-ae46-9ed9713172e9",
+      "path": "/predict",
+      "status": 200,
+      "latency_ms": 97.78,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "ts": "2026-10-11 17:41:41,572",
+      "level": "INFO",
+      "event": "http_request",
+      "request_id": "1e163af0-6801-4b6a-807c-b8a4bb0ee2cb",
+      "path": "/predict/base64",
+      "status": 200,
+      "latency_ms": 85.89,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "ts": "2026-10-11 17:41:41,589",
+      "level": "WARNING",
+      "event": "occlusion_guard_rejection",
+      "pixel_std": 0.0,
+      "entropy": -0.0,
+      "threshold": 0.05
+    },
+    {
+      "ts": "2026-10-11 17:41:41,590",
+      "level": "INFO",
+      "event": "http_request",
+      "request_id": "90ef9c00-647e-41ca-b8f4-433ad07d2e2f",
+      "path": "/predict",
+      "status": 422,
+      "latency_ms": 4.31,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "ts": "2026-10-11 17:41:41,624",
+      "level": "INFO",
+      "event": "http_request",
+      "request_id": "36426fa0-bf6f-4084-b759-21ecbca7e5d8",
+      "path": "/predict",
+      "status": 400,
+      "latency_ms": 24.44,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "ts": "2026-10-11 17:41:41,626",
+      "level": "INFO",
+      "event": "http_request",
+      "request_id": "ec9d53da-d2b9-42c9-80c4-3fefda60f4ac",
+      "path": "/predict/base64",
+      "status": 400,
+      "latency_ms": 0.63,
+      "model_version": "roast-swin-retrained-v1"
+    },
+    {
+      "ts": "2026-10-11 17:41:41,630",
+      "level": "INFO",
+      "event": "http_request",
+      "request_id": "1e0059f4-2e86-430b-af13-1b808eecbcb3",
+      "path": "/metrics",
+      "status": 200,
+      "latency_ms": 1.85,
+      "model_version": "roast-swin-retrained-v1"
+    }
+  ],
+  "warm": {
+    "client_origin": "github-actions-ubuntu",
+    "requests": 1000,
+    "concurrency": 2,
+    "successful_requests": 1000,
+    "p95_ms": 240.64364215000182,
+    "p99_ms": 250.66357193998638,
+    "model_version": "roast-swin-retrained-v1"
+  },
+  "cold": {
+    "method": "natural HTTP scale-to-zero; zero replicas verified by management-plane API",
+    "p95_ms": 28950.4210455023,
+    "p99_ms": 28994.376975501073,
+    "trials": 20
+  },
+  "cloud_log_summary": [
+    {
+      "Count": "1060",
+      "Event": "http_request",
+      "Status": "200",
+      "TableName": "PrimaryResult"
+    },
+    {
+      "Count": "4",
+      "Event": "occlusion_guard_rejection",
+      "Status": "",
+      "TableName": "PrimaryResult"
+    },
+    {
+      "Count": "4",
+      "Event": "http_request",
+      "Status": "422",
+      "TableName": "PrimaryResult"
+    },
+    {
+      "Count": "4",
+      "Event": "http_request",
+      "Status": "400",
+      "TableName": "PrimaryResult"
+    }
+  ],
+  "slo": {
+    "frozen_at_utc": "2026-10-11T17:16:39.053912+00:00",
+    "warm_p95_ms": 289,
+    "warm_p99_ms": 301,
+    "cold_p95_ms": 34741,
+    "cold_p99_ms": 34794,
+    "container_size_bytes": 164650776,
+    "model_version": "roast-swin-retrained-v1",
+    "method": "initial measured percentile +20%, rounded upward; container size separate",
+    "warm_client_origin": "github-actions-ubuntu",
+    "warm_evidence": "reports/evidence/initial-warm.json",
+    "cold_evidence": "reports/evidence/initial-cold.json"
+  }
+}

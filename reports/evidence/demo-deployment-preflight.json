@@ -1,0 +1,18 @@
+{
+  "time": "2026-10-12T05:08:37.249927+00:00",
+  "subscription": "6638a4ea-96da-4326-969a-2e40305cfc83",
+  "region": "eastasia",
+  "previous_revision": "coffee6688218-api--r1791743480",
+  "image_before": "coffee6688218enafhtyqhoyi6.azurecr.io/coffee-roast@sha256:a34b36d0fcdfabb8e060190ffd7c6e62e2d3c3159d8daf2bf1e6c9ff3e6590a3",
+  "policy_assignments": [
+    {
+      "name": "sys.regionrestriction",
+      "display_name": "Allowed resource deployment regions"
+    }
+  ],
+  "remaining_thb": 620.9406269268873,
+  "forecast_thb": 239.08745939675174,
+  "budget_passed": true,
+  "arm_validation": "Succeeded",
+  "what_if": "Succeeded; no deletions"
+}

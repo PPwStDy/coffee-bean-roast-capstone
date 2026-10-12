@@ -37,6 +37,8 @@ def test_health_liveness_endpoint(client):
     assert data["status"] == "alive"
     assert "x-request-id" in res.headers
     assert "x-model-version" in res.headers
+    assert res.headers["server-timing"].startswith("app;dur=")
+    assert float(res.headers["server-timing"].split("=")[1]) >= 0
 
 
 def test_presentation_demo_and_attributed_samples_are_served(client):
@@ -60,6 +62,20 @@ def test_ready_readiness_endpoint(client):
     assert data["status"] == "ready"
     assert data["model_loaded"] is True
     assert "engine" in data
+
+
+def test_demo_settings_match_optical_guard_configuration(client):
+    """The live inspector must explain actual settings, including overrides."""
+    from service.app import MAX_CONCURRENCY
+    from src.config import MIN_PIXEL_STD_THRESHOLD, MIN_SHANNON_ENTROPY_THRESHOLD
+
+    response = client.get("/demo-config")
+    assert response.status_code == 200
+    settings = response.json()
+    assert settings["max_concurrency"] == MAX_CONCURRENCY
+    assert settings["pixel_std_threshold"] == MIN_PIXEL_STD_THRESHOLD
+    assert settings["entropy_threshold"] == MIN_SHANNON_ENTROPY_THRESHOLD
+    assert settings["classes"] == CLASSES
 
 
 def test_predict_valid_textured_bean_image(client):
@@ -96,6 +112,7 @@ def test_deliberate_failure_specular_glare_rejected(client):
 
     res = client.post("/predict", content=raw_bytes, headers={"Content-Type": "image/jpeg"})
     assert res.status_code == 422, f"Expected 422 for pure glare, got {res.status_code}: {res.text}"
+    assert "server-timing" in res.headers
 
     detail = res.json()["detail"]
     assert "Optical Occlusion / Specular Glare Detected" in detail["error"]

@@ -1,0 +1,152 @@
+{
+  "changes": [
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Deploy",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/containerApps/coffee6688218-api",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.App/managedEnvironments/coffee6688218-environment",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ContainerRegistry/registries/coffee6688218enafhtyqhoyi6",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/actiongroups/coffee6688218-email",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/actiongroups/coffee6688218-email-verified",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/scheduledqueryrules/coffee6688218-camera-occlusion",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Insights/workbooks/1f289b63-43ca-5130-a7e6-abc93b51060f",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-ci",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-ci-read",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.ManagedIdentity/userAssignedIdentities/coffee6688218-identity",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.OperationalInsights/workspaces/coffee6688218-logs",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": null,
+      "before": null,
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/6638a4ea-96da-4326-969a-2e40305cfc83/resourceGroups/rg-itcs355-6688218-capstone/providers/Microsoft.Storage/storageAccounts/cf6688218enafhtyqhoyi6",
+      "symbolicName": null,
+      "unsupportedReason": null
+    }
+  ],
+  "diagnostics": null,
+  "error": null,
+  "potentialChanges": null,
+  "status": "Succeeded"
+}

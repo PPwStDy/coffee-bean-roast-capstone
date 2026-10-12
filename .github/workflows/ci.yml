@@ -54,6 +54,8 @@ jobs:
           uv run --frozen python scripts/restore_release.py
       - name: Data, model, API, artifact and cloud contracts
         run: uv run --frozen pytest tests -q --junitxml=reports/evidence/ci-tests.xml
+      - name: Demo log parser contracts
+        run: node --test tests/test_demo_logs.cjs
       - name: Export integrity and optical guard mutation
         run: |
           uv run --frozen python scripts/release_integrity.py
