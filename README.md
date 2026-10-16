@@ -220,6 +220,8 @@ The [Azure plan](.azure/plan.md) and Bicep provision a dedicated East Asia group
 
 Local Prometheus/Grafana/Alertmanager are retained. Azure Log Analytics and a workbook use escaped JSON application logs. A five-minute camera-occlusion rule routes to the signed-in student's email action group. Configuration alone does not prove email delivery; the checklist requires a receipt.
 
+Production accuracy monitoring is proposed future work. The [model accuracy monitoring guide](reports/model_accuracy_monitoring.md) explains how expert labels, scheduled evaluation, quality thresholds, and notifications would tell data scientists when to investigate an accuracy drop. Current camera and service alerts do not measure prediction correctness.
+
 Initial targets require 1,000 warm requests at concurrency 2 and 20 cold-start trials with zero replicas verified before each request. Targets are measured p95/p99 plus 20%, rounded upward, then stored in `monitoring/slo.json`. Later releases enforce these fixed targets. Container bytes are recorded separately. Historical 120/250 ms and 2-second claims are withdrawn until measured evidence supports replacements.
 
 ## Costs and cleanup
